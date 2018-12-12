@@ -28,7 +28,7 @@
  */
 package freecardandboard.objs;
 
-import freecardandboard.enums.ShogiPieceColor;
+import freecardandboard.enums.PieceColor;
 import freecardandboard.enums.ShogiPieceType;
 
 
@@ -57,17 +57,17 @@ public class ShogiBoard extends ChessVarBoard {
             ShogiPieceType.KNIGHT, ShogiPieceType.LANCE};
         
         for (int i = 0; i < board.length; i++) {
-            board[i][0] = new ShogiPiece(ShogiPieceColor.GOTE, rankAPieces[i]);
+            board[i][0] = new ShogiPiece(PieceColor.WHITE, rankAPieces[i]);
             if (rankBPieces[i] == null) board[i][1] = null;
-            else board[i][1] = new ShogiPiece(ShogiPieceColor.GOTE,
+            else board[i][1] = new ShogiPiece(PieceColor.WHITE,
                     rankBPieces[i]);
-            board[i][2] = new ShogiPiece(ShogiPieceColor.GOTE, ShogiPieceType.PAWN);
+            board[i][2] = new ShogiPiece(PieceColor.WHITE, ShogiPieceType.PAWN);
             board[i][3] = board[i][4] = board[i][5] = null;
-            board[i][6] = new ShogiPiece(ShogiPieceColor.SENTE, ShogiPieceType.PAWN);
+            board[i][6] = new ShogiPiece(PieceColor.BLACK, ShogiPieceType.PAWN);
             if (rankHPieces[i] == null) board[i][7] = null;
-            else board[i][7] = new ShogiPiece(ShogiPieceColor.SENTE,
+            else board[i][7] = new ShogiPiece(PieceColor.BLACK,
                     rankHPieces[i]);
-            board[i][8] = new ShogiPiece(ShogiPieceColor.SENTE, rankIPieces[i]);
+            board[i][8] = new ShogiPiece(PieceColor.BLACK, rankIPieces[i]);
         }
     }
     

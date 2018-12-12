@@ -36,7 +36,8 @@ import freecardandboard.Player;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Go extends BoardGame {
-
+    ArrayList players;
+    
     @Override
     public void play(ArrayList<Player> players) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -28,7 +28,7 @@
  */
 package freecardandboard.objs;
 
-import freecardandboard.enums.ChessPieceColor;
+import freecardandboard.enums.PieceColor;
 import freecardandboard.enums.ChessPieceType;
 
 /**
@@ -36,15 +36,15 @@ import freecardandboard.enums.ChessPieceType;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class ChessPiece extends ChessVarPiece {
-    private final ChessPieceColor PIECE_COLOR;
+    private final PieceColor PIECE_COLOR;
     private final ChessPieceType PIECE_TYPE;
     
-    public ChessPiece(ChessPieceColor pieceColor, ChessPieceType pieceType) {
+    public ChessPiece(PieceColor pieceColor, ChessPieceType pieceType) {
         PIECE_COLOR = pieceColor;
         PIECE_TYPE = pieceType;
     }
     
-    public ChessPieceColor getPieceColor() {
+    public PieceColor getPieceColor() {
         return PIECE_COLOR;
     }
     

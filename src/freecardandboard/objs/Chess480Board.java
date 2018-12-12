@@ -28,7 +28,7 @@
  */
 package freecardandboard.objs;
 
-import freecardandboard.enums.ChessPieceColor;
+import freecardandboard.enums.PieceColor;
 
 /**
  *
@@ -46,7 +46,7 @@ public class Chess480Board extends Chess960Board {
      * @param kingside true for a kingside castle, false for a queenside castle
      */
     @Override
-    public void castle(ChessPieceColor player, boolean kingside) {
+    public void castle(PieceColor player, boolean kingside) {
         byte startRank;
         switch (player) {
             case WHITE: startRank = 0;

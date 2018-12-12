@@ -28,7 +28,7 @@
  */
 package freecardandboard.objs;
 
-import freecardandboard.enums.ShogiPieceColor;
+import freecardandboard.enums.PieceColor;
 import freecardandboard.enums.ShogiPieceType;
 
 /**
@@ -36,15 +36,15 @@ import freecardandboard.enums.ShogiPieceType;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class ShogiPiece extends ChessVarPiece {
-    private final ShogiPieceColor PIECE_COLOR;
+    private final PieceColor PIECE_COLOR;
     private final ShogiPieceType PIECE_TYPE;
     
-    public ShogiPiece(ShogiPieceColor pieceColor, ShogiPieceType pieceType) {
+    public ShogiPiece(PieceColor pieceColor, ShogiPieceType pieceType) {
         PIECE_COLOR = pieceColor;
         PIECE_TYPE = pieceType;
     } 
     
-    public ShogiPieceColor getPieceColor() {
+    public PieceColor getPieceColor() {
         return PIECE_COLOR;
     }
     
@@ -54,7 +54,7 @@ public class ShogiPiece extends ChessVarPiece {
     
     public String getAbbreviation() {
         switch (PIECE_COLOR) {
-            case SENTE: return PIECE_TYPE.getAbbrev().toUpperCase();
+            case BLACK: return PIECE_TYPE.getAbbrev().toUpperCase();
             default: return PIECE_TYPE.getAbbrev().toLowerCase();
         }
     }

@@ -28,7 +28,7 @@
  */
 package freecardandboard.objs;
 
-import freecardandboard.enums.ChessPieceColor;
+import freecardandboard.enums.PieceColor;
 import freecardandboard.enums.ChessPieceType;
 
 /**
@@ -140,11 +140,11 @@ public class Chess960Board extends ChessBoard {
         
         // Place the pieces according to our calculations
         for (int i = 0; i < board.length; i++) {
-            board[i][0] = new ChessPiece(ChessPieceColor.WHITE, pieceForFile[i]);
-            board[i][1] = new ChessPiece(ChessPieceColor.WHITE, ChessPieceType.PAWN);
+            board[i][0] = new ChessPiece(PieceColor.WHITE, pieceForFile[i]);
+            board[i][1] = new ChessPiece(PieceColor.WHITE, ChessPieceType.PAWN);
             board[i][2] = board[i][3] = board[i][4] = board[i][5] = null;
-            board[i][6] = new ChessPiece(ChessPieceColor.BLACK, ChessPieceType.PAWN);
-            board[i][7] = new ChessPiece(ChessPieceColor.BLACK, pieceForFile[i]);
+            board[i][6] = new ChessPiece(PieceColor.BLACK, ChessPieceType.PAWN);
+            board[i][7] = new ChessPiece(PieceColor.BLACK, pieceForFile[i]);
         }
     }
     
@@ -163,7 +163,7 @@ public class Chess960Board extends ChessBoard {
      * @param kingside true for a kingside castle, false for a queenside castle
      */
     @Override
-    public void castle(ChessPieceColor player, boolean kingside) {
+    public void castle(PieceColor player, boolean kingside) {
         byte startRank;
         switch (player) {
             case WHITE: startRank = 0;

@@ -32,6 +32,6 @@ package freecardandboard.enums;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public enum ShogiPieceColor {
-    SENTE, GOTE
+public enum PieceColor {
+    WHITE, BLACK
 }
