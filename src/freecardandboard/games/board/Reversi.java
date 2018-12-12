@@ -30,16 +30,25 @@ package freecardandboard.games.board;
 
 import java.util.ArrayList;
 import freecardandboard.Player;
+import freecardandboard.enums.PieceColor;
+import freecardandboard.objs.ReversiBoard;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Reversi extends BoardGame {
-
+    ArrayList players;
+    ReversiBoard board;
+    
     @Override
     public void play(ArrayList<Player> players) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (players.size() != 2)
+            throw new IllegalArgumentException("You tried to start a game of " +
+                    "reversi with " + players.size() + " players. The game " +
+                    "requires 2 players.");
+        board = new ReversiBoard();
+        board.initBoard();
+        System.out.println(board.toString());
     }
-    
 }

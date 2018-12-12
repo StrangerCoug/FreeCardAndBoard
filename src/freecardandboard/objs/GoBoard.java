@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018, Jeffrey Hope <>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,49 +28,34 @@
  */
 package freecardandboard.objs;
 
+import freecardandboard.enums.PieceColor;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public abstract class ChessVarBoard {
-    protected ChessVarPiece[][] board;
-
-    public abstract void initBoard();
-
-    public ChessVarPiece[][] getBoard() {
+public class GoBoard {
+    protected PieceColor[][] board;
+    
+    public GoBoard() {
+        this(19);
+    }
+    
+    public GoBoard(int i) {
+        board = new PieceColor[i][i];
+    }
+    
+    public PieceColor[][] getBoard() {
         return board;
     }
     
-    /**
-     * While this method has a self-explanatory name, it does not check if the
-     * move being submitted is actually legal, and it cannot handle the castling
-     * or en passant captures of Western chess by itself. Those types of moves
-     * have their own functions with special handling, although they all call
-     * this method.
-     *
-     * @param start the starting coordinate
-     * @param end the ending coordinate
-     */
-    public void movePiece(int[] start, int[] end) {
-        if (start.length != 2 || end.length != 2) {
-            throw new IllegalArgumentException("Each coordinate must be of " + 
-                    "length 2.");
-        }
-        ChessVarPiece pieceMoving = board[start[0]][start[1]];
-        board[start[0]][start[1]] = null;
-        board[end[0]][end[1]] = pieceMoving;
+    public void clearBoard() {
+        for (int i = 0; i < board.length; i++)
+            for (int j = 0; j < board[i].length; j++)
+                board[i][j] = null;
     }
-
-    /**
-     * Overwrites any piece at the specified square on the board with the
-     * specified chess piece. In standard chess and most of its variants, this
-     * should be called only to promote a piece, but it can also be used for
-     * drops in bughouse chess as well as in shogi, hence its neutral name.
-     *
-     * @param piece the piece to be promoted to or dropped
-     * @param location the coordinates of the promoted or dropped piece
-     */
-    public void replacePiece(ChessVarPiece piece, int[] location) {
+    
+    public void placePiece(PieceColor piece, int[] location) {
         if (location.length != 2) {
             throw new IllegalArgumentException("The coordinate must be of " +
                     "length 2.");
@@ -78,4 +63,30 @@ public abstract class ChessVarBoard {
         board[location[0]][location[1]] = piece;
     }
     
+    public void removePiece (int[] location) {
+        if (location.length != 2) {
+            throw new IllegalArgumentException("The coordinate must be of " +
+                    "length 2.");
+        }
+        board[location[0]][location[1]] = null;       
+    }
+    
+    @Override
+    public String toString() {
+        String textBoard = "";
+        
+        for (int j = 0; j < board.length; j++) {
+            for (int i = 0; i < board.length; i++) {
+                if (board[i][j] == null)
+                    textBoard += "_";
+                else if (board[i][j] == PieceColor.BLACK)
+                    textBoard += "X";
+                else textBoard += "O";
+                textBoard += " ";
+            }
+            textBoard += "\n";
+        }
+        
+        return textBoard;
+    }
 }
