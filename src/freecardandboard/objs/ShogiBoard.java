@@ -78,8 +78,12 @@ public class ShogiBoard extends ChessVarBoard {
         for (int j = 0; j < board[0].length; j++) {
             for (int i = board.length-1; i >= 0; i--) {
                 if (board[i][j] == null)
-                    textBoard += "_";
-                else textBoard += board[i][j].getAbbreviation();
+                    textBoard += "__";
+                else {
+                    if (board[i][j].getAbbreviation().length() == 1)
+                        textBoard += ".";
+                    textBoard += board[i][j].getAbbreviation();
+                }
                 textBoard += " ";
             }
             textBoard += "\n";

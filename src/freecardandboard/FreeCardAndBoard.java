@@ -28,7 +28,7 @@
  */
 package freecardandboard;
 
-import freecardandboard.games.board.Reversi;
+import freecardandboard.games.board.Shogi;
 import java.util.ArrayList;
 
 /**
@@ -41,7 +41,7 @@ public class FreeCardAndBoard {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Reversi test = new Reversi();
+        Shogi test = new Shogi();
         ArrayList players = new ArrayList<Player>();
         players.add(new Player("Black"));
         players.add(new Player("White"));
