@@ -33,6 +33,8 @@ import freecardandboard.games.board.Checkers;
 import freecardandboard.games.board.Chess;
 import freecardandboard.games.board.ChineseCheckers;
 import freecardandboard.games.board.Go;
+import freecardandboard.games.board.Halma;
+import freecardandboard.games.board.Janggi;
 import freecardandboard.games.board.Reversi;
 import freecardandboard.games.board.Shogi;
 import freecardandboard.games.board.Xiangqi;
@@ -78,15 +80,17 @@ public class FreeCardAndBoard {
                         + "7. Crazy Eights\n"
                         + "8. Cribbage\n"
                         + "9. Go\n"
-                        + "10. Hearts\n"
-                        + "11. Ninety-nine\n"
-                        + "12. Old Maid\n"
-                        + "13. Reversi\n"
-                        + "14. Rummy\n"
-                        + "15. Shogi\n"
-                        + "16. Spades\n"
-                        + "17. Whist\n"
-                        + "18. Xiangqi");
+                        + "10. Halma\n"
+                        + "11. Hearts\n"
+                        + "12. Janggi\n"
+                        + "13. Ninety-nine\n"
+                        + "14. Old Maid\n"
+                        + "15. Reversi\n"
+                        + "16. Rummy\n"
+                        + "17. Shogi\n"
+                        + "18. Spades\n"
+                        + "19. Whist\n"
+                        + "20. Xiangqi");
                 entry = input.nextLine();
                 if (entry.equalsIgnoreCase("quit")) {
                     input.close();
@@ -165,15 +169,17 @@ public class FreeCardAndBoard {
             case 7: return new CrazyEights();
             case 8: return new Cribbage();
             case 9: return new Go();
-            case 10: return new Hearts();
-            case 11: return new NinetyNine();
-            case 12: return new OldMaid();
-            case 13: return new Reversi();
-            case 14: return new Rummy();
-            case 15: return new Shogi();
-            case 16: return new Spades();
-            case 17: return new Whist();
-            case 19: return new Xiangqi();
+            case 10: return new Halma();
+            case 11: return new Hearts();
+            case 12: return new Janggi();
+            case 13: return new NinetyNine();
+            case 14: return new OldMaid();
+            case 15: return new Reversi();
+            case 16: return new Rummy();
+            case 17: return new Shogi();
+            case 18: return new Spades();
+            case 19: return new Whist();
+            case 20: return new Xiangqi();
             default: throw new IllegalArgumentException();
         }
     }

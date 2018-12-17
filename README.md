@@ -9,15 +9,17 @@ This is planned to be a free and open source cross-platform Java casino program.
 7. Crazy Eights
 8. Cribbage
 9. Go
-10. Hearts
-11. Ninety-nine ([the trick-taking game](http://www.parlettgames.uk/oricards/ninety9.html))
-12. Old Maid
-13. Reversi
-14. Rummy
-15. Shōgi
-16. Spades
-17. Whist
-18. Xiàngqí
+10. Halma
+11. Hearts
+12. Janggi
+13. Ninety-nine ([the trick-taking game](http://www.parlettgames.uk/oricards/ninety9.html))
+14. Old Maid
+15. Reversi
+16. Rummy
+17. Shōgi
+18. Spades
+19. Whist
+20. Xiàngqí
 I am open to adding more games over time (halma, ludo, tarot/tarock, etc.) but I think this is a good set of games to start with.
 
 Feel free to chip in if you'd like to help!
