@@ -38,11 +38,10 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Chess extends BoardGame {
-    ArrayList players;
     ChessBoard board;
     
     @Override
-    public void play(ArrayList<Player> players) {
+    public void init(ArrayList<Player> players) {
         /* Throw an error if the game isn't intended for the number of players
          * it is given. */
         if (players.size() != 2)
@@ -53,6 +52,10 @@ public class Chess extends BoardGame {
         
         board = new ChessBoard();
         board.initBoard();
+    }
+
+    @Override
+    public void play() {
         System.out.println(board.toString());
     }
 }

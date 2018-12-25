@@ -38,7 +38,12 @@ import java.util.ArrayList;
 public class NinetyNine extends CardGame {
 
     @Override
-    public void play(ArrayList<Player> players) {
+    public void init(ArrayList<Player> players) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void play() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -36,15 +36,18 @@ import freecardandboard.Player;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Backgammon extends BoardGame {
-    ArrayList players;
-    
-    
+
     @Override
-    public void play(ArrayList<Player> players) {
+    public void init(ArrayList<Player> players) {
         if (players.size() != 2)
             throw new IllegalArgumentException("You tried to start a game of " +
                     "backgammon with " + players.size() + " players. The game "
                     + "requires 2 players.");
+    }
+
+    @Override
+    public void play() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

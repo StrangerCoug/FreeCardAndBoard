@@ -38,10 +38,10 @@ import freecardandboard.objs.ShogiBoard;
  */
 public class Shogi extends BoardGame {
     ShogiBoard board;
-    ArrayList players, sentePiecesInHand, gotePiecesInHand;
+    ArrayList sentePiecesInHand, gotePiecesInHand;
     
     @Override
-    public void play(ArrayList<Player> players) {
+    public void init(ArrayList<Player> players) {
         /* Throw an error if the game isn't intended for the number of players
          * it is given. */
         if (players.size() != 2)
@@ -53,6 +53,10 @@ public class Shogi extends BoardGame {
         
         board = new ShogiBoard();
         board.initBoard();
+    }
+
+    @Override
+    public void play() {
         System.out.println(board.toString());
     }
     

@@ -135,7 +135,8 @@ public class FreeCardAndBoard {
             System.out.println("Good luck!");
             
             do {
-                game.play(players);
+                game.init(players);
+                game.play();
                 validInput = false;
                 do {
                     System.out.print("Play again? (Y/N): ");

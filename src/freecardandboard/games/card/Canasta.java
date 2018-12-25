@@ -29,6 +29,8 @@
 package freecardandboard.games.card;
 
 import freecardandboard.Player;
+import freecardandboard.objs.Card;
+import freecardandboard.objs.Deck;
 import java.util.ArrayList;
 
 /**
@@ -36,9 +38,18 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Canasta extends CardGame {
+    
+    @Override
+    public void init(ArrayList<Player> players) {
+        this.players = players;
+        deck = new Deck(2, true, true);
+        for (int i = 0; i < players.size(); i++) {
+            hands.add(new ArrayList<Card>());
+        }
+    }
 
     @Override
-    public void play(ArrayList<Player> players) {
+    public void play() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

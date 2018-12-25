@@ -38,17 +38,20 @@ import freecardandboard.objs.ReversiBoard;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Reversi extends BoardGame {
-    ArrayList players;
     ReversiBoard board;
     
     @Override
-    public void play(ArrayList<Player> players) {
+    public void init(ArrayList<Player> players) {
         if (players.size() != 2)
             throw new IllegalArgumentException("You tried to start a game of " +
                     "reversi with " + players.size() + " players. The game " +
                     "requires 2 players.");
         board = new ReversiBoard();
         board.initBoard();
+    }
+
+    @Override
+    public void play() {
         System.out.println(board.toString());
     }
 }
