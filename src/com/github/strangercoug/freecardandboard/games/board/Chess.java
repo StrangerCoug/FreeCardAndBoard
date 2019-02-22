@@ -42,8 +42,6 @@ public class Chess extends BoardGame {
     
     @Override
     public void init(ArrayList<Player> players) {
-        /* Throw an error if the game isn't intended for the number of players
-         * it is given. */
         if (players.size() != 2)
             throw new IllegalArgumentException("You tried to start a game of " +
                     "chess with " + players.size() + " players. The game " +

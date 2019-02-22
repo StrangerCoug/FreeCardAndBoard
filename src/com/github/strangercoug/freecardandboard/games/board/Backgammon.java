@@ -43,6 +43,7 @@ public class Backgammon extends BoardGame {
             throw new IllegalArgumentException("You tried to start a game of " +
                     "backgammon with " + players.size() + " players. The game "
                     + "requires 2 players.");
+        this.players = players;
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2019, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,6 @@ package com.github.strangercoug.freecardandboard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum CardRank {
-    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING,
-    ACE, JOKER
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE,
+    THIRTEEN, JACK, QUEEN, KING, ACE, JOKER
 }

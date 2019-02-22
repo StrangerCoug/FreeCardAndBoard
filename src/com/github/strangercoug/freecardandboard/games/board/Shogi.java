@@ -42,13 +42,10 @@ public class Shogi extends BoardGame {
     
     @Override
     public void init(ArrayList<Player> players) {
-        /* Throw an error if the game isn't intended for the number of players
-         * it is given. */
         if (players.size() != 2)
             throw new IllegalArgumentException("You tried to start a game of " +
                     "shogi with " + players.size() + " players. The game " +
                     "requires 2 players.");
-        
         this.players = players;
         
         board = new ShogiBoard();

@@ -41,8 +41,8 @@ public class Card implements Comparable<Card> {
     private final CardSuit suit;
     
     private final String[] rankNames = {"Two", "Three", "Four", "Five", "Six",
-        "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace",
-        "Joker"};
+        "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Jack",
+        "Queen", "King", "Ace", "Joker"};
     private final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades",
         "Black", "Red"};
     

@@ -39,7 +39,7 @@ public class Halma extends BoardGame {
 
     @Override
     public void init(ArrayList<Player> players) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.players = players;
     }
 
     @Override

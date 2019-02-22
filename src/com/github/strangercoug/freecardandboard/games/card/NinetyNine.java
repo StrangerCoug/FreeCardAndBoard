@@ -36,15 +36,20 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class NinetyNine extends CardGame {
-
+    int[] scores;
+    
     @Override
     public void init(ArrayList<Player> players) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.players = players;
+        gameWon = false;
+        
+        scores = new int[players.size()];
     }
 
     @Override
     public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        deck.populateDeck();
+        deck.shuffleDeck();
     }
     
 }
