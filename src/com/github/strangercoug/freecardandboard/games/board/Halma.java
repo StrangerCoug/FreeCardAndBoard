@@ -40,6 +40,7 @@ public class Halma extends BoardGame {
     @Override
     public void init(ArrayList<Player> players) {
         this.players = players;
+		this.gameWon = false;
     }
 
     @Override

@@ -42,11 +42,13 @@ public class Chess extends BoardGame {
     
     @Override
     public void init(ArrayList<Player> players) {
-        if (players.size() != 2)
+        if (players.size() != 2) {
             throw new IllegalArgumentException("You tried to start a game of " +
                     "chess with " + players.size() + " players. The game " +
                     "requires 2 players.");
+		}
         this.players = players;
+		this.gameWon = false;
         
         board = new ChessBoard();
         board.initBoard();

@@ -42,6 +42,8 @@ public class Canasta extends CardGame {
     @Override
     public void init(ArrayList<Player> players) {
         this.players = players;
+		this.gameWon = false;
+		
         deck = new Deck(2, true, true);
         for (int i = 0; i < players.size(); i++) {
             hands.add(new ArrayList<Card>());

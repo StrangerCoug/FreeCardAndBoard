@@ -36,6 +36,7 @@ import java.util.ArrayList;
  */
 public abstract class Game {
     protected ArrayList<Player> players;
+    boolean gameWon;
     
     public abstract void init(ArrayList<Player> players);
     public abstract void play();
