@@ -36,12 +36,16 @@ import java.util.ArrayList;
  */
 public abstract class Game {
     protected ArrayList<Player> players;
-    boolean gameWon;
-    
-    public abstract void init(ArrayList<Player> players);
-    public abstract void play();
+    protected boolean gameWon;
     
     public ArrayList<Player> getPlayers() {
         return players;
     }
+    
+    public boolean getGameWon() {
+        return gameWon;
+    }
+    
+    public abstract void init(ArrayList<Player> players);
+    public abstract void play();
 }

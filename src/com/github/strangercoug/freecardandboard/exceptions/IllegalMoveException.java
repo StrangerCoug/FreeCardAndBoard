@@ -26,23 +26,25 @@
 package com.github.strangercoug.freecardandboard.exceptions;
 
 /**
- *
+ * Thrown when the player attempts to make an illegal move, for example not
+ * following suit in a card game that requires it.
+ * 
  * @author Jeffrey Hope
  */
-public class IllegalCardException extends Exception {
-    public IllegalCardException() {
+public class IllegalMoveException extends Exception {
+    public IllegalMoveException() {
         super();
     }
     
-    public IllegalCardException(String message) {
+    public IllegalMoveException(String message) {
         super(message);
     }
     
-    public IllegalCardException(String message, Throwable cause) {
+    public IllegalMoveException(String message, Throwable cause) {
         super(message, cause);
     }
     
-    public IllegalCardException(Throwable cause) {
+    public IllegalMoveException(Throwable cause) {
         super(cause);
     } 
 }
