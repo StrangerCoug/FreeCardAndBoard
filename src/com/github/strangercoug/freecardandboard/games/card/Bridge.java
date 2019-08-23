@@ -36,10 +36,15 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Bridge extends CardGame {
-
+    
     @Override
     public void init(ArrayList<Player> players) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (players.size() != 4) {
+            throw new IllegalArgumentException("You tried to start a game of " +
+                    "bridge with " + players.size() + " players. The game " +
+                    "requires 4 players.");
+		}
+        this.players = players;
     }
 
     @Override

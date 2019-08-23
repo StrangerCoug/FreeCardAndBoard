@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecardandboard.games.board;
 
 import com.github.strangercoug.freecardandboard.objs.ChessBoard;
-import com.github.strangercoug.freecardandboard.games.board.BoardGame;
 import com.github.strangercoug.freecardandboard.Player;
 import java.util.ArrayList;
 

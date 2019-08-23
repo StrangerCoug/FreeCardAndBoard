@@ -30,22 +30,28 @@ package com.github.strangercoug.freecardandboard.games.board;
 
 import java.util.ArrayList;
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.GoBoard;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Go extends BoardGame {
-    ArrayList players;
+    GoBoard board;
     
     @Override
     public void init(ArrayList<Player> players) {
+        init(players, 19);
+    }
+    
+    public void init(ArrayList<Player> players, int boardSize) {
         if (players.size() != 2) {
             throw new IllegalArgumentException("You tried to start a game of " +
                     "go with " + players.size() + " players. The game requires "
                     + "2 players.");
 		}
         this.players = players;
+        this.board = new GoBoard(boardSize);
 		this.gameWon = false;
     }
 

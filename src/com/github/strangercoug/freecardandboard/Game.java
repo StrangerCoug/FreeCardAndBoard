@@ -46,6 +46,19 @@ public abstract class Game {
         return gameWon;
     }
     
+    /** 
+     * Initializes the variables that this game needs before it starts. If a
+     * game needs more information to start than that on the players, for
+     * example to accommodate variants with different board sizes, then the
+     * default initializer supplied here should be overloaded to account for
+     * that.
+     * 
+     * @param players  the list of players in turn order. Should never be null.
+     */
     public abstract void init(ArrayList<Player> players);
+    
+    /**
+     * Starts play of this game. Game logic belongs in this method.
+     */
     public abstract void play();
 }
