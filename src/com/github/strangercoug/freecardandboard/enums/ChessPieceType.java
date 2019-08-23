@@ -33,26 +33,26 @@ package com.github.strangercoug.freecardandboard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum ChessPieceType {
-    KING("king", "K"),
-    QUEEN("queen", "Q"),
-    ROOK("rook", "R"),
-    BISHOP("bishop", "B"),
-    KNIGHT("knight", "N"),
-    PAWN("pawn", "P");
-    
-    private final String name;
-    private final String abbrev;
-    
-    ChessPieceType(String name, String abbrev) {
-        this.name = name;
-        this.abbrev = abbrev;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public String getAbbrev() {
-        return abbrev;
-    }
+	KING("king", "K"),
+	QUEEN("queen", "Q"),
+	ROOK("rook", "R"),
+	BISHOP("bishop", "B"),
+	KNIGHT("knight", "N"),
+	PAWN("pawn", "P");
+	
+	private final String name;
+	private final String abbrev;
+	
+	ChessPieceType(String name, String abbrev) {
+		this.name = name;
+		this.abbrev = abbrev;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getAbbrev() {
+		return abbrev;
+	}
 }

@@ -33,7 +33,7 @@ package com.github.strangercoug.freecardandboard.objs;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class ChessVarPiece {
-    public abstract Enum getPieceColor();
-    public abstract Enum getPieceType();
-    public abstract String getAbbreviation();
+	public abstract Enum getPieceColor();
+	public abstract Enum getPieceType();
+	public abstract String getAbbreviation();
 }

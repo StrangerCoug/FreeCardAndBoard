@@ -36,37 +36,37 @@ import com.github.strangercoug.freecardandboard.enums.PieceColor;
  */
 public class Chess480Board extends Chess960Board {
 
-    /**
-     * While this method has a self-explanatory name, it does not check if the
-     * castle is legal and does not itself check if the king moves "off the 
-     * board" during the castle (although doing that throws an
-     * IndexOutOfBoundsException).
-     * 
-     * @param player the player castling
-     * @param kingside true for a kingside castle, false for a queenside castle
-     */
-    @Override
-    public void castle(PieceColor player, boolean kingside) {
-        byte startRank;
-        switch (player) {
-            case WHITE: startRank = 0;
-                break;
-            case BLACK: startRank = 7;
-                break;
-            default: throw new NullPointerException();
-        }
-        
-        if (kingside) {
-            movePiece(new int[]{kingFile,startRank}, new int[]{kingFile+2,
-                startRank});
-            movePiece(new int[]{kingRookFile,startRank}, new int[]{kingFile+1,
-                startRank});
-        }
-        else {
-            movePiece(new int[]{kingFile,startRank}, new int[]{kingFile-2,
-                startRank});
-            movePiece(new int[]{queenRookFile,startRank}, new int[]{kingFile-1,
-                startRank});
-        }
-    }
+	/**
+	 * While this method has a self-explanatory name, it does not check if the
+	 * castle is legal and does not itself check if the king moves "off the 
+	 * board" during the castle (although doing that throws an
+	 * IndexOutOfBoundsException).
+	 * 
+	 * @param player the player castling
+	 * @param kingside true for a kingside castle, false for a queenside castle
+	 */
+	@Override
+	public void castle(PieceColor player, boolean kingside) {
+		byte startRank;
+		switch (player) {
+			case WHITE: startRank = 0;
+				break;
+			case BLACK: startRank = 7;
+				break;
+			default: throw new NullPointerException();
+		}
+		
+		if (kingside) {
+			movePiece(new int[]{kingFile,startRank}, new int[]{kingFile+2,
+				startRank});
+			movePiece(new int[]{kingRookFile,startRank}, new int[]{kingFile+1,
+				startRank});
+		}
+		else {
+			movePiece(new int[]{kingFile,startRank}, new int[]{kingFile-2,
+				startRank});
+			movePiece(new int[]{queenRookFile,startRank}, new int[]{kingFile-1,
+				startRank});
+		}
+	}
 }

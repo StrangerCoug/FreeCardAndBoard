@@ -38,21 +38,21 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Canasta extends CardGame {
-    
-    @Override
-    public void init(ArrayList<Player> players) {
-        this.players = players;
+	
+	@Override
+	public void init(ArrayList<Player> players) {
+		this.players = players;
 		this.gameWon = false;
 		
-        deck = new Deck(2, true, true);
-        for (int i = 0; i < players.size(); i++) {
-            hands.add(new ArrayList<Card>());
-        }
-    }
+		deck = new Deck(2, true, true);
+		for (int i = 0; i < players.size(); i++) {
+			hands.add(new ArrayList<Card>());
+		}
+	}
 
-    @Override
-    public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
 }

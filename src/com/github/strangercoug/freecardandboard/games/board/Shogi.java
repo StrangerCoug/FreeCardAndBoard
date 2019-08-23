@@ -37,26 +37,26 @@ import com.github.strangercoug.freecardandboard.objs.ShogiBoard;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Shogi extends BoardGame {
-    ShogiBoard board;
-    ArrayList sentePiecesInHand, gotePiecesInHand;
-    
-    @Override
-    public void init(ArrayList<Player> players) {
-        if (players.size() != 2) {
-            throw new IllegalArgumentException("You tried to start a game of " +
-                    "shogi with " + players.size() + " players. The game " +
-                    "requires 2 players.");
+	ShogiBoard board;
+	ArrayList sentePiecesInHand, gotePiecesInHand;
+	
+	@Override
+	public void init(ArrayList<Player> players) {
+		if (players.size() != 2) {
+			throw new IllegalArgumentException("You tried to start a game of " +
+					"shogi with " + players.size() + " players. The game " +
+					"requires 2 players.");
 		}
-        this.players = players;
+		this.players = players;
 		this.gameWon = false;
-        
-        board = new ShogiBoard();
-        board.initBoard();
-    }
+		
+		board = new ShogiBoard();
+		board.initBoard();
+	}
 
-    @Override
-    public void play() {
-        System.out.println(board.toString());
-    }
-    
+	@Override
+	public void play() {
+		System.out.println(board.toString());
+	}
+	
 }

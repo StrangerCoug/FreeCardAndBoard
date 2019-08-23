@@ -30,19 +30,19 @@ package com.github.strangercoug.freecardandboard.exceptions;
  * @author Jeffrey Hope
  */
 public class CardNotHeldException extends Exception {
-    public CardNotHeldException() {
-        super();
-    }
-    
-    public CardNotHeldException(String message) {
-        super(message);
-    }
-    
-    public CardNotHeldException(String message, Throwable cause) {
-        super(message, cause);
-    }
-    
-    public CardNotHeldException(Throwable cause) {
-        super(cause);
-    }
+	public CardNotHeldException() {
+		super();
+	}
+	
+	public CardNotHeldException(String message) {
+		super(message);
+	}
+	
+	public CardNotHeldException(String message, Throwable cause) {
+		super(message, cause);
+	}
+	
+	public CardNotHeldException(Throwable cause) {
+		super(cause);
+	}
 }

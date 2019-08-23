@@ -33,5 +33,5 @@ package com.github.strangercoug.freecardandboard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum PieceColor {
-    WHITE, BLACK
+	WHITE, BLACK
 }

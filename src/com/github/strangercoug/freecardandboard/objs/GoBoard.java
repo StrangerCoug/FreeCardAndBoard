@@ -35,58 +35,58 @@ import com.github.strangercoug.freecardandboard.enums.PieceColor;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class GoBoard {
-    protected PieceColor[][] board;
-    
-    public GoBoard() {
-        this(19);
-    }
-    
-    public GoBoard(int i) {
-        board = new PieceColor[i][i];
-    }
-    
-    public PieceColor[][] getBoard() {
-        return board;
-    }
-    
-    public void clearBoard() {
-        for (int i = 0; i < board.length; i++)
-            for (int j = 0; j < board[i].length; j++)
-                board[i][j] = null;
-    }
-    
-    public void placePiece(PieceColor piece, int[] location) {
-        if (location.length != 2) {
-            throw new IllegalArgumentException("The coordinate must be of " +
-                    "length 2.");
-        }
-        board[location[0]][location[1]] = piece;
-    }
-    
-    public void removePiece (int[] location) {
-        if (location.length != 2) {
-            throw new IllegalArgumentException("The coordinate must be of " +
-                    "length 2.");
-        }
-        board[location[0]][location[1]] = null;       
-    }
-    
-    @Override
-    public String toString() {
-        String textBoard = "";
-        
-        for (int j = 0; j < board.length; j++) {
-            for (int i = 0; i < board.length; i++) {
-                if (board[i][j] == null)
-                    textBoard += "_";
-                else if (board[i][j] == PieceColor.BLACK)
-                    textBoard += "X";
-                else textBoard += "O";
-                textBoard += " ";
-            }
-            textBoard += "\n";
-        }
-        
-        return textBoard;
-    }
+	protected PieceColor[][] board;
+	
+	public GoBoard() {
+		this(19);
+	}
+	
+	public GoBoard(int i) {
+		board = new PieceColor[i][i];
+	}
+	
+	public PieceColor[][] getBoard() {
+		return board;
+	}
+	
+	public void clearBoard() {
+		for (int i = 0; i < board.length; i++)
+			for (int j = 0; j < board[i].length; j++)
+				board[i][j] = null;
+	}
+	
+	public void placePiece(PieceColor piece, int[] location) {
+		if (location.length != 2) {
+			throw new IllegalArgumentException("The coordinate must be of " +
+					"length 2.");
+		}
+		board[location[0]][location[1]] = piece;
+	}
+	
+	public void removePiece (int[] location) {
+		if (location.length != 2) {
+			throw new IllegalArgumentException("The coordinate must be of " +
+					"length 2.");
+		}
+		board[location[0]][location[1]] = null;       
+	}
+	
+	@Override
+	public String toString() {
+		String textBoard = "";
+		
+		for (int j = 0; j < board.length; j++) {
+			for (int i = 0; i < board.length; i++) {
+				if (board[i][j] == null)
+					textBoard += "_";
+				else if (board[i][j] == PieceColor.BLACK)
+					textBoard += "X";
+				else textBoard += "O";
+				textBoard += " ";
+			}
+			textBoard += "\n";
+		}
+		
+		return textBoard;
+	}
 }

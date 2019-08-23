@@ -37,24 +37,24 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Chess extends BoardGame {
-    ChessBoard board;
-    
-    @Override
-    public void init(ArrayList<Player> players) {
-        if (players.size() != 2) {
-            throw new IllegalArgumentException("You tried to start a game of " +
-                    "chess with " + players.size() + " players. The game " +
-                    "requires 2 players.");
+	ChessBoard board;
+	
+	@Override
+	public void init(ArrayList<Player> players) {
+		if (players.size() != 2) {
+			throw new IllegalArgumentException("You tried to start a game of " +
+					"chess with " + players.size() + " players. The game " +
+					"requires 2 players.");
 		}
-        this.players = players;
+		this.players = players;
 		this.gameWon = false;
-        
-        board = new ChessBoard();
-        board.initBoard();
-    }
+		
+		board = new ChessBoard();
+		board.initBoard();
+	}
 
-    @Override
-    public void play() {
-        System.out.println(board.toString());
-    }
+	@Override
+	public void play() {
+		System.out.println(board.toString());
+	}
 }

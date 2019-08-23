@@ -36,20 +36,24 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Mancala extends BoardGame {
-    
-    @Override
-    public void init(ArrayList<Player> players) {
-        if (players.size() != 2) {
-            throw new IllegalArgumentException("You tried to start a game of " +
-                    "mancala with " + players.size() + " players. The game " +
-                    "requires 2 players.");
+	int[] board;
+	
+	@Override
+	public void init(ArrayList<Player> players) {
+		if (players.size() != 2) {
+			throw new IllegalArgumentException("You tried to start a game of " +
+					"mancala with " + players.size() + " players. The game " +
+					"requires 2 players.");
 		}
-        this.players = players;
+		this.players = players;
+		this.currentPlayerIndex = 0;
 		this.gameWon = false;
-    }
+				
+		board = new int[] {4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0};
+	}
 
-    @Override
-    public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 }

@@ -36,20 +36,20 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class NinetyNine extends CardGame {
-    int[] scores;
-    
-    @Override
-    public void init(ArrayList<Player> players) {
-        this.players = players;
-        gameWon = false;
-        
-        scores = new int[players.size()];
-    }
+	int[] scores;
+	
+	@Override
+	public void init(ArrayList<Player> players) {
+		this.players = players;
+		gameWon = false;
+		
+		scores = new int[players.size()];
+	}
 
-    @Override
-    public void play() {
-        deck.populateDeck();
-        deck.shuffleDeck();
-    }
-    
+	@Override
+	public void play() {
+		deck.populateDeck();
+		deck.shuffleDeck();
+	}
+	
 }

@@ -36,79 +36,79 @@ import com.github.strangercoug.freecardandboard.enums.ChessPieceType;
  * @author StrangerCoug <strangercoug@hotmail.com>
  */
 public class ChessBoard extends ChessVarBoard {
-    public ChessBoard() {
-        board = new ChessPiece[8][8];
-    }
-    
-    public void initBoard() {
-        ChessPieceType[] pieceForFile = {ChessPieceType.ROOK, ChessPieceType.KNIGHT,
-            ChessPieceType.BISHOP, ChessPieceType.QUEEN, ChessPieceType.KING, ChessPieceType.BISHOP,
-            ChessPieceType.KNIGHT, ChessPieceType.ROOK};
+	public ChessBoard() {
+		board = new ChessPiece[8][8];
+	}
+	
+	public void initBoard() {
+		ChessPieceType[] pieceForFile = {ChessPieceType.ROOK, ChessPieceType.KNIGHT,
+			ChessPieceType.BISHOP, ChessPieceType.QUEEN, ChessPieceType.KING, ChessPieceType.BISHOP,
+			ChessPieceType.KNIGHT, ChessPieceType.ROOK};
 
-        for (int i = 0; i < board.length; i++) {
-            board[i][0] = new ChessPiece(PieceColor.WHITE, pieceForFile[i]);
-            board[i][1] = new ChessPiece(PieceColor.WHITE, ChessPieceType.PAWN);
-            board[i][2] = board[i][3] = board[i][4] = board[i][5] = null;
-            board[i][6] = new ChessPiece(PieceColor.BLACK, ChessPieceType.PAWN);
-            board[i][7] = new ChessPiece(PieceColor.BLACK, pieceForFile[i]);
-        }
-    } 
-    
-    /**
-     * While this method has a self-explanatory name, it does not check if the
-     * en passant capture is legal or even if it is an actual en passant
-     * capture.
-     * 
-     * @param start the starting coordinate
-     * @param end the ending coordinate
-     */
-    public void captureEnPassant(int[] start, int[] end) {
-        movePiece(start, end);
-        board[end[0]][start[1]] = null;
-    }
-    
-    
-    /**
-     * While this method has a self-explanatory name, it does not check if the
-     * castle is legal.
-     * 
-     * @param player the player castling
-     * @param kingside true for a kingside castle, false for a queenside castle
-     */
-    public void castle(PieceColor player, boolean kingside) {
-        byte startRank;
-        switch (player) {
-            case WHITE: startRank = 0;
-                break;
-            case BLACK: startRank = 7;
-                break;
-            default: throw new NullPointerException();
-        }
-        
-        if (kingside) {
-            movePiece(new int[]{4,startRank}, new int[]{6,startRank});
-            movePiece(new int[]{7,startRank}, new int[]{5,startRank});
-        }
-        else {
-            movePiece(new int[]{4,startRank}, new int[]{2,startRank});
-            movePiece(new int[]{0,startRank}, new int[]{3,startRank});
-        }
-    }
-    
-    @Override
-    public String toString() {
-        String textBoard = "";
-        
-        for (int j = board.length-1; j >= 0; j--) {
-            for (int i = 0; i < board.length; i++) {
-                if (board[i][j] == null)
-                    textBoard += "_";
-                else textBoard += board[i][j].getAbbreviation();
-                textBoard += " ";
-            }
-            textBoard += "\n";
-        }
-        
-        return textBoard;
-    }
+		for (int i = 0; i < board.length; i++) {
+			board[i][0] = new ChessPiece(PieceColor.WHITE, pieceForFile[i]);
+			board[i][1] = new ChessPiece(PieceColor.WHITE, ChessPieceType.PAWN);
+			board[i][2] = board[i][3] = board[i][4] = board[i][5] = null;
+			board[i][6] = new ChessPiece(PieceColor.BLACK, ChessPieceType.PAWN);
+			board[i][7] = new ChessPiece(PieceColor.BLACK, pieceForFile[i]);
+		}
+	} 
+	
+	/**
+	 * While this method has a self-explanatory name, it does not check if the
+	 * en passant capture is legal or even if it is an actual en passant
+	 * capture.
+	 * 
+	 * @param start the starting coordinate
+	 * @param end the ending coordinate
+	 */
+	public void captureEnPassant(int[] start, int[] end) {
+		movePiece(start, end);
+		board[end[0]][start[1]] = null;
+	}
+	
+	
+	/**
+	 * While this method has a self-explanatory name, it does not check if the
+	 * castle is legal.
+	 * 
+	 * @param player the player castling
+	 * @param kingside true for a kingside castle, false for a queenside castle
+	 */
+	public void castle(PieceColor player, boolean kingside) {
+		byte startRank;
+		switch (player) {
+			case WHITE: startRank = 0;
+				break;
+			case BLACK: startRank = 7;
+				break;
+			default: throw new NullPointerException();
+		}
+		
+		if (kingside) {
+			movePiece(new int[]{4,startRank}, new int[]{6,startRank});
+			movePiece(new int[]{7,startRank}, new int[]{5,startRank});
+		}
+		else {
+			movePiece(new int[]{4,startRank}, new int[]{2,startRank});
+			movePiece(new int[]{0,startRank}, new int[]{3,startRank});
+		}
+	}
+	
+	@Override
+	public String toString() {
+		String textBoard = "";
+		
+		for (int j = board.length-1; j >= 0; j--) {
+			for (int i = 0; i < board.length; i++) {
+				if (board[i][j] == null)
+					textBoard += "_";
+				else textBoard += board[i][j].getAbbreviation();
+				textBoard += " ";
+			}
+			textBoard += "\n";
+		}
+		
+		return textBoard;
+	}
 }

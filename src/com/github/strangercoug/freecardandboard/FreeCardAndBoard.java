@@ -56,132 +56,132 @@ import java.util.Scanner;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class FreeCardAndBoard {
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        boolean validInput = false, playAgain = false;
-        String entry;
-        Game game = null;
-        ArrayList players;
-        
-        while (true) {
-            do {
-                System.out.println("Select game to play or type \"QUIT\" to "
-                        +" quit:\n"
-                        + "1. Backgammon\n"
-                        + "2. Bridge\n"
-                        + "3. Canasta\n"
-                        + "4. Checkers\n"
-                        + "5. Chess\n"
-                        + "6. Chinese Checkers\n"
-                        + "7. Crazy Eights\n"
-                        + "8. Cribbage\n"
-                        + "9. Go\n"
-                        + "10. Halma\n"
-                        + "11. Hearts\n"
-                        + "12. Janggi\n"
-                        + "13. Ninety-nine\n"
-                        + "14. Old Maid\n"
-                        + "15. Reversi\n"
-                        + "16. Rummy\n"
-                        + "17. Shogi\n"
-                        + "18. Spades\n"
-                        + "19. Whist\n"
-                        + "20. Xiangqi");
-                entry = input.nextLine();
-                if (entry.equalsIgnoreCase("quit")) {
-                    input.close();
-                    System.exit(0);
-                }
-                try {
-                    int gameSelected = Integer.parseInt(entry);
-                    if (gameSelected >= 1 && gameSelected <= 18)
-                        validInput = true;
-                    game = returnGame(gameSelected);
-                }
-                catch (NumberFormatException e) {
-                    System.out.println("Invalid input.");
-                }
-                catch (IllegalArgumentException e) {
-                    System.out.println("Invalid game number.");
-                }
-            } while (!validInput);
-            
-            validInput = false;
-            int numPlayers = 0;
-            do {
-                try {
-                    System.out.print("How many players would you like? ");
-                    entry = input.nextLine();
-                    numPlayers = Integer.parseInt(entry);
-                    if (numPlayers < 1) {
-                        System.out.println("You must enter a positive "
-                                + "integer.");
-                    }
-                }
-                catch(NumberFormatException e) {
-                    System.out.print("Invalid input.");
-                }
-            } while (numPlayers < 1);
-            players = new ArrayList<Player>(numPlayers);
-            for (int i = 1; i <= numPlayers; i++) {
-                System.out.print("Enter name of player #" + i + ": ");
-                entry = input.nextLine();
-                players.add(new Player(entry));
-            }
-            System.out.println("Good luck!");
-            
-            do {
-                game.init(players);
-                game.play();
-                validInput = false;
-                do {
-                    System.out.print("Play again? (Y/N): ");
-                    char selection = input.nextLine().charAt(0);
-                    switch (selection) {
-                        case 'Y': case 'y':
-                            validInput = true;
-                            playAgain = true;
-                            break;
-                        case 'N': case 'n':
-                            validInput = true;
-                            playAgain = false;
-                            break;
-                        default:
-                            validInput = false;
-                            System.out.println("Invalid selection.");
-                    }
-                } while (!validInput);
-            } while (playAgain);
-        }
-    }
-    
-    private static Game returnGame(int i) {
-        switch (i) {
-            case 1: return new Backgammon();
-            case 2: return new Bridge();
-            case 3: return new Canasta();
-            case 4: return new Checkers();
-            case 5: return new Chess();
-            case 6: return new ChineseCheckers();
-            case 7: return new CrazyEights();
-            case 8: return new Cribbage();
-            case 9: return new Go();
-            case 10: return new Halma();
-            case 11: return new Hearts();
-            case 12: return new Janggi();
-            case 13: return new NinetyNine();
-            case 14: return new OldMaid();
-            case 15: return new Reversi();
-            case 16: return new Rummy();
-            case 17: return new Shogi();
-            case 18: return new Spades();
-            case 19: return new Whist();
-            case 20: return new Xiangqi();
-            default: throw new IllegalArgumentException();
-        }
-    }
+	
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		boolean validInput = false, playAgain = false;
+		String entry;
+		Game game = null;
+		ArrayList players;
+		
+		while (true) {
+			do {
+				System.out.println("Select game to play or type \"QUIT\" to "
+						+" quit:\n"
+						+ "1. Backgammon\n"
+						+ "2. Bridge\n"
+						+ "3. Canasta\n"
+						+ "4. Checkers\n"
+						+ "5. Chess\n"
+						+ "6. Chinese Checkers\n"
+						+ "7. Crazy Eights\n"
+						+ "8. Cribbage\n"
+						+ "9. Go\n"
+						+ "10. Halma\n"
+						+ "11. Hearts\n"
+						+ "12. Janggi\n"
+						+ "13. Ninety-nine\n"
+						+ "14. Old Maid\n"
+						+ "15. Reversi\n"
+						+ "16. Rummy\n"
+						+ "17. Shogi\n"
+						+ "18. Spades\n"
+						+ "19. Whist\n"
+						+ "20. Xiangqi");
+				entry = input.nextLine();
+				if (entry.equalsIgnoreCase("quit")) {
+					input.close();
+					System.exit(0);
+				}
+				try {
+					int gameSelected = Integer.parseInt(entry);
+					if (gameSelected >= 1 && gameSelected <= 18)
+						validInput = true;
+					game = returnGame(gameSelected);
+				}
+				catch (NumberFormatException e) {
+					System.out.println("Invalid input.");
+				}
+				catch (IllegalArgumentException e) {
+					System.out.println("Invalid game number.");
+				}
+			} while (!validInput);
+			
+			validInput = false;
+			int numPlayers = 0;
+			do {
+				try {
+					System.out.print("How many players would you like? ");
+					entry = input.nextLine();
+					numPlayers = Integer.parseInt(entry);
+					if (numPlayers < 1) {
+						System.out.println("You must enter a positive "
+								+ "integer.");
+					}
+				}
+				catch(NumberFormatException e) {
+					System.out.print("Invalid input.");
+				}
+			} while (numPlayers < 1);
+			players = new ArrayList<Player>(numPlayers);
+			for (int i = 1; i <= numPlayers; i++) {
+				System.out.print("Enter name of player #" + i + ": ");
+				entry = input.nextLine();
+				players.add(new Player(entry));
+			}
+			System.out.println("Good luck!");
+			
+			do {
+				game.init(players);
+				game.play();
+				validInput = false;
+				do {
+					System.out.print("Play again? (Y/N): ");
+					char selection = input.nextLine().charAt(0);
+					switch (selection) {
+						case 'Y': case 'y':
+							validInput = true;
+							playAgain = true;
+							break;
+						case 'N': case 'n':
+							validInput = true;
+							playAgain = false;
+							break;
+						default:
+							validInput = false;
+							System.out.println("Invalid selection.");
+					}
+				} while (!validInput);
+			} while (playAgain);
+		}
+	}
+	
+	private static Game returnGame(int i) {
+		switch (i) {
+			case 1: return new Backgammon();
+			case 2: return new Bridge();
+			case 3: return new Canasta();
+			case 4: return new Checkers();
+			case 5: return new Chess();
+			case 6: return new ChineseCheckers();
+			case 7: return new CrazyEights();
+			case 8: return new Cribbage();
+			case 9: return new Go();
+			case 10: return new Halma();
+			case 11: return new Hearts();
+			case 12: return new Janggi();
+			case 13: return new NinetyNine();
+			case 14: return new OldMaid();
+			case 15: return new Reversi();
+			case 16: return new Rummy();
+			case 17: return new Shogi();
+			case 18: return new Spades();
+			case 19: return new Whist();
+			case 20: return new Xiangqi();
+			default: throw new IllegalArgumentException();
+		}
+	}
 }

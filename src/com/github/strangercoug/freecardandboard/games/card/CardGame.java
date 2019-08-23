@@ -37,14 +37,14 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class CardGame extends Game {
-    protected Deck deck;
-    protected ArrayList<ArrayList> hands;
-    
-    public Deck getDeck() {
-        return deck;
-    }
-    
-    public ArrayList<ArrayList> getHands() {
-        return hands;
-    }
+	protected Deck deck;
+	protected ArrayList<ArrayList> hands;
+	
+	public Deck getDeck() {
+		return deck;
+	}
+	
+	public ArrayList<ArrayList> getHands() {
+		return hands;
+	}
 }

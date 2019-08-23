@@ -37,27 +37,27 @@ import com.github.strangercoug.freecardandboard.objs.GoBoard;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Go extends BoardGame {
-    GoBoard board;
-    
-    @Override
-    public void init(ArrayList<Player> players) {
-        init(players, 19);
-    }
-    
-    public void init(ArrayList<Player> players, int boardSize) {
-        if (players.size() != 2) {
-            throw new IllegalArgumentException("You tried to start a game of " +
-                    "go with " + players.size() + " players. The game requires "
-                    + "2 players.");
+	GoBoard board;
+	
+	@Override
+	public void init(ArrayList<Player> players) {
+		init(players, 19);
+	}
+	
+	public void init(ArrayList<Player> players, int boardSize) {
+		if (players.size() != 2) {
+			throw new IllegalArgumentException("You tried to start a game of " +
+					"go with " + players.size() + " players. The game requires "
+					+ "2 players.");
 		}
-        this.players = players;
-        this.board = new GoBoard(boardSize);
+		this.players = players;
+		this.board = new GoBoard(boardSize);
 		this.gameWon = false;
-    }
+	}
 
-    @Override
-    public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
 }
