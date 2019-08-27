@@ -43,6 +43,7 @@ import com.github.strangercoug.freecardandboard.games.card.Canasta;
 import com.github.strangercoug.freecardandboard.games.card.CrazyEights;
 import com.github.strangercoug.freecardandboard.games.card.Cribbage;
 import com.github.strangercoug.freecardandboard.games.card.Hearts;
+import com.github.strangercoug.freecardandboard.games.card.Mancala;
 import com.github.strangercoug.freecardandboard.games.card.NinetyNine;
 import com.github.strangercoug.freecardandboard.games.card.OldMaid;
 import com.github.strangercoug.freecardandboard.games.card.Rummy;
@@ -83,14 +84,15 @@ public class FreeCardAndBoard {
 						+ "10. Halma\n"
 						+ "11. Hearts\n"
 						+ "12. Janggi\n"
-						+ "13. Ninety-nine\n"
-						+ "14. Old Maid\n"
-						+ "15. Reversi\n"
-						+ "16. Rummy\n"
-						+ "17. Shogi\n"
-						+ "18. Spades\n"
-						+ "19. Whist\n"
-						+ "20. Xiangqi");
+						+ "13. Mancala\n"
+						+ "14. Ninety-nine\n"
+						+ "15. Old Maid\n"
+						+ "16. Reversi\n"
+						+ "17. Rummy\n"
+						+ "18. Shogi\n"
+						+ "19. Spades\n"
+						+ "20. Whist\n"
+						+ "21. Xiangqi");
 				entry = input.nextLine();
 				if (entry.equalsIgnoreCase("quit")) {
 					input.close();
@@ -98,7 +100,7 @@ public class FreeCardAndBoard {
 				}
 				try {
 					int gameSelected = Integer.parseInt(entry);
-					if (gameSelected >= 1 && gameSelected <= 18)
+					if (gameSelected >= 1 && gameSelected <= 21)
 						validInput = true;
 					game = returnGame(gameSelected);
 				}
@@ -173,14 +175,15 @@ public class FreeCardAndBoard {
 			case 10: return new Halma();
 			case 11: return new Hearts();
 			case 12: return new Janggi();
-			case 13: return new NinetyNine();
-			case 14: return new OldMaid();
-			case 15: return new Reversi();
-			case 16: return new Rummy();
-			case 17: return new Shogi();
-			case 18: return new Spades();
-			case 19: return new Whist();
-			case 20: return new Xiangqi();
+			case 13: return new Mancala();
+			case 14: return new NinetyNine();
+			case 15: return new OldMaid();
+			case 16: return new Reversi();
+			case 17: return new Rummy();
+			case 18: return new Shogi();
+			case 19: return new Spades();
+			case 20: return new Whist();
+			case 21: return new Xiangqi();
 			default: throw new IllegalArgumentException();
 		}
 	}
