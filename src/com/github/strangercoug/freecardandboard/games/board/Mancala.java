@@ -49,7 +49,7 @@ public class Mancala extends BoardGame {
 		this.currentPlayerIndex = 0;
 		this.gameWon = false;
 				
-		board = new int[] {4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0};
+		board = new int[] {0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4};
 	}
 
 	@Override
