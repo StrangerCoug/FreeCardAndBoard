@@ -54,6 +54,23 @@ public class Mancala extends BoardGame {
 
 	@Override
 	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		displayBoard();
+	}
+	
+	public void displayBoard() {
+		System.out.println(String.format("%2d",(board[8])) + " " +
+				String.format("%2d",(board[9])) + " " +
+				String.format("%2d",(board[10])) + " " +
+				String.format("%2d",(board[11])) + " " +
+				String.format("%2d",(board[12])) + " " +
+				String.format("%2d",(board[13])) + "\n" +
+				String.format("%2d",(board[7])) + "             " +
+				String.format("%2d",(board[0])) + "\n" +
+				String.format("%2d",(board[6])) + " " +
+				String.format("%2d",(board[5])) + " " +
+				String.format("%2d",(board[4])) + " " +
+				String.format("%2d",(board[3])) + " " +
+				String.format("%2d",(board[2])) + " " +
+				String.format("%2d",(board[1])));
 	}
 }
