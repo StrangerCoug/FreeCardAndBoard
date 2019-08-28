@@ -70,7 +70,7 @@ public class FreeCardAndBoard {
 		
 		while (true) {
 			do {
-				System.out.println("Select game to play or type \"QUIT\" to "
+				System.out.println("Select game to play or type \"Q\" or \"QUIT\" to "
 						+" quit:\n"
 						+ "1. Backgammon\n"
 						+ "2. Bridge\n"
@@ -94,7 +94,7 @@ public class FreeCardAndBoard {
 						+ "20. Whist\n"
 						+ "21. Xiangqi");
 				entry = input.nextLine();
-				if (entry.equalsIgnoreCase("quit")) {
+				if (entry.equalsIgnoreCase("q") || entry.equalsIgnoreCase("quit")) {
 					input.close();
 					System.exit(0);
 				}
