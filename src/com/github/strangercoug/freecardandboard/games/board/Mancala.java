@@ -30,6 +30,7 @@ package com.github.strangercoug.freecardandboard.games.board;
 
 import com.github.strangercoug.freecardandboard.Player;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -37,6 +38,7 @@ import java.util.ArrayList;
  */
 public class Mancala extends BoardGame {
 	int[] board;
+	Scanner keyboard;
 	
 	@Override
 	public void init(ArrayList<Player> players) {
@@ -50,27 +52,147 @@ public class Mancala extends BoardGame {
 		this.gameWon = false;
 				
 		board = new int[] {0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4};
+		keyboard = new Scanner(System.in);
 	}
 
 	@Override
 	public void play() {
-		displayBoard();
+		while (!gameWon) {
+			playMove(promptMove());
+			if (isGameOver()) {
+				gameWon = true;
+				displayBoard();
+				System.out.println("Game over!");
+			}
+		}
 	}
 	
-	public void displayBoard() {
-		System.out.println(String.format("%2d",(board[8])) + " " +
-				String.format("%2d",(board[9])) + " " +
-				String.format("%2d",(board[10])) + " " +
-				String.format("%2d",(board[11])) + " " +
-				String.format("%2d",(board[12])) + " " +
-				String.format("%2d",(board[13])) + "\n" +
-				String.format("%2d",(board[7])) + "             " +
-				String.format("%2d",(board[0])) + "\n" +
-				String.format("%2d",(board[6])) + " " +
-				String.format("%2d",(board[5])) + " " +
-				String.format("%2d",(board[4])) + " " +
-				String.format("%2d",(board[3])) + " " +
-				String.format("%2d",(board[2])) + " " +
-				String.format("%2d",(board[1])));
+	private boolean isGameOver() {
+		return isPlayersSideEmpty(0) || isPlayersSideEmpty(1);
+	}
+	
+	private int promptMove() {
+		boolean isValid = false;
+		int selection = 0;
+		
+		if (currentPlayerIndex == 0) {
+			displayBoard();
+			System.out.println(" ↑  ↑  ↑  ↑  ↑  ↑\n 6  5  4  3  2  1");
+		}
+		else {
+			System.out.println(" 1  2  3  4  5  6\n ↓  ↓  ↓  ↓  ↓  ↓");
+			displayBoard();
+		}
+		
+		while (!isValid) {
+			System.out.print("\n" + players.get(currentPlayerIndex).getName()
+					+ ", select a bin to sow stones from: ");
+			
+			try {
+				selection = Integer.parseInt(keyboard.nextLine());
+				if (selection < 1 || selection > 6) {
+					throw new IllegalArgumentException();
+				} else if (board[currentPlayerIndex*(board.length/2) + selection] == 0) {
+					System.out.println("You don't have any stones in that bin.");
+				} else {
+					isValid = true;
+				}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Invalid input.");
+			}
+			catch (IllegalArgumentException e) {
+				System.out.println("Invalid bin number.");
+			}
+		}
+		
+		return selection;
+	}
+	
+	private void playMove(int move) {
+		int startBin = getOwnScoringBin() + move;
+		int seedsToSow = board[startBin];
+		
+		// Pick up the stones to sow them
+		board[startBin] = 0;
+		
+		/* The reason for Math.floorMod(i-1, board.length) instead of
+		 * (i-1) % boardLength is that the former has the same sign as the
+		 * divisor while the latter has the same sign as the dividend--the bin
+		 * number must always be non-negative or we'll get an
+		 * IndexOutOfBounds exception.
+		 */
+		for (int i = (startBin-1) % board.length; seedsToSow > 0;
+				i = Math.floorMod(i-1, board.length)) {
+			// Skip opponent's scoring bin
+			if (i == getOpponentScoringBin()) {
+				continue;
+			} else {
+				board[i]++;
+				seedsToSow--;
+				
+				if (seedsToSow == 0 && i != getOwnScoringBin()) {
+					// Capture if applicable
+					if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
+							&& board[getAdjacentBin(i)] != 0) {
+						board[getOwnScoringBin()] += board[i] + board[getAdjacentBin(i)];
+						board[i] = board[getAdjacentBin(i)] = 0;
+					}
+					
+					advanceToNextPlayer();
+				}
+			}
+		}
+	}
+	
+	private void displayBoard() {
+		System.out.println(String.format("%2d",(board[8])) + " "
+				+ String.format("%2d",(board[9])) + " "
+				+ String.format("%2d",(board[10])) + " "
+				+ String.format("%2d",(board[11])) + " "
+				+ String.format("%2d",(board[12])) + " "
+				+ String.format("%2d",(board[13])) + "\n"
+				+ String.format("%2d",(board[7])) + "             "
+				+ String.format("%2d",(board[0])) + "\n"
+				+ String.format("%2d",(board[6])) + " "
+				+ String.format("%2d",(board[5])) + " "
+				+ String.format("%2d",(board[4])) + " "
+				+ String.format("%2d",(board[3])) + " "
+				+ String.format("%2d",(board[2])) + " "
+				+ String.format("%2d",(board[1])));
+	}
+	
+	private int getOwnScoringBin () {
+		return currentPlayerIndex * (board.length/2);
+	}
+	
+	private int getOpponentScoringBin() {
+		return (1-currentPlayerIndex) * (board.length/2);
+	}
+	
+	/**
+	 * Returns the number of the bin that would be across from the input bin.
+	 *  
+	 * @param bin the bin on the player's side
+	 * @return the adjacent bin on the opponent's side
+	 * @throws AssertionError when assertions are enabled and the input bin is a
+	 *                        scoring bin
+	 */
+	private int getAdjacentBin(int bin) {
+		assert bin != 0 && bin != board.length / 2
+				: "Bin should not be a scoring bin.";
+		return board.length - bin;
+	}
+	
+	private boolean isPlayersSideEmpty(int player) {
+		int startBin = player*(board.length/2) + 1;
+		
+		for (int i = startBin; i < startBin + 6; i++) {
+			if (board[i] != 0) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
