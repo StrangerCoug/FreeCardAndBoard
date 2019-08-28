@@ -68,7 +68,15 @@ public class Mancala extends BoardGame {
 	}
 	
 	private boolean isGameOver() {
-		return isPlayersSideEmpty(0) || isPlayersSideEmpty(1);
+		if (isPlayersSideEmpty(0)) {
+			emptySideIntoStore(1);
+			return true;
+		}
+		if (isPlayersSideEmpty(1)) {
+			emptySideIntoStore(0);
+			return true;
+		}
+		return false;
 	}
 	
 	private int promptMove() {
@@ -86,14 +94,14 @@ public class Mancala extends BoardGame {
 		
 		while (!isValid) {
 			System.out.print("\n" + players.get(currentPlayerIndex).getName()
-					+ ", select a bin to sow stones from: ");
+					+ ", select a house to sow stones from: ");
 			
 			try {
 				selection = Integer.parseInt(keyboard.nextLine());
 				if (selection < 1 || selection > 6) {
 					throw new IllegalArgumentException();
 				} else if (board[currentPlayerIndex*(board.length/2) + selection] == 0) {
-					System.out.println("You don't have any stones in that bin.");
+					System.out.println("You don't have any stones in that house.");
 				} else {
 					isValid = true;
 				}
@@ -110,7 +118,7 @@ public class Mancala extends BoardGame {
 	}
 	
 	private void playMove(int move) {
-		int startBin = getOwnScoringBin() + move;
+		int startBin = getOwnStore() + move;
 		int seedsToSow = board[startBin];
 		
 		// Pick up the stones to sow them
@@ -125,22 +133,22 @@ public class Mancala extends BoardGame {
 		for (int i = (startBin-1) % board.length; seedsToSow > 0;
 				i = Math.floorMod(i-1, board.length)) {
 			// Skip opponent's scoring bin
-			if (i == getOpponentScoringBin()) {
+			if (i == getOpponentStore()) {
 				continue;
-			} else {
-				board[i]++;
-				seedsToSow--;
+			}
+			
+			board[i]++;
+			seedsToSow--;
 				
-				if (seedsToSow == 0 && i != getOwnScoringBin()) {
-					// Capture if applicable
-					if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
-							&& board[getAdjacentBin(i)] != 0) {
-						board[getOwnScoringBin()] += board[i] + board[getAdjacentBin(i)];
-						board[i] = board[getAdjacentBin(i)] = 0;
-					}
-					
-					advanceToNextPlayer();
+			if (seedsToSow == 0 && i != getOwnStore()) {
+				// Capture if applicable
+				if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
+						&& board[getAdjacentHouse(i)] != 0) {
+					board[getOwnStore()] += board[i] + board[getAdjacentHouse(i)];
+						board[i] = board[getAdjacentHouse(i)] = 0;
 				}
+					
+				advanceToNextPlayer();
 			}
 		}
 	}
@@ -162,30 +170,34 @@ public class Mancala extends BoardGame {
 				+ String.format("%2d",(board[1])));
 	}
 	
-	private int getOwnScoringBin () {
+	private int getStoreOfPlayer(int player) {
+		return player * (board.length/2);
+	}
+	
+	private int getOwnStore() {
 		return currentPlayerIndex * (board.length/2);
 	}
 	
-	private int getOpponentScoringBin() {
+	private int getOpponentStore() {
 		return (1-currentPlayerIndex) * (board.length/2);
 	}
 	
 	/**
-	 * Returns the number of the bin that would be across from the input bin.
+	 * Returns the number of the bin that would be across from the input house.
 	 *  
 	 * @param bin the bin on the player's side
 	 * @return the adjacent bin on the opponent's side
 	 * @throws AssertionError when assertions are enabled and the input bin is a
 	 *                        scoring bin
 	 */
-	private int getAdjacentBin(int bin) {
-		assert bin != 0 && bin != board.length / 2
-				: "Bin should not be a scoring bin.";
-		return board.length - bin;
+	private int getAdjacentHouse(int house) {
+		assert house != 0 && house != board.length / 2
+				: "Bin should not be a store.";
+		return board.length - house;
 	}
 	
 	private boolean isPlayersSideEmpty(int player) {
-		int startBin = player*(board.length/2) + 1;
+		int startBin = getStoreOfPlayer(player) + 1;
 		
 		for (int i = startBin; i < startBin + 6; i++) {
 			if (board[i] != 0) {
@@ -194,5 +206,14 @@ public class Mancala extends BoardGame {
 		}
 		
 		return true;
+	}
+	
+	private void emptySideIntoStore(int player) {
+		int store = getStoreOfPlayer(player);
+		
+		for (int i = store+1; i < store+6; i++) {
+			board[store] += board[i];
+			board[i] = 0;
+		}
 	}
 }
