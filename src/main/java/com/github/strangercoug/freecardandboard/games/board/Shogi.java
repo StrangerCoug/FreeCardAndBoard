@@ -31,6 +31,7 @@ package com.github.strangercoug.freecardandboard.games.board;
 import java.util.ArrayList;
 import com.github.strangercoug.freecardandboard.Player;
 import com.github.strangercoug.freecardandboard.objs.ShogiBoard;
+import com.github.strangercoug.freecardandboard.objs.ShogiPiece;
 
 /**
  *
@@ -38,7 +39,7 @@ import com.github.strangercoug.freecardandboard.objs.ShogiBoard;
  */
 public class Shogi extends BoardGame {
 	ShogiBoard board;
-	ArrayList sentePiecesInHand, gotePiecesInHand;
+	ArrayList<ShogiPiece> sentePiecesInHand, gotePiecesInHand;
 	
 	@Override
 	public void init(ArrayList<Player> players) {

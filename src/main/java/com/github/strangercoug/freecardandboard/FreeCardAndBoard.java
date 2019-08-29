@@ -66,7 +66,7 @@ public class FreeCardAndBoard {
 		boolean validInput = false, playAgain = false;
 		String entry;
 		Game game = null;
-		ArrayList players;
+		ArrayList<Player> players;
 		
 		while (true) {
 			do {

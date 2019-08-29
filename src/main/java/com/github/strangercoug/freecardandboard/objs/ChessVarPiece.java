@@ -28,12 +28,14 @@
  */
 package com.github.strangercoug.freecardandboard.objs;
 
+import com.github.strangercoug.freecardandboard.enums.PieceColor;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class ChessVarPiece {
-	public abstract Enum getPieceColor();
+	public abstract Enum<PieceColor> getPieceColor();
 	public abstract Enum getPieceType();
 	public abstract String getAbbreviation();
 }

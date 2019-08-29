@@ -30,6 +30,8 @@ package com.github.strangercoug.freecardandboard.exceptions;
  * @author Jeffrey Hope
  */
 public class CardNotHeldException extends Exception {
+	private static final long serialVersionUID = 0x7A04_0DFC_856C_A891L;
+	
 	public CardNotHeldException() {
 		super();
 	}
