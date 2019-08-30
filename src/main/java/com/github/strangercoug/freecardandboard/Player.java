@@ -39,6 +39,10 @@ public class Player {
 		this.name = name;
 	}
 	
+	public Player() {
+		this("Default");
+	}
+	
 	public String getName() {
 		return name;
 	}
