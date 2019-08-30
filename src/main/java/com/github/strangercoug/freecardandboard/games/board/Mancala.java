@@ -85,10 +85,16 @@ public class Mancala extends BoardGame {
 		
 		if (currentPlayerIndex == 0) {
 			displayBoard();
-			System.out.println(" ↑  ↑  ↑  ↑  ↑  ↑\n 6  5  4  3  2  1");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" ↑  ↑  ↑  ↑  ↑  ↑");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" 6  5  4  3  2  1");
 		}
 		else {
-			System.out.println(" 1  2  3  4  5  6\n ↓  ↓  ↓  ↓  ↓  ↓");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" 1  2  3  4  5  6");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" ↓  ↓  ↓  ↓  ↓  ↓");
 			displayBoard();
 		}
 		
@@ -154,20 +160,25 @@ public class Mancala extends BoardGame {
 	}
 	
 	private void displayBoard() {
+		for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
 		System.out.println(String.format("%2d",(board[8])) + " "
 				+ String.format("%2d",(board[9])) + " "
 				+ String.format("%2d",(board[10])) + " "
 				+ String.format("%2d",(board[11])) + " "
 				+ String.format("%2d",(board[12])) + " "
-				+ String.format("%2d",(board[13])) + "\n"
-				+ String.format("%2d",(board[7])) + "             "
-				+ String.format("%2d",(board[0])) + "\n"
-				+ String.format("%2d",(board[6])) + " "
+				+ String.format("%2d",(board[13])));
+		
+		System.out.print(players.get(1).getName());
+		System.out.println(
+				String.format("%3d",(board[7])) 
+				+ String.format("%3d",(board[6])) + " "
 				+ String.format("%2d",(board[5])) + " "
 				+ String.format("%2d",(board[4])) + " "
 				+ String.format("%2d",(board[3])) + " "
 				+ String.format("%2d",(board[2])) + " "
-				+ String.format("%2d",(board[1])));
+				+ String.format("%2d",(board[1])) + " "
+				+ String.format("%2d", board[0]) + "  "
+				+ players.get(0).getName());
 	}
 	
 	private int getStoreOfPlayer(int player) {
