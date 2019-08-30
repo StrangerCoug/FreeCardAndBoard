@@ -119,7 +119,7 @@ public class Mancala extends BoardGame {
 				System.out.println("Invalid bin number.");
 			}
 		}
-		
+		System.out.println();
 		return selection;
 	}
 	
