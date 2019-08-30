@@ -119,7 +119,7 @@ public class Mancala extends BoardGame {
 				System.out.println("Invalid bin number.");
 			}
 		}
-		System.out.println();
+		System.out.println(); // my change
 		return selection;
 	}
 	
@@ -160,7 +160,8 @@ public class Mancala extends BoardGame {
 	}
 	
 	private void displayBoard() {
-		for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+		System.out.print(players.get(1).getName());
+		System.out.print(String.format("%3d",(board[7])) + " ");
 		System.out.println(String.format("%2d",(board[8])) + " "
 				+ String.format("%2d",(board[9])) + " "
 				+ String.format("%2d",(board[10])) + " "
@@ -168,9 +169,9 @@ public class Mancala extends BoardGame {
 				+ String.format("%2d",(board[12])) + " "
 				+ String.format("%2d",(board[13])));
 		
-		System.out.print(players.get(1).getName());
+		for (int i = 0; i < players.get(1).getName().length() + 1; i++) System.out.print(" ");
 		System.out.println(
-				String.format("%3d",(board[7])) 
+				"  " 
 				+ String.format("%3d",(board[6])) + " "
 				+ String.format("%2d",(board[5])) + " "
 				+ String.format("%2d",(board[4])) + " "
