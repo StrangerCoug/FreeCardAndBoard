@@ -39,15 +39,21 @@ import java.util.Scanner;
 public class Mancala extends BoardGame {
 	int[] board;
 	Scanner keyboard;
+	boolean allowEmptyCaptures;
 	
 	@Override
 	public void init(ArrayList<Player> players) {
+		init(players, true);
+	}
+	
+	public void init(ArrayList<Player> players, boolean allowEmptyCaptures) {
 		if (players.size() != 2) {
 			throw new IllegalArgumentException("You tried to start a game of " +
 					"mancala with " + players.size() + " players. The game " +
 					"requires 2 players.");
 		}
 		this.players = players;
+		this.allowEmptyCaptures = allowEmptyCaptures;
 		this.currentPlayerIndex = 0;
 		this.gameWon = false;
 				
@@ -149,7 +155,7 @@ public class Mancala extends BoardGame {
 			if (seedsToSow == 0 && i != getOwnStore()) {
 				// Capture if applicable
 				if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
-						&& board[getAdjacentHouse(i)] != 0) {
+						&& (allowEmptyCaptures || board[getAdjacentHouse(i)] != 0)) {
 					board[getOwnStore()] += board[i] + board[getAdjacentHouse(i)];
 						board[i] = board[getAdjacentHouse(i)] = 0;
 				}
@@ -223,7 +229,7 @@ public class Mancala extends BoardGame {
 	private void emptySideIntoStore(int player) {
 		int store = getStoreOfPlayer(player);
 		
-		for (int i = store+1; i < store+6; i++) {
+		for (int i = store+1; i <= store+6; i++) {
 			board[store] += board[i];
 			board[i] = 0;
 		}
