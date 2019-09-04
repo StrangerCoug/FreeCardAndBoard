@@ -29,6 +29,8 @@
 package com.github.strangercoug.freecardandboard.games.card;
 
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.Card;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 import java.util.ArrayList;
 
 /**
@@ -36,10 +38,27 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Whist extends CardGame {
-
+	public Whist() {
+		minPlayers = maxPlayers = 4;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
+		this.players = players;
+		this.gameWon = false;
+		
+		if (players.size() < 5) {
+			deck = new Deck(1, true, true);
+		} else {
+			deck = new Deck(2, true, true);
+		}
+		
+		players.forEach((_item) -> {
+			hands.add(new ArrayList<Card>());
+		});
 	}
 
 	@Override

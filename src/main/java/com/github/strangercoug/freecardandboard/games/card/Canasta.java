@@ -38,16 +38,28 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Canasta extends CardGame {
+	public Canasta() {
+		minPlayers = 2;
+		maxPlayers = 6;
+	}
 	
 	@Override
 	public void init(ArrayList<Player> players) {
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				&& players.size() != 5
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.gameWon = false;
 		
-		deck = new Deck(2, true, true);
-		for (int i = 0; i < players.size(); i++) {
-			hands.add(new ArrayList<Card>());
+		if (players.size() == 6) {
+			deck = new Deck(3, true, true);
+		} else {
+			deck = new Deck(2, true, true);
 		}
+		players.forEach((_item) -> {
+			hands.add(new ArrayList<Card>());
+		});
 	}
 
 	@Override

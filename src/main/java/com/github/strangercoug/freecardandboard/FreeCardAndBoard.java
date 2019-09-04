@@ -113,21 +113,33 @@ public class FreeCardAndBoard {
 			} while (!validInput);
 			
 			validInput = false;
-			int numPlayers = 0;
-			do {
-				try {
-					System.out.print("How many players would you like? ");
-					entry = input.nextLine();
-					numPlayers = Integer.parseInt(entry);
-					if (numPlayers < 1) {
-						System.out.println("You must enter a positive "
-								+ "integer.");
+			int numPlayers = game.getMinPlayers();
+			
+			
+			if (numPlayers != game.getMaxPlayers()) {
+				while (!validInput) {
+					try {
+						System.out.print("How many players would you like? ("
+								+ game.getMinPlayers() + "-" + game.getMaxPlayers() + "): ");
+						entry = input.nextLine();
+						numPlayers = Integer.parseInt(entry);
+					
+						if (numPlayers < game.getMinPlayers()
+								|| numPlayers > game.getMaxPlayers()) {
+							throw new IllegalArgumentException();
+						}
+					
+						validInput = true;
+					}
+					catch(NumberFormatException e) {
+						System.out.print("Invalid input.");
+					}
+					catch(IllegalArgumentException e) {
+						System.out.println("Out of range.");
 					}
 				}
-				catch(NumberFormatException e) {
-					System.out.print("Invalid input.");
-				}
-			} while (numPlayers < 1);
+			}
+			
 			players = new ArrayList<Player>(numPlayers);
 			for (int i = 1; i <= numPlayers; i++) {
 				System.out.print("Enter name of player #" + i + ": ");

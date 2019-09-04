@@ -29,6 +29,8 @@
 package com.github.strangercoug.freecardandboard.games.card;
 
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.Card;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 import java.util.ArrayList;
 
 /**
@@ -37,14 +39,23 @@ import java.util.ArrayList;
  */
 public class Bridge extends CardGame {
 	
+	public Bridge() {
+		minPlayers = maxPlayers = 4;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
-		if (players.size() != 4) {
-			throw new IllegalArgumentException("You tried to start a game of " +
-					"bridge with " + players.size() + " players. The game " +
-					"requires 4 players.");
-		}
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
+		this.gameWon = false;
+		
+		deck = new Deck(1, false, false);
+		
+		players.forEach((_item) -> {
+			hands.add(new ArrayList<Card>());
+		});
 	}
 
 	@Override

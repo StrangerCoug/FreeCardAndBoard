@@ -27,14 +27,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 package com.github.strangercoug.freecardandboard;
-
 /**
  *
  * @author Jeffrey Hope
  */
-public class RandomMancalaPlayer extends ComputerPlayer {
+public class RandomPlayer extends ComputerPlayer {
 	@Override
 	public String getMove() {
-		return String.valueOf((int)(Math.random()*6+1));
+		if (gamePlaying instanceof
+				com.github.strangercoug.freecardandboard.games.board.Mancala) {
+			return String.valueOf((int)(Math.random()*6+1));
+		} else {
+			throw new UnsupportedOperationException("Not supported yet.");
+		}
 	}
 }

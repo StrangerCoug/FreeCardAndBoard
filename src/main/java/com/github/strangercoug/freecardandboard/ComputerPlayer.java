@@ -33,5 +33,11 @@ package com.github.strangercoug.freecardandboard;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class ComputerPlayer extends Player {
+	protected Game gamePlaying;
+	
+	public final Game getGamePlaying() {
+		return gamePlaying;
+	}
+	
 	public abstract String getMove();
 }

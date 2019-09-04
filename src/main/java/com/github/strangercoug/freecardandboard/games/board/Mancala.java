@@ -41,17 +41,19 @@ public class Mancala extends BoardGame {
 	Scanner keyboard;
 	boolean allowEmptyCaptures;
 	
+	public Mancala() {
+		minPlayers = maxPlayers = 2;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
 		init(players, true);
 	}
 	
 	public void init(ArrayList<Player> players, boolean allowEmptyCaptures) {
-		if (players.size() != 2) {
-			throw new IllegalArgumentException("You tried to start a game of " +
-					"mancala with " + players.size() + " players. The game " +
-					"requires 2 players.");
-		}
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.allowEmptyCaptures = allowEmptyCaptures;
 		this.currentPlayerIndex = 0;

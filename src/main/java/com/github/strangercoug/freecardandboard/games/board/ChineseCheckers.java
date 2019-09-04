@@ -36,9 +36,17 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class ChineseCheckers extends BoardGame {
-
+	public ChineseCheckers() {
+		minPlayers = 2;
+		maxPlayers = 6;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				&& players.size() != 5
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.gameWon = false;
 	}

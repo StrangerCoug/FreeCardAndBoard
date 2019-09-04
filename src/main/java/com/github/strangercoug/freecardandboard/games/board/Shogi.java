@@ -41,13 +41,15 @@ public class Shogi extends BoardGame {
 	ShogiBoard board;
 	ArrayList<ShogiPiece> sentePiecesInHand, gotePiecesInHand;
 	
+	public Shogi() {
+		minPlayers = maxPlayers = 2;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
-		if (players.size() != 2) {
-			throw new IllegalArgumentException("You tried to start a game of " +
-					"shogi with " + players.size() + " players. The game " +
-					"requires 2 players.");
-		}
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.gameWon = false;
 		

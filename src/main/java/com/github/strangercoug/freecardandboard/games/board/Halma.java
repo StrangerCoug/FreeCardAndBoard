@@ -37,8 +37,17 @@ import java.util.ArrayList;
  */
 public class Halma extends BoardGame {
 
+	public Halma() {
+		minPlayers = 2;
+		minPlayers = 4;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				&& players.size() != 3
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.gameWon = false;
 	}
