@@ -33,7 +33,8 @@ package com.github.strangercoug.freecardandboard;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Player {
-	private String name;
+	protected String name;
+	private Game gamePlaying;
 
 	public Player(String name) {
 		this.name = name;
@@ -45,5 +46,13 @@ public class Player {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public Game getGamePlaying() {
+		return gamePlaying;
+	}
+	
+	public void setGamePlaying (Game gamePlaying) {
+		this.gamePlaying = gamePlaying;
 	}
 }

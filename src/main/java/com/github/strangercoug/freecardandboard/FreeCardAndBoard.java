@@ -115,7 +115,6 @@ public class FreeCardAndBoard {
 			validInput = false;
 			int numPlayers = game.getMinPlayers();
 			
-			
 			if (numPlayers != game.getMaxPlayers()) {
 				while (!validInput) {
 					try {
@@ -142,9 +141,38 @@ public class FreeCardAndBoard {
 			
 			players = new ArrayList<Player>(numPlayers);
 			for (int i = 1; i <= numPlayers; i++) {
-				System.out.print("Enter name of player #" + i + ": ");
-				entry = input.nextLine();
-				players.add(new Player(entry));
+				boolean isHuman = false;
+				Player newPlayer;
+				
+				validInput = false;
+				while (!validInput) {
+					System.out.print("Is player #" + i + " human? (Y/N): ");
+					char selection = input.nextLine().charAt(0);
+					switch (selection) {
+						case 'Y': case 'y':
+							validInput = true;
+							isHuman = true;
+							break;
+						case 'N': case 'n':
+							validInput = true;
+							isHuman = false;
+							break;
+						default:
+							validInput = false;
+							System.out.println("Invalid selection.");
+					}
+				}
+				
+				if (isHuman) {
+					System.out.print("Enter name of player #" + i + ": ");
+					entry = input.nextLine();
+					newPlayer = new Player(entry);
+				} else {
+					newPlayer = new RandomPlayer();
+				}
+				
+				newPlayer.setGamePlaying(game);
+				players.add(newPlayer);
 			}
 			System.out.println("Good luck!");
 			
@@ -152,7 +180,7 @@ public class FreeCardAndBoard {
 				game.init(players);
 				game.play();
 				validInput = false;
-				do {
+				while (!validInput) {
 					System.out.print("Play again? (Y/N): ");
 					char selection = input.nextLine().charAt(0);
 					switch (selection) {
@@ -168,7 +196,7 @@ public class FreeCardAndBoard {
 							validInput = false;
 							System.out.println("Invalid selection.");
 					}
-				} while (!validInput);
+				}
 			} while (playAgain);
 		}
 	}

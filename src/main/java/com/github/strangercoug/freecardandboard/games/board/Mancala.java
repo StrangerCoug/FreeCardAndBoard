@@ -29,6 +29,7 @@
 package com.github.strangercoug.freecardandboard.games.board;
 
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.RandomPlayer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -107,27 +108,32 @@ public class Mancala extends BoardGame {
 		}
 		
 		while (!isValid) {
-			System.out.print("\n" + players.get(currentPlayerIndex).getName()
-					+ ", select a house to sow stones from: ");
+			if (players.get(currentPlayerIndex) instanceof RandomPlayer) {
+				return Integer.parseInt
+						(((RandomPlayer)players.get(currentPlayerIndex)).getMove());
+			} else {
+				System.out.print("\n" + players.get(currentPlayerIndex).getName()
+						+ ", select a house to sow stones from: ");
 			
-			try {
-				selection = Integer.parseInt(keyboard.nextLine());
-				if (selection < 1 || selection > 6) {
-					throw new IllegalArgumentException();
-				} else if (board[currentPlayerIndex*(board.length/2) + selection] == 0) {
-					System.out.println("You don't have any stones in that house.");
-				} else {
-					isValid = true;
+				try {
+					selection = Integer.parseInt(keyboard.nextLine());
+					if (selection < 1 || selection > 6) {
+						throw new IllegalArgumentException();
+					} else if (board[currentPlayerIndex*(board.length/2) + selection] == 0) {
+						System.out.println("You don't have any stones in that house.");
+					} else {
+						isValid = true;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.out.println("Invalid input.");
+				}
+				catch (IllegalArgumentException e) {
+					System.out.println("Invalid bin number.");
 				}
 			}
-			catch (NumberFormatException e) {
-				System.out.println("Invalid input.");
-			}
-			catch (IllegalArgumentException e) {
-				System.out.println("Invalid bin number.");
-			}
 		}
-		System.out.println(); // my change
+		System.out.println();
 		return selection;
 	}
 	
