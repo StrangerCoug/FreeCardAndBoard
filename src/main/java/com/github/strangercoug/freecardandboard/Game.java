@@ -35,19 +35,28 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
+	protected byte minPlayers, maxPlayers;
 	protected ArrayList<Player> players;
 	protected int currentPlayerIndex;
 	protected boolean gameWon;
 	
-	public ArrayList<Player> getPlayers() {
+	public final byte getMinPlayers() {
+		return minPlayers;
+	}
+	
+	public final byte getMaxPlayers() {
+		return maxPlayers;
+	}
+	
+	public final ArrayList<Player> getPlayers() {
 		return players;
 	}
 	
-	public int getCurrentPlayerIndex() {
+	public final int getCurrentPlayerIndex() {
 		return currentPlayerIndex;
 	}
 	
-	public boolean getGameWon() {
+	public final boolean getGameWon() {
 		return gameWon;
 	}
 	

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2019, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,45 +26,35 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard.games.card;
+package com.github.strangercoug.freecardandboard;
 
-import com.github.strangercoug.freecardandboard.Player;
-import com.github.strangercoug.freecardandboard.objs.Card;
-import com.github.strangercoug.freecardandboard.objs.Deck;
-import java.util.ArrayList;
+import com.github.strangercoug.freecardandboard.games.board.Mancala;
 
 /**
  *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
+ * @author Jeffrey Hope
  */
-public class Canasta extends CardGame {
-	public Canasta() {
-		minPlayers = 2;
-		maxPlayers = 6;
+public class RandomPlayer extends ComputerPlayer {
+	public RandomPlayer(String name) {
+		super.name = name;
+	}
+	
+	public RandomPlayer() {
+		super.name = "Random";
 	}
 	
 	@Override
-	public void init(ArrayList<Player> players) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				&& players.size() != 5
-				: "Wrong number of players.";
+	public String getMove() {
 		
-		this.players = players;
-		this.gameWon = false;
-		
-		if (players.size() == 6) {
-			deck = new Deck(3, true, true);
-		} else {
-			deck = new Deck(2, true, true);
-		}
-		players.forEach((_item) -> {
-			hands.add(new ArrayList<Card>());
-		});
+		/* FIXME: If-else statement not currently working right. Since we're
+		 * only testing Mancala, we can just comment out the offending lines for
+		 * now, but later we'll have to tackle this bug--I'm not sure what's
+		 * causing it.
+		 */
+//		if (super.gamePlaying instanceof Mancala) {
+			return String.valueOf((int)(Math.random()*6+1));
+//		} else {
+//			throw new UnsupportedOperationException("Not supported yet.");
+//		}
 	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-	
 }

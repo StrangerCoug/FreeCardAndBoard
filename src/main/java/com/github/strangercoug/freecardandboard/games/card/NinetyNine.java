@@ -29,6 +29,8 @@
 package com.github.strangercoug.freecardandboard.games.card;
 
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.Card;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 import java.util.ArrayList;
 
 /**
@@ -38,10 +40,28 @@ import java.util.ArrayList;
 public class NinetyNine extends CardGame {
 	int[] scores;
 	
+	public NinetyNine() {
+		minPlayers = 3;
+		maxPlayers = 5;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
-		gameWon = false;
+		this.gameWon = false;
+		
+		/* TODO: This works correctly only for four players. The game should
+		 * strip the deuces through fives for a three-player game and add the
+		 * elevens and twelves for a five-player game.
+		 */
+		deck = new Deck(1, false, false);
+		
+		players.forEach((_item) -> {
+			hands.add(new ArrayList<Card>());
+		});
 		
 		scores = new int[players.size()];
 	}

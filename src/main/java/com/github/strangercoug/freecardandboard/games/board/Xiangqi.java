@@ -37,13 +37,15 @@ import com.github.strangercoug.freecardandboard.Player;
  */
 public class Xiangqi extends BoardGame {
 
+	public Xiangqi() {
+		minPlayers = maxPlayers = 2;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
-		if (players.size() != 2) {
-			throw new IllegalArgumentException("You tried to start a game of " +
-					"xiangqi with " + players.size() + " players. The game " +
-					"requires 2 players.");
-		}
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.gameWon = false;
 	}

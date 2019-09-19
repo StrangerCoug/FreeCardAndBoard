@@ -66,7 +66,7 @@ public class FreeCardAndBoard {
 		boolean validInput = false, playAgain = false;
 		String entry;
 		Game game = null;
-		ArrayList players;
+		ArrayList<Player> players;
 		
 		while (true) {
 			do {
@@ -113,26 +113,66 @@ public class FreeCardAndBoard {
 			} while (!validInput);
 			
 			validInput = false;
-			int numPlayers = 0;
-			do {
-				try {
-					System.out.print("How many players would you like? ");
-					entry = input.nextLine();
-					numPlayers = Integer.parseInt(entry);
-					if (numPlayers < 1) {
-						System.out.println("You must enter a positive "
-								+ "integer.");
+			int numPlayers = game.getMinPlayers();
+			
+			if (numPlayers != game.getMaxPlayers()) {
+				while (!validInput) {
+					try {
+						System.out.print("How many players would you like? ("
+								+ game.getMinPlayers() + "-" + game.getMaxPlayers() + "): ");
+						entry = input.nextLine();
+						numPlayers = Integer.parseInt(entry);
+					
+						if (numPlayers < game.getMinPlayers()
+								|| numPlayers > game.getMaxPlayers()) {
+							throw new IllegalArgumentException();
+						}
+					
+						validInput = true;
+					}
+					catch(NumberFormatException e) {
+						System.out.print("Invalid input.");
+					}
+					catch(IllegalArgumentException e) {
+						System.out.println("Out of range.");
 					}
 				}
-				catch(NumberFormatException e) {
-					System.out.print("Invalid input.");
-				}
-			} while (numPlayers < 1);
+			}
+			
 			players = new ArrayList<Player>(numPlayers);
 			for (int i = 1; i <= numPlayers; i++) {
-				System.out.print("Enter name of player #" + i + ": ");
-				entry = input.nextLine();
-				players.add(new Player(entry));
+				boolean isHuman = false;
+				Player newPlayer;
+				
+				validInput = false;
+				while (!validInput) {
+					System.out.print("Is player #" + i + " human? (Y/N): ");
+					char selection = input.nextLine().charAt(0);
+					switch (selection) {
+						case 'Y': case 'y':
+							validInput = true;
+							isHuman = true;
+							break;
+						case 'N': case 'n':
+							validInput = true;
+							isHuman = false;
+							break;
+						default:
+							validInput = false;
+							System.out.println("Invalid selection.");
+					}
+				}
+				
+				if (isHuman) {
+					System.out.print("Enter name of player #" + i + ": ");
+					entry = input.nextLine();
+					newPlayer = new Player(entry);
+				} else {
+					newPlayer = new RandomPlayer();
+				}
+				
+				newPlayer.setGamePlaying(game);
+				players.add(newPlayer);
 			}
 			System.out.println("Good luck!");
 			
@@ -140,7 +180,7 @@ public class FreeCardAndBoard {
 				game.init(players);
 				game.play();
 				validInput = false;
-				do {
+				while (!validInput) {
 					System.out.print("Play again? (Y/N): ");
 					char selection = input.nextLine().charAt(0);
 					switch (selection) {
@@ -156,7 +196,7 @@ public class FreeCardAndBoard {
 							validInput = false;
 							System.out.println("Invalid selection.");
 					}
-				} while (!validInput);
+				}
 			} while (playAgain);
 		}
 	}

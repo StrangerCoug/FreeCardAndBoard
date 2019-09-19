@@ -29,17 +29,34 @@
 package com.github.strangercoug.freecardandboard.games.card;
 
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.Card;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 import java.util.ArrayList;
 
 /**
- *
+ * Programmed here is technically 500 Rummy, not straight rummy.
+ * 
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Rummy extends CardGame {
-
+	public Rummy() {
+		minPlayers = 2;
+		maxPlayers = 8;
+	}
+	
 	@Override
 	public void init(ArrayList<Player> players) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
+		this.players = players;
+		this.gameWon = false;
+		
+		deck = new Deck(1, true, true);
+		
+		players.forEach((_item) -> {
+			hands.add(new ArrayList<Card>());
+		});
 	}
 
 	@Override

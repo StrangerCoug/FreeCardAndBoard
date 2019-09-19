@@ -29,6 +29,7 @@
 package com.github.strangercoug.freecardandboard.games.board;
 
 import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.RandomPlayer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,15 +40,23 @@ import java.util.Scanner;
 public class Mancala extends BoardGame {
 	int[] board;
 	Scanner keyboard;
+	boolean allowEmptyCaptures;
+	
+	public Mancala() {
+		minPlayers = maxPlayers = 2;
+	}
 	
 	@Override
 	public void init(ArrayList<Player> players) {
-		if (players.size() != 2) {
-			throw new IllegalArgumentException("You tried to start a game of " +
-					"mancala with " + players.size() + " players. The game " +
-					"requires 2 players.");
-		}
+		init(players, true);
+	}
+	
+	public void init(ArrayList<Player> players, boolean allowEmptyCaptures) {
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
+		this.allowEmptyCaptures = allowEmptyCaptures;
 		this.currentPlayerIndex = 0;
 		this.gameWon = false;
 				
@@ -85,35 +94,46 @@ public class Mancala extends BoardGame {
 		
 		if (currentPlayerIndex == 0) {
 			displayBoard();
-			System.out.println(" ↑  ↑  ↑  ↑  ↑  ↑\n 6  5  4  3  2  1");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" ↑  ↑  ↑  ↑  ↑  ↑");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" 6  5  4  3  2  1");
 		}
 		else {
-			System.out.println(" 1  2  3  4  5  6\n ↓  ↓  ↓  ↓  ↓  ↓");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" 1  2  3  4  5  6");
+			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
+			System.out.println(" ↓  ↓  ↓  ↓  ↓  ↓");
 			displayBoard();
 		}
 		
 		while (!isValid) {
-			System.out.print("\n" + players.get(currentPlayerIndex).getName()
-					+ ", select a house to sow stones from: ");
+			if (players.get(currentPlayerIndex) instanceof RandomPlayer) {
+				return Integer.parseInt
+						(((RandomPlayer)players.get(currentPlayerIndex)).getMove());
+			} else {
+				System.out.print("\n" + players.get(currentPlayerIndex).getName()
+						+ ", select a house to sow stones from: ");
 			
-			try {
-				selection = Integer.parseInt(keyboard.nextLine());
-				if (selection < 1 || selection > 6) {
-					throw new IllegalArgumentException();
-				} else if (board[currentPlayerIndex*(board.length/2) + selection] == 0) {
-					System.out.println("You don't have any stones in that house.");
-				} else {
-					isValid = true;
+				try {
+					selection = Integer.parseInt(keyboard.nextLine());
+					if (selection < 1 || selection > 6) {
+						throw new IllegalArgumentException();
+					} else if (board[currentPlayerIndex*(board.length/2) + selection] == 0) {
+						System.out.println("You don't have any stones in that house.");
+					} else {
+						isValid = true;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.out.println("Invalid input.");
+				}
+				catch (IllegalArgumentException e) {
+					System.out.println("Invalid bin number.");
 				}
 			}
-			catch (NumberFormatException e) {
-				System.out.println("Invalid input.");
-			}
-			catch (IllegalArgumentException e) {
-				System.out.println("Invalid bin number.");
-			}
 		}
-		
+		System.out.println();
 		return selection;
 	}
 	
@@ -143,7 +163,7 @@ public class Mancala extends BoardGame {
 			if (seedsToSow == 0 && i != getOwnStore()) {
 				// Capture if applicable
 				if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
-						&& board[getAdjacentHouse(i)] != 0) {
+						&& (allowEmptyCaptures || board[getAdjacentHouse(i)] != 0)) {
 					board[getOwnStore()] += board[i] + board[getAdjacentHouse(i)];
 						board[i] = board[getAdjacentHouse(i)] = 0;
 				}
@@ -154,20 +174,26 @@ public class Mancala extends BoardGame {
 	}
 	
 	private void displayBoard() {
+		System.out.print(players.get(1).getName());
+		System.out.print(String.format("%3d",(board[7])) + " ");
 		System.out.println(String.format("%2d",(board[8])) + " "
 				+ String.format("%2d",(board[9])) + " "
 				+ String.format("%2d",(board[10])) + " "
 				+ String.format("%2d",(board[11])) + " "
 				+ String.format("%2d",(board[12])) + " "
-				+ String.format("%2d",(board[13])) + "\n"
-				+ String.format("%2d",(board[7])) + "             "
-				+ String.format("%2d",(board[0])) + "\n"
-				+ String.format("%2d",(board[6])) + " "
+				+ String.format("%2d",(board[13])));
+		
+		for (int i = 0; i < players.get(1).getName().length() + 1; i++) System.out.print(" ");
+		System.out.println(
+				"  " 
+				+ String.format("%3d",(board[6])) + " "
 				+ String.format("%2d",(board[5])) + " "
 				+ String.format("%2d",(board[4])) + " "
 				+ String.format("%2d",(board[3])) + " "
 				+ String.format("%2d",(board[2])) + " "
-				+ String.format("%2d",(board[1])));
+				+ String.format("%2d",(board[1])) + " "
+				+ String.format("%2d", board[0]) + "  "
+				+ players.get(0).getName());
 	}
 	
 	private int getStoreOfPlayer(int player) {
@@ -211,7 +237,7 @@ public class Mancala extends BoardGame {
 	private void emptySideIntoStore(int player) {
 		int store = getStoreOfPlayer(player);
 		
-		for (int i = store+1; i < store+6; i++) {
+		for (int i = store+1; i <= store+6; i++) {
 			board[store] += board[i];
 			board[i] = 0;
 		}

@@ -31,6 +31,7 @@ package com.github.strangercoug.freecardandboard.games.board;
 import java.util.ArrayList;
 import com.github.strangercoug.freecardandboard.Player;
 import com.github.strangercoug.freecardandboard.objs.ShogiBoard;
+import com.github.strangercoug.freecardandboard.objs.ShogiPiece;
 
 /**
  *
@@ -38,15 +39,17 @@ import com.github.strangercoug.freecardandboard.objs.ShogiBoard;
  */
 public class Shogi extends BoardGame {
 	ShogiBoard board;
-	ArrayList sentePiecesInHand, gotePiecesInHand;
+	ArrayList<ShogiPiece> sentePiecesInHand, gotePiecesInHand;
+	
+	public Shogi() {
+		minPlayers = maxPlayers = 2;
+	}
 	
 	@Override
 	public void init(ArrayList<Player> players) {
-		if (players.size() != 2) {
-			throw new IllegalArgumentException("You tried to start a game of " +
-					"shogi with " + players.size() + " players. The game " +
-					"requires 2 players.");
-		}
+		assert players.size() >= minPlayers && players.size() <= maxPlayers
+				: "Wrong number of players.";
+		
 		this.players = players;
 		this.gameWon = false;
 		

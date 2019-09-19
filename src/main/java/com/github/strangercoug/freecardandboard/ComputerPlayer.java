@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2019, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,45 +26,18 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard.games.card;
-
-import com.github.strangercoug.freecardandboard.Player;
-import com.github.strangercoug.freecardandboard.objs.Card;
-import com.github.strangercoug.freecardandboard.objs.Deck;
-import java.util.ArrayList;
+package com.github.strangercoug.freecardandboard;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class Canasta extends CardGame {
-	public Canasta() {
-		minPlayers = 2;
-		maxPlayers = 6;
+public abstract class ComputerPlayer extends Player {
+	protected Game gamePlaying;
+	
+	public final Game getGamePlaying() {
+		return gamePlaying;
 	}
 	
-	@Override
-	public void init(ArrayList<Player> players) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				&& players.size() != 5
-				: "Wrong number of players.";
-		
-		this.players = players;
-		this.gameWon = false;
-		
-		if (players.size() == 6) {
-			deck = new Deck(3, true, true);
-		} else {
-			deck = new Deck(2, true, true);
-		}
-		players.forEach((_item) -> {
-			hands.add(new ArrayList<Card>());
-		});
-	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-	
+	public abstract String getMove();
 }
