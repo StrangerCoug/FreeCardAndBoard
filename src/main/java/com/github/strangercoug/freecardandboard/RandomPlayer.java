@@ -35,14 +35,6 @@ import com.github.strangercoug.freecardandboard.games.board.Mancala;
  * @author Jeffrey Hope
  */
 public class RandomPlayer extends ComputerPlayer {
-	public RandomPlayer(String name) {
-		super.name = name;
-	}
-	
-	public RandomPlayer() {
-		super.name = "Random";
-	}
-	
 	@Override
 	public String getMove() {
 		
