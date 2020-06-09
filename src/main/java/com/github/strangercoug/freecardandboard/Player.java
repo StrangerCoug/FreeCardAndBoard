@@ -33,7 +33,7 @@ package com.github.strangercoug.freecardandboard;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Player {
-	protected String name;
+	protected final String name;
 	private Game gamePlaying;
 
 	public Player(String name) {
@@ -41,7 +41,7 @@ public class Player {
 	}
 	
 	public Player() {
-		this("Default");
+		this("Anonymous");
 	}
 	
 	public String getName() {
