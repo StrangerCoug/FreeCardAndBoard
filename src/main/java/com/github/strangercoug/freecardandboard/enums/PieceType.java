@@ -28,7 +28,18 @@
  */
 package com.github.strangercoug.freecardandboard.enums;
 
+/**
+ * This interface is primarily meant for use for the pieces in chess and its variants
+ * since it is useful to have separate enums for each major variant. It could also be
+ * used for checkers in theory as well.
+ * 
+ * @author Jeffrey Hope <strangercoug@hotmail.com>
+ */
 public interface PieceType {
 	public String getName();
 	public String getAbbrev();
+	/**
+	 * @return the Betza notation for how the piece can move
+	 */
+	public String getMovement();
 }

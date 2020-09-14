@@ -43,7 +43,7 @@ public class ShogiBoard extends ChessVarBoard {
 	
 	@Override
 	public void initBoard() {
-		ShogiPieceType[] rankAPieces = {ShogiPieceType.LANCE,
+		ShogiPieceType[] backRankPieces = {ShogiPieceType.LANCE,
 			ShogiPieceType.KNIGHT, ShogiPieceType.SILVER, ShogiPieceType.GOLD,
 			ShogiPieceType.KING, ShogiPieceType.GOLD, ShogiPieceType.SILVER,
 			ShogiPieceType.KNIGHT, ShogiPieceType.LANCE};
@@ -51,13 +51,9 @@ public class ShogiBoard extends ChessVarBoard {
 			null, null, null, ShogiPieceType.ROOK, null};
 		ShogiPieceType[] rankHPieces = {null, ShogiPieceType.ROOK, null, null,
 			null, null, null, ShogiPieceType.BISHOP, null};
-		ShogiPieceType[] rankIPieces = {ShogiPieceType.LANCE,
-			ShogiPieceType.KNIGHT, ShogiPieceType.SILVER, ShogiPieceType.GOLD,
-			ShogiPieceType.JEWEL, ShogiPieceType.GOLD, ShogiPieceType.SILVER,
-			ShogiPieceType.KNIGHT, ShogiPieceType.LANCE};
 		
 		for (int i = 0; i < board.length; i++) {
-			board[i][0] = new ShogiPiece(PieceColor.WHITE, rankAPieces[i]);
+			board[i][0] = new ShogiPiece(PieceColor.WHITE, backRankPieces[i]);
 			if (rankBPieces[i] == null) board[i][1] = null;
 			else board[i][1] = new ShogiPiece(PieceColor.WHITE,
 					rankBPieces[i]);
@@ -67,7 +63,7 @@ public class ShogiBoard extends ChessVarBoard {
 			if (rankHPieces[i] == null) board[i][7] = null;
 			else board[i][7] = new ShogiPiece(PieceColor.BLACK,
 					rankHPieces[i]);
-			board[i][8] = new ShogiPiece(PieceColor.BLACK, rankIPieces[i]);
+			board[i][8] = new ShogiPiece(PieceColor.BLACK, backRankPieces[i]);
 		}
 	}
 	

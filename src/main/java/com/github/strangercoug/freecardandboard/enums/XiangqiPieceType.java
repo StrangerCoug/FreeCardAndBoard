@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2020, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,27 +32,21 @@ package com.github.strangercoug.freecardandboard.enums;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public enum ShogiPieceType implements PieceType {
-	KING("king", "K", "K"), // covers both players' kings for simplicity
-	ROOK("rook", "R", "R"),
-	DRAGON("dragon", "+R", "RF"),
-	BISHOP("bishop", "B", "B"),
-	HORSE("horse", "+B", "BW"),
-	GOLD("gold general", "G", "WfF"),
-	SILVER("silver general", "S", "FfW"),
-	NARIGIN("promoted silver general", "+S", "WfF"),
-	KNIGHT("knight", "N", "ffN"),
-	NARIKEI("promoted knight", "+N", "WfF"),
-	LANCE("lance", "L", "fR"),
-	NARIKYOU("promoted lance", "+L", "WfF"),
-	PAWN("pawn", "P", "fW"),
-	TOKIN("promoted pawn", "+P", "WfF");
+public enum XiangqiPieceType implements PieceType {
+	GENERAL("general", "G", "K"), // cannot leave palace
+	ADVISOR("advisor", "A", "F"), // cannot leave palace
+	ELEPHANT("elephant", "E", "nA"), // cannot cross river
+	HORSE("horse", "H", "nN"),
+	CHARIOT("chariot", "R", "R"),
+	CANNON("cannon", "C", "mRcpR"),
+	SOLDIER("soldier", "S", "fW"), // soldier before crossing the river 
+	PROMOTED_SOLDIER("soldier", "S", "sfW"); // soldier after crossing the river
 	
 	private final String name;
 	private final String abbrev;
 	private final String movement;
 	
-	ShogiPieceType(String name, String abbrev, String movement) {
+	XiangqiPieceType(String name, String abbrev, String movement) {
 		this.name = name;
 		this.abbrev = abbrev;
 		this.movement = movement;

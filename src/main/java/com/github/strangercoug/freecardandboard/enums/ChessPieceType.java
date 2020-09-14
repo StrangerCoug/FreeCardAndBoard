@@ -33,19 +33,21 @@ package com.github.strangercoug.freecardandboard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum ChessPieceType implements PieceType {
-	KING("king", "K"),
-	QUEEN("queen", "Q"),
-	ROOK("rook", "R"),
-	BISHOP("bishop", "B"),
-	KNIGHT("knight", "N"),
-	PAWN("pawn", "P");
+	KING("king", "K", "K"),
+	QUEEN("queen", "Q", "Q"),
+	ROOK("rook", "R", "R"),
+	BISHOP("bishop", "B", "B"),
+	KNIGHT("knight", "N", "N"),
+	PAWN("pawn", "P", "mfWcfFimfW2");
 	
 	private final String name;
 	private final String abbrev;
+	private final String movement;
 	
-	ChessPieceType(String name, String abbrev) {
+	ChessPieceType(String name, String abbrev, String movement) {
 		this.name = name;
 		this.abbrev = abbrev;
+		this.movement = movement;
 	}
 	
 	public String getName() {
@@ -54,5 +56,9 @@ public enum ChessPieceType implements PieceType {
 	
 	public String getAbbrev() {
 		return abbrev;
+	}
+	
+	public String getMovement() {
+		return movement;
 	}
 }
