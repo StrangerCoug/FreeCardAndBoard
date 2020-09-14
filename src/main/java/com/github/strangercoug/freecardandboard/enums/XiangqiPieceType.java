@@ -33,7 +33,7 @@ package com.github.strangercoug.freecardandboard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum XiangqiPieceType implements PieceType {
-	GENERAL("general", "G", "K"), // cannot leave palace
+	GENERAL("general", "G", "kW"), // cannot leave palace
 	ADVISOR("advisor", "A", "F"), // cannot leave palace
 	ELEPHANT("elephant", "E", "nA"), // cannot cross river
 	HORSE("horse", "H", "nN"),
