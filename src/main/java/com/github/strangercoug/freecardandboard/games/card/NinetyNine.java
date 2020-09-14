@@ -45,10 +45,6 @@ public class NinetyNine extends CardGame {
 	private PremiumBid premiumBid;
 	private Player premiumBidder;
 	
-	private enum PremiumBid {
-		DECLARE, REVEAL
-	}
-	
 	public NinetyNine() {
 		minPlayers = 3;
 		maxPlayers = 5;
