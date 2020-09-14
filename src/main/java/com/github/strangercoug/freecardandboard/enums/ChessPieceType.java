@@ -32,7 +32,7 @@ package com.github.strangercoug.freecardandboard.enums;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public enum ChessPieceType {
+public enum ChessPieceType implements PieceType {
 	KING("king", "K"),
 	QUEEN("queen", "Q"),
 	ROOK("rook", "R"),
