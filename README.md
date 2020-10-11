@@ -1,4 +1,4 @@
-# Welcome to the FreeCardAndBoard project!
+# Welcome to the FreeBoardAndCard project!
 This is planned to be a free and open source cross-platform Java card and board game compendium program. I am still working on the basic structure, but the following games are planned for its initial release:
 1. Backgammon
 2. Bridge
