@@ -1,8 +1,8 @@
 module com.github.strangercoug.freecardandboard {
-	exports com.github.strangercoug.freecardandboard.objs;
-	exports com.github.strangercoug.freecardandboard.exceptions;
-	exports com.github.strangercoug.freecardandboard.enums;
-	exports com.github.strangercoug.freecardandboard.games.card;
-	exports com.github.strangercoug.freecardandboard.games.board;
-	exports com.github.strangercoug.freecardandboard;
+	exports com.github.strangercoug.freeboardandcard.objs;
+	exports com.github.strangercoug.freeboardandcard.exceptions;
+	exports com.github.strangercoug.freeboardandcard.enums;
+	exports com.github.strangercoug.freeboardandcard.games.card;
+	exports com.github.strangercoug.freeboardandcard.games.board;
+	exports com.github.strangercoug.freeboardandcard;
 }
