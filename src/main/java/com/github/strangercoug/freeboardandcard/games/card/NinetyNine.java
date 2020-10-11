@@ -40,7 +40,7 @@ import com.github.strangercoug.freeboardandcard.objs.Deck;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class NinetyNine extends CardGame {
-	int[] scores;
+	int[] scores, tricksBid, tricksWon;
 	private CardSuit currentTrump; // for no-trump, this is null
 	private enum PremiumBid{DECLARE, REVEAL};
 	private PremiumBid premiumBid;
@@ -70,6 +70,8 @@ public class NinetyNine extends CardGame {
 		});
 		
 		scores = new int[players.size()];
+		tricksBid = new int[players.size()];
+		tricksWon = new int[players.size()];
 	}
 
 	@Override
@@ -88,7 +90,7 @@ public class NinetyNine extends CardGame {
 		deck.shuffleDeck();
 		 
 		for (int i = dealerPos + 1; !deck.isEmpty(); i++) {
-			deck.dealCardTo(players.get(i % players.length));
+			hands.get(i).add(deck.dealCard());
 		}
 	}
 	
@@ -144,8 +146,8 @@ public class NinetyNine extends CardGame {
 		byte winBonus;
 		
 		for (int i = 0; i < players.size(); i++) {
-			players.get(i).addToScore(players.get(i).getTricksWon());
-			madeBid[i] = players.get(i).getTricksWon() == players.get(i).getTricksBid();
+			scores[i] += tricksWon[i];
+			madeBid[i] = tricksWon[i] == tricksBid[i];
 			
 			if (madeBid[i]) {
 				numWinners++;
@@ -182,14 +184,14 @@ public class NinetyNine extends CardGame {
 		
 		for (int i = 0; i < players.size(); i++) {
 			if (madeBid[i]) {
-				players.get(i).addToScore(winBonus);
+				scores[i] += winBonus;
 			}
 		}
 	}
 	
 	public boolean isThereAWinner() {
-		for (Player player : players) {
-			if (player.getScore() >= 100) {
+		for (int i = 0; i < scores.length; i++) {
+			if (scores[i] >= 100) {
 				return true;
 			}
 		}
@@ -201,7 +203,7 @@ public class NinetyNine extends CardGame {
 		Player leader = players.get(0);
 		
 		for (int i = 1; i < players.size(); i++) {
-			if (players.get(i).getScore() > leader.getScore())
+			if (scores[i] > scores[players.indexOf(leader)])
 				leader = players.get(i);
 		}
 		
