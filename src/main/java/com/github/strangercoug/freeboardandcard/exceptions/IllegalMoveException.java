@@ -33,19 +33,19 @@ package com.github.strangercoug.freeboardandcard.exceptions;
  */
 public class IllegalMoveException extends Exception {
 	private static final long serialVersionUID = 0xD2C5_C535_8E52_4CC3L;
-	
+
 	public IllegalMoveException() {
 		super();
 	}
-	
+
 	public IllegalMoveException(String message) {
 		super(message);
 	}
-	
+
 	public IllegalMoveException(String message, Throwable cause) {
 		super(message, cause);
 	}
-	
+
 	public IllegalMoveException(Throwable cause) {
 		super(cause);
 	} 

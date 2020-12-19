@@ -48,12 +48,12 @@ public class CrazyEights extends CardGame {
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
-		
+
 		deck = new Deck(1, false, false);
-		
+
 		players.forEach((_item) -> {
 			hands.add(new ArrayList<Card>());
 		});
@@ -63,5 +63,5 @@ public class CrazyEights extends CardGame {
 	public void play() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-	
+
 }

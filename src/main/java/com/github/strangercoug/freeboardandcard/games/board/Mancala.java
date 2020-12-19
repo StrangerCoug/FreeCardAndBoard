@@ -42,25 +42,25 @@ public class Mancala extends BoardGame {
 	int[] board;
 	Scanner keyboard;
 	boolean allowEmptyCaptures;
-	
+
 	public Mancala() {
 		minPlayers = maxPlayers = 2;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		init(players, true);
 	}
-	
+
 	public void init(ArrayList<Player> players, boolean allowEmptyCaptures) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.allowEmptyCaptures = allowEmptyCaptures;
 		this.currentPlayerIndex = 0;
 		this.gameWon = false;
-				
+
 		board = new int[] {0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4};
 		keyboard = new Scanner(System.in);
 	}
@@ -76,7 +76,7 @@ public class Mancala extends BoardGame {
 			}
 		}
 	}
-	
+
 	private boolean isGameOver() {
 		if (isPlayersSideEmpty(0)) {
 			emptySideIntoStore(1);
@@ -88,11 +88,11 @@ public class Mancala extends BoardGame {
 		}
 		return false;
 	}
-	
+
 	private int promptMove() {
 		boolean isValid = false;
 		int selection = 0;
-		
+
 		if (currentPlayerIndex == 0) {
 			displayBoard();
 			for (int i = 0; i < players.get(1).getName().length() + 4; i++) System.out.print(" ");
@@ -107,7 +107,7 @@ public class Mancala extends BoardGame {
 			System.out.println(" ↓  ↓  ↓  ↓  ↓  ↓");
 			displayBoard();
 		}
-		
+
 		while (!isValid) {
 			if (players.get(currentPlayerIndex) instanceof RandomPlayer) {
 				return Integer.parseInt
@@ -115,7 +115,7 @@ public class Mancala extends BoardGame {
 			} else {
 				System.out.print("\n" + players.get(currentPlayerIndex).getName()
 						+ ", select a house to sow stones from: ");
-			
+
 				try {
 					selection = Integer.parseInt(keyboard.nextLine());
 					if (selection < 1 || selection > 6) {
@@ -137,14 +137,14 @@ public class Mancala extends BoardGame {
 		System.out.println();
 		return selection;
 	}
-	
+
 	private void playMove(int move) {
 		int startBin = getOwnStore() + move;
 		int seedsToSow = board[startBin];
-		
+
 		// Pick up the stones to sow them
 		board[startBin] = 0;
-		
+
 		/* The reason for Math.floorMod(i-1, board.length) instead of
 		 * (i-1) % boardLength is that the former has the same sign as the
 		 * divisor while the latter has the same sign as the dividend--the bin
@@ -157,10 +157,10 @@ public class Mancala extends BoardGame {
 			if (i == getOpponentStore()) {
 				continue;
 			}
-			
+
 			board[i]++;
 			seedsToSow--;
-				
+
 			if (seedsToSow == 0 && i != getOwnStore()) {
 				// Capture if applicable
 				if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
@@ -168,12 +168,12 @@ public class Mancala extends BoardGame {
 					board[getOwnStore()] += board[i] + board[getAdjacentHouse(i)];
 						board[i] = board[getAdjacentHouse(i)] = 0;
 				}
-					
+
 				advanceToNextPlayer();
 			}
 		}
 	}
-	
+
 	private void displayBoard() {
 		System.out.print(players.get(1).getName());
 		System.out.print(String.format("%3d",(board[7])) + " ");
@@ -183,7 +183,7 @@ public class Mancala extends BoardGame {
 				+ String.format("%2d",(board[11])) + " "
 				+ String.format("%2d",(board[12])) + " "
 				+ String.format("%2d",(board[13])));
-		
+
 		for (int i = 0; i < players.get(1).getName().length() + 1; i++) System.out.print(" ");
 		System.out.println(
 				"  " 
@@ -196,48 +196,48 @@ public class Mancala extends BoardGame {
 				+ String.format("%2d", board[0]) + "  "
 				+ players.get(0).getName());
 	}
-	
+
 	private int getStoreOfPlayer(int player) {
 		return player * (board.length/2);
 	}
-	
+
 	private int getOwnStore() {
 		return currentPlayerIndex * (board.length/2);
 	}
-	
+
 	private int getOpponentStore() {
 		return (1-currentPlayerIndex) * (board.length/2);
 	}
-	
+
 	/**
 	 * Returns the number of the bin that would be across from the input house.
 	 *  
 	 * @param bin the bin on the player's side
 	 * @return the adjacent bin on the opponent's side
 	 * @throws AssertionError when assertions are enabled and the input bin is a
-	 *                        scoring bin
+	 *						scoring bin
 	 */
 	private int getAdjacentHouse(int house) {
 		assert house != 0 && house != board.length / 2
 				: "Bin should not be a store.";
 		return board.length - house;
 	}
-	
+
 	private boolean isPlayersSideEmpty(int player) {
 		int startBin = getStoreOfPlayer(player) + 1;
-		
+
 		for (int i = startBin; i < startBin + 6; i++) {
 			if (board[i] != 0) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	private void emptySideIntoStore(int player) {
 		int store = getStoreOfPlayer(player);
-		
+
 		for (int i = store+1; i <= store+6; i++) {
 			board[store] += board[i];
 			board[i] = 0;

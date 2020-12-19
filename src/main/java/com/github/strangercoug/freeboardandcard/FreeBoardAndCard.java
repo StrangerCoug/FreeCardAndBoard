@@ -58,7 +58,7 @@ import com.github.strangercoug.freeboardandcard.games.card.Whist;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class FreeBoardAndCard {
-	
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -68,7 +68,7 @@ public class FreeBoardAndCard {
 		String entry;
 		Game game = null;
 		ArrayList<Player> players;
-		
+
 		while (true) {
 			do {
 				System.out.println("Select game to play or type \"Q\" or \"QUIT\" to "
@@ -112,10 +112,10 @@ public class FreeBoardAndCard {
 					System.out.println("Invalid game number.");
 				}
 			} while (!validInput);
-			
+
 			validInput = false;
 			int numPlayers = game.getMinPlayers();
-			
+
 			if (numPlayers != game.getMaxPlayers()) {
 				while (!validInput) {
 					try {
@@ -123,12 +123,12 @@ public class FreeBoardAndCard {
 								+ game.getMinPlayers() + "-" + game.getMaxPlayers() + "): ");
 						entry = input.nextLine();
 						numPlayers = Integer.parseInt(entry);
-					
+
 						if (numPlayers < game.getMinPlayers()
 								|| numPlayers > game.getMaxPlayers()) {
 							throw new IllegalArgumentException();
 						}
-					
+
 						validInput = true;
 					}
 					catch(NumberFormatException e) {
@@ -139,12 +139,12 @@ public class FreeBoardAndCard {
 					}
 				}
 			}
-			
+
 			players = new ArrayList<Player>(numPlayers);
 			for (int i = 1; i <= numPlayers; i++) {
 				boolean isHuman = false;
 				Player newPlayer;
-				
+
 				validInput = false;
 				while (!validInput) {
 					System.out.print("Is player #" + i + " human? (Y/N): ");
@@ -163,7 +163,7 @@ public class FreeBoardAndCard {
 							System.out.println("Invalid selection.");
 					}
 				}
-				
+
 				if (isHuman) {
 					System.out.print("Enter name of player #" + i + ": ");
 					entry = input.nextLine();
@@ -171,12 +171,12 @@ public class FreeBoardAndCard {
 				} else {
 					newPlayer = new RandomPlayer();
 				}
-				
+
 				newPlayer.setGamePlaying(game);
 				players.add(newPlayer);
 			}
 			System.out.println("Good luck!");
-			
+
 			do {
 				game.init(players);
 				game.play();
@@ -201,7 +201,7 @@ public class FreeBoardAndCard {
 			} while (playAgain);
 		}
 	}
-	
+
 	private static Game returnGame(int i) {
 		switch (i) {
 			case 1: return new Backgammon();

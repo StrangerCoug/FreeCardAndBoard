@@ -39,11 +39,11 @@ public class SpanishDeck extends Deck {
 	public SpanishDeck(int numDecks) {
 		super(numDecks, false, false);
 	}
-	
+
 	public SpanishDeck() {
 		this(1);
 	}
-	
+
 	@Override
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
@@ -52,7 +52,7 @@ public class SpanishDeck extends Deck {
 			CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
 			CardSuit.SPADES};
-		
+
 		for (int i = 0; i < super.NUM_DECKS; i++)
 			for (int j = 0; j < 48; i++)
 				deck.add(new Card(ranks[i/4], suits[i%4]));

@@ -41,11 +41,11 @@ import com.github.strangercoug.freeboardandcard.objs.Deck;
 public abstract class CardGame extends Game {
 	protected Deck deck;
 	protected ArrayList<ArrayList<Card>> hands;
-	
+
 	public Deck getDeck() {
 		return deck;
 	}
-	
+
 	public ArrayList<ArrayList<Card>> getHands() {
 		return hands;
 	}

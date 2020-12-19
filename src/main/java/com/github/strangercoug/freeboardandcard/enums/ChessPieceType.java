@@ -39,25 +39,25 @@ public enum ChessPieceType implements PieceType {
 	BISHOP("bishop", "B", "B"),
 	KNIGHT("knight", "N", "N"),
 	PAWN("pawn", "P", "mfWcfFimfW2");
-	
+
 	private final String name;
 	private final String abbrev;
 	private final String movement;
-	
+
 	ChessPieceType(String name, String abbrev, String movement) {
 		this.name = name;
 		this.abbrev = abbrev;
 		this.movement = movement;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getAbbrev() {
 		return abbrev;
 	}
-	
+
 	public String getMovement() {
 		return movement;
 	}

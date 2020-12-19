@@ -39,19 +39,19 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 	}
-	
+
 	public Player() {
 		this("Anonymous");
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public Game getGamePlaying() {
 		return gamePlaying;
 	}
-	
+
 	public void setGamePlaying (Game gamePlaying) {
 		this.gamePlaying = gamePlaying;
 	}

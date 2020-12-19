@@ -40,13 +40,13 @@ import com.github.strangercoug.freeboardandcard.enums.CardSuit;
 public class Card implements Comparable<Card> {
 	private final CardRank rank;
 	private final CardSuit suit;
-	
+
 	private final String[] rankNames = {"Two", "Three", "Four", "Five", "Six",
 		"Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Jack",
 		"Queen", "King", "Ace", "Joker"};
 	private final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades",
 		"Black", "Red"};
-	
+
 	/**
 	 * Sole constructor.
 	 * 
@@ -57,11 +57,11 @@ public class Card implements Comparable<Card> {
 		this.rank = rank;
 		this.suit = suit;
 	}
-	
+
 	public CardRank getRank() {
 		return rank;
 	}
-	
+
 	public CardSuit getSuit() {
 		return suit;
 	}
@@ -78,10 +78,10 @@ public class Card implements Comparable<Card> {
 	public boolean outranks(Card other) {
 		if (other == null)
 			throw new NullPointerException();
-		
+
 		return this.rank.ordinal() > other.getRank().ordinal();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 7;
@@ -94,15 +94,15 @@ public class Card implements Comparable<Card> {
 	public boolean equals(Object obj) {
 		if (obj == null)
 			return false;
-		
+
 		if (getClass() != obj.getClass())
 			return false;
-		
+
 		final Card other = (Card) obj;
-		
+
 		return this.rank == other.getRank() && this.suit == other.getSuit();
 	}
-	
+
 	/**
 	 * This function is intended for sorting purposes. For simply determining if
 	 * one card is higher in rank than another, {@code outranks(Card other)}
@@ -123,17 +123,17 @@ public class Card implements Comparable<Card> {
 	public int compareTo(Card other) {
 		if (other == null)
 			throw new NullPointerException();
-		
+
 		return (this.suit.ordinal() * CardRank.values().length +
 				this.rank.ordinal()) - (other.getSuit().ordinal() *
 				CardRank.values().length + other.getRank().ordinal());
 	}
-	
+
 	@Override
 	public String toString() {
 		if (rank == CardRank.JOKER)
 			return suitNames[suit.ordinal()] + rankNames[rank.ordinal()];
-		
+
 		return rankNames[rank.ordinal()] + " of " + suitNames[suit.ordinal()];
 	}
 }

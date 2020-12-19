@@ -45,30 +45,30 @@ public class NinetyNine extends CardGame {
 	private enum PremiumBid{DECLARE, REVEAL};
 	private PremiumBid premiumBid;
 	private Player premiumBidder;
-	
+
 	public NinetyNine() {
 		minPlayers = 3;
 		maxPlayers = 5;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
-		
+
 		/* TODO: This works correctly only for four players. The game should
 		 * strip the deuces through fives for a three-player game and add the
 		 * elevens and twelves for a five-player game.
 		 */
 		deck = new Deck(1, false, false);
-		
+
 		players.forEach((_item) -> {
 			hands.add(new ArrayList<Card>());
 		});
-		
+
 		scores = new int[players.size()];
 		tricksBid = new int[players.size()];
 		tricksWon = new int[players.size()];
@@ -79,13 +79,13 @@ public class NinetyNine extends CardGame {
 		deck.populateDeck();
 		deck.shuffleDeck();
 	}
-	
+
 	/**
 	 * Deals out the entire deck of cards to each player.
 	 * 
 	 * @param dealerPos the position of the current dealer
 	 */
-	
+
 	public void dealCards(int dealerPos) {
 		deck.shuffleDeck();
 		 
@@ -93,7 +93,7 @@ public class NinetyNine extends CardGame {
 			hands.get(i).add(deck.dealCard());
 		}
 	}
-	
+
 	private int getBidValue(CardSuit suit) {
 		switch(suit) {
 			case DIAMONDS: return 0;
@@ -103,7 +103,7 @@ public class NinetyNine extends CardGame {
 			default: throw new IllegalArgumentException("Suit cannot be null.");
 		}
 	}
-	
+
 	/**
 	 * Determines which card won the trick.
 	 * 
@@ -112,11 +112,11 @@ public class NinetyNine extends CardGame {
 	 * @return the highest trump if a card was played, the highest card of the
 	 * suit led otherwise
 	 */
-	
+
 	public Card findWinningCard(Card[] cards, CardSuit trump) {
 		boolean trumpFound = cards[0].getSuit().equals(trump);
 		int winningCardIndex = 0;
-		
+
 		for (int i = 1; i < cards.length; i++) {
 			if (trump != null) {
 				if (!trumpFound && cards[i].getSuit().equals(trump)) {
@@ -125,17 +125,17 @@ public class NinetyNine extends CardGame {
 					continue;
 				}
 			}   
-				
+
 			if (!cards[i].getSuit().equals(cards[winningCardIndex].getSuit()))
 				continue;
-			
+
 			if (cards[i].outranks(cards[winningCardIndex]))
 				winningCardIndex = i;
 		}
-		
+
 		return cards[winningCardIndex];
 	}
-	
+
 	/**
 	 * Tabulates the results of the hand. Currently does not support
 	 * declarations or revelations.
@@ -144,16 +144,16 @@ public class NinetyNine extends CardGame {
 		boolean[] madeBid = new boolean[players.size()];
 		byte numWinners = 0;
 		byte winBonus;
-		
+
 		for (int i = 0; i < players.size(); i++) {
 			scores[i] += tricksWon[i];
 			madeBid[i] = tricksWon[i] == tricksBid[i];
-			
+
 			if (madeBid[i]) {
 				numWinners++;
 			}
 		}
-		
+
 		switch (numWinners) {
 			case 0: currentTrump = CardSuit.DIAMONDS;
 				break;
@@ -165,48 +165,48 @@ public class NinetyNine extends CardGame {
 				break;
 			default: currentTrump = null;
 		}
-		
+
 		if (numWinners == 0) {
 			return; // since there's no point in continuing
 		}
-		
+
 		if (players.size() == 5) {
 			winBonus = (byte) ((6 - numWinners) * 10);
 		}
-		
+
 		else {
 			if (numWinners == 4) {
 				winBonus = 0;
 			}
-			
+
 			else winBonus = (byte) ((4 - numWinners) * 10);
 		}
-		
+
 		for (int i = 0; i < players.size(); i++) {
 			if (madeBid[i]) {
 				scores[i] += winBonus;
 			}
 		}
 	}
-	
+
 	public boolean isThereAWinner() {
 		for (int i = 0; i < scores.length; i++) {
 			if (scores[i] >= 100) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	public Player getFirstPlacePlayer() {
 		Player leader = players.get(0);
-		
+
 		for (int i = 1; i < players.size(); i++) {
 			if (scores[i] > scores[players.indexOf(leader)])
 				leader = players.get(i);
 		}
-		
+
 		return leader;
 	}
 }

@@ -47,25 +47,25 @@ public enum ShogiPieceType implements PieceType {
 	NARIKYOU("promoted lance", "+L", "WfF"),
 	PAWN("pawn", "P", "fW"),
 	TOKIN("promoted pawn", "+P", "WfF");
-	
+
 	private final String name;
 	private final String abbrev;
 	private final String movement;
-	
+
 	ShogiPieceType(String name, String abbrev, String movement) {
 		this.name = name;
 		this.abbrev = abbrev;
 		this.movement = movement;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getAbbrev() {
 		return abbrev;
 	}
-	
+
 	public String getMovement() {
 		return movement;
 	}

@@ -38,27 +38,27 @@ import com.github.strangercoug.freeboardandcard.enums.PieceColor;
 public class ChessPiece extends ChessVarPiece {
 	private final PieceColor PIECE_COLOR;
 	private final ChessPieceType PIECE_TYPE;
-	
+
 	public ChessPiece(PieceColor pieceColor, ChessPieceType pieceType) {
 		PIECE_COLOR = pieceColor;
 		PIECE_TYPE = pieceType;
 	}
-	
+
 	public PieceColor getPieceColor() {
 		return PIECE_COLOR;
 	}
-	
+
 	public ChessPieceType getPieceType() {
 		return PIECE_TYPE;
 	}
-	
+
 	public String getAbbreviation() {
 		switch (PIECE_COLOR) {
 			case WHITE: return PIECE_TYPE.getAbbrev().toUpperCase();
 			default: return PIECE_TYPE.getAbbrev().toLowerCase();
 		}
 	}   
-	
+
 	/**
 	 * 
 	 * @return the Unicode character that encodes this piece.

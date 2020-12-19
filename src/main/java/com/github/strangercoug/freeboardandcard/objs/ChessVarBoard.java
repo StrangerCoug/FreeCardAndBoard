@@ -33,49 +33,49 @@ package com.github.strangercoug.freeboardandcard.objs;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class ChessVarBoard {
-    protected ChessVarPiece[][] board;
+	protected ChessVarPiece[][] board;
 
-    public abstract void initBoard();
+	public abstract void initBoard();
 
-    public ChessVarPiece[][] getBoard() {
-        return board;
-    }
-    
-    /**
-     * While this method has a self-explanatory name, it does not check if the
-     * move being submitted is actually legal, and it cannot handle the castling
-     * or en passant captures of Western chess by itself. Those types of moves
-     * have their own functions with special handling, although they all call
-     * this method.
-     *
-     * @param start the starting coordinate
-     * @param end the ending coordinate
-     */
-    public void movePiece(int[] start, int[] end) {
-        if (start.length != 2 || end.length != 2) {
-            throw new IllegalArgumentException("Each coordinate must be of " + 
-                    "length 2.");
-        }
-        ChessVarPiece pieceMoving = board[start[0]][start[1]];
-        board[start[0]][start[1]] = null;
-        board[end[0]][end[1]] = pieceMoving;
-    }
+	public ChessVarPiece[][] getBoard() {
+		return board;
+	}
 
-    /**
-     * Overwrites any piece at the specified square on the board with the
-     * specified chess piece. In standard chess and most of its variants, this
-     * should be called only to promote a piece, but it can also be used for
-     * drops in bughouse chess as well as in shogi, hence its neutral name.
-     *
-     * @param piece the piece to be promoted to or dropped
-     * @param location the coordinates of the promoted or dropped piece
-     */
-    public void replacePiece(ChessVarPiece piece, int[] location) {
-        if (location.length != 2) {
-            throw new IllegalArgumentException("The coordinate must be of " +
-                    "length 2.");
-        }
-        board[location[0]][location[1]] = piece;
-    }
-    
+	/**
+	 * While this method has a self-explanatory name, it does not check if the
+	 * move being submitted is actually legal, and it cannot handle the castling
+	 * or en passant captures of Western chess by itself. Those types of moves
+	 * have their own functions with special handling, although they all call
+	 * this method.
+	 *
+	 * @param start the starting coordinate
+	 * @param end the ending coordinate
+	 */
+	public void movePiece(int[] start, int[] end) {
+		if (start.length != 2 || end.length != 2) {
+			throw new IllegalArgumentException("Each coordinate must be of " + 
+					"length 2.");
+		}
+		ChessVarPiece pieceMoving = board[start[0]][start[1]];
+		board[start[0]][start[1]] = null;
+		board[end[0]][end[1]] = pieceMoving;
+	}
+
+	/**
+	 * Overwrites any piece at the specified square on the board with the
+	 * specified chess piece. In standard chess and most of its variants, this
+	 * should be called only to promote a piece, but it can also be used for
+	 * drops in bughouse chess as well as in shogi, hence its neutral name.
+	 *
+	 * @param piece the piece to be promoted to or dropped
+	 * @param location the coordinates of the promoted or dropped piece
+	 */
+	public void replacePiece(ChessVarPiece piece, int[] location) {
+		if (location.length != 2) {
+			throw new IllegalArgumentException("The coordinate must be of " +
+					"length 2.");
+		}
+		board[location[0]][location[1]] = piece;
+	}
+
 }

@@ -31,19 +31,19 @@ package com.github.strangercoug.freeboardandcard.exceptions;
  */
 public class CardNotHeldException extends Exception {
 	private static final long serialVersionUID = 0x7A04_0DFC_856C_A891L;
-	
+
 	public CardNotHeldException() {
 		super();
 	}
-	
+
 	public CardNotHeldException(String message) {
 		super(message);
 	}
-	
+
 	public CardNotHeldException(String message, Throwable cause) {
 		super(message, cause);
 	}
-	
+
 	public CardNotHeldException(Throwable cause) {
 		super(cause);
 	}

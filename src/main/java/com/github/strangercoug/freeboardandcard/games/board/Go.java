@@ -39,20 +39,20 @@ import com.github.strangercoug.freeboardandcard.objs.GoBoard;
  */
 public class Go extends BoardGame {
 	GoBoard board;
-	
+
 	public Go() {
 		minPlayers = maxPlayers = 2;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		init(players, 19);
 	}
-	
+
 	public void init(ArrayList<Player> players, int boardSize) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.board = new GoBoard(boardSize);
 		this.gameWon = false;
@@ -62,5 +62,5 @@ public class Go extends BoardGame {
 	public void play() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-	
+
 }

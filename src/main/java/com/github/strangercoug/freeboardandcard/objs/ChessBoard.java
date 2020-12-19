@@ -39,7 +39,7 @@ public class ChessBoard extends ChessVarBoard {
 	public ChessBoard() {
 		board = new ChessPiece[8][8];
 	}
-	
+
 	public void initBoard() {
 		ChessPieceType[] pieceForFile = {ChessPieceType.ROOK, ChessPieceType.KNIGHT,
 			ChessPieceType.BISHOP, ChessPieceType.QUEEN, ChessPieceType.KING, ChessPieceType.BISHOP,
@@ -53,7 +53,7 @@ public class ChessBoard extends ChessVarBoard {
 			board[i][7] = new ChessPiece(PieceColor.BLACK, pieceForFile[i]);
 		}
 	} 
-	
+
 	/**
 	 * While this method has a self-explanatory name, it does not check if the
 	 * en passant capture is legal or even if it is an actual en passant
@@ -66,8 +66,8 @@ public class ChessBoard extends ChessVarBoard {
 		movePiece(start, end);
 		board[end[0]][start[1]] = null;
 	}
-	
-	
+
+
 	/**
 	 * While this method has a self-explanatory name, it does not check if the
 	 * castle is legal.
@@ -84,7 +84,7 @@ public class ChessBoard extends ChessVarBoard {
 				break;
 			default: throw new NullPointerException();
 		}
-		
+
 		if (kingside) {
 			movePiece(new int[]{4,startRank}, new int[]{6,startRank});
 			movePiece(new int[]{7,startRank}, new int[]{5,startRank});
@@ -94,11 +94,11 @@ public class ChessBoard extends ChessVarBoard {
 			movePiece(new int[]{0,startRank}, new int[]{3,startRank});
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		String textBoard = "";
-		
+
 		for (int j = board.length-1; j >= 0; j--) {
 			for (int i = 0; i < board.length; i++) {
 				if (board[i][j] == null)
@@ -108,7 +108,7 @@ public class ChessBoard extends ChessVarBoard {
 			}
 			textBoard += "\n";
 		}
-		
+
 		return textBoard;
 	}
 }

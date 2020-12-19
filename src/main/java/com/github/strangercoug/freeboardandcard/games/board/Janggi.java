@@ -41,12 +41,12 @@ public class Janggi extends BoardGame {
 	public Janggi() {
 		minPlayers = maxPlayers = 2;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
 	}
@@ -55,5 +55,5 @@ public class Janggi extends BoardGame {
 	public void play() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-	
+
 }

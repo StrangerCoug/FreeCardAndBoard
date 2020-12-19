@@ -38,23 +38,23 @@ public class ReversiBoard extends GoBoard {
 	public ReversiBoard() {
 		super(8);
 	}
-	
+
 	public ReversiBoard(int i) {
 		super(i);
 	}
-	
+
 	public void initBoard() {
 		super.clearBoard();
-		
+
 		//FIXME: This seems to be always 0; it should be half the board length.
 		int half = board.length % 2;
-		
+
 		super.placePiece(PieceColor.WHITE, new int[]{half, half});
 		super.placePiece(PieceColor.WHITE, new int[]{half-1, half-1});
 		super.placePiece(PieceColor.BLACK, new int[]{half-1, half});
 		super.placePiece(PieceColor.BLACK, new int[]{half, half-1});
 	}
-	
+
 	public void flipPiece(int[] location) {
 		if (location.length != 2) {
 			throw new IllegalArgumentException("The coordinate must be of " +
@@ -63,7 +63,7 @@ public class ReversiBoard extends GoBoard {
 		if (board[location[0]][location[1]] == null)
 			throw new NullPointerException("There's no piece at (" + location[0]
 					+ ", " + location[1] + ".");
-		
+
 		if (board[location[0]][location[1]] == PieceColor.BLACK)
 			board[location[0]][location[1]] = PieceColor.WHITE;
 		else board[location[0]][location[1]] = PieceColor.BLACK;

@@ -34,10 +34,10 @@ package com.github.strangercoug.freeboardandcard;
  */
 public abstract class ComputerPlayer extends Player {
 	protected Game gamePlaying;
-	
+
 	public final Game getGamePlaying() {
 		return gamePlaying;
 	}
-	
+
 	public abstract String getMove();
 }

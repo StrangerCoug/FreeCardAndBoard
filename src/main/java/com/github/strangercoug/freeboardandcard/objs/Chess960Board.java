@@ -38,7 +38,7 @@ import com.github.strangercoug.freeboardandcard.enums.PieceColor;
 public class Chess960Board extends ChessBoard {
 	private short startingPosition;
 	protected byte queenRookFile, kingFile, kingRookFile;
-	
+
 	@Override
 	public void initBoard() {
 		startingPosition = (short)(Math.random() * 960);
@@ -46,7 +46,7 @@ public class Chess960Board extends ChessBoard {
 			super.initBoard();
 		else initBoard(startingPosition);
 	}
-	
+
 	/**
 	 * This method is public primarily for testing and debugging purposes. In
 	 * production use, it is generally not desirable to call this method
@@ -54,12 +54,12 @@ public class Chess960Board extends ChessBoard {
 	 * 
 	 * @param idn the Scharnagl SP
 	 */
-	
+
 	public void initBoard(short idn) {
 		if (idn < 0 || idn > 959)
 			throw new IllegalArgumentException("idn must be between 0 and 959" +
 					" inclusive.");
-		
+
 		ChessPieceType[] pieceForFile;
 		ChessPieceType[][] bishopTable = {
 			{ChessPieceType.BISHOP,ChessPieceType.BISHOP,null,null,null,null,null,null},
@@ -91,12 +91,12 @@ public class Chess960Board extends ChessBoard {
 			{null, null, ChessPieceType.KNIGHT, null, ChessPieceType.KNIGHT},
 			{null, null, null, ChessPieceType.KNIGHT, ChessPieceType.KNIGHT}
 		};
-		
+
 		// Place the bishops
 		byte q1 = (byte)(idn/16);
 		byte r = (byte)(idn%16);
 		pieceForFile = bishopTable[r];
-		
+
 		// Place the queen
 		byte q2 = (byte)(q1/6);
 		r = (byte)(q1%6);
@@ -109,7 +109,7 @@ public class Chess960Board extends ChessBoard {
 			}
 			r--;
 		}
-		
+
 		// Place the knights
 		int j = 0;
 		for (int i = 0; i < pieceForFile.length && j < knightTable[q2].length;
@@ -119,7 +119,7 @@ public class Chess960Board extends ChessBoard {
 			pieceForFile[i] = knightTable[q2][j];
 			j++;
 		}
-		
+
 		// Place the rooks and king
 		j = 0;
 		for (int i = 0; i < pieceForFile.length && j < 3; i++) {
@@ -137,7 +137,7 @@ public class Chess960Board extends ChessBoard {
 			}
 			j++;
 		}
-		
+
 		// Place the pieces according to our calculations
 		for (int i = 0; i < board.length; i++) {
 			board[i][0] = new ChessPiece(PieceColor.WHITE, pieceForFile[i]);
@@ -147,7 +147,7 @@ public class Chess960Board extends ChessBoard {
 			board[i][7] = new ChessPiece(PieceColor.BLACK, pieceForFile[i]);
 		}
 	}
-	
+
 	/**
 	 * While this method has a self-explanatory name, it does not check if the
 	 * castle is legal.
@@ -173,7 +173,7 @@ public class Chess960Board extends ChessBoard {
 			default: throw new NullPointerException();
 		}
 		board[kingFile][startRank] = null;
-		
+
 		if (kingside) {
 			movePiece(new int[]{kingRookFile, startRank}, new int[]{3,
 					startRank});

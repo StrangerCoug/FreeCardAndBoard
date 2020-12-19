@@ -39,27 +39,27 @@ public abstract class Game {
 	protected ArrayList<Player> players;
 	protected int currentPlayerIndex;
 	protected boolean gameWon;
-	
+
 	public final byte getMinPlayers() {
 		return minPlayers;
 	}
-	
+
 	public final byte getMaxPlayers() {
 		return maxPlayers;
 	}
-	
+
 	public final ArrayList<Player> getPlayers() {
 		return players;
 	}
-	
+
 	public final int getCurrentPlayerIndex() {
 		return currentPlayerIndex;
 	}
-	
+
 	public final boolean getGameWon() {
 		return gameWon;
 	}
-	
+
 	/** 
 	 * Initializes the variables that this game needs before it starts. If a
 	 * game needs more information to start than that on the players, for
@@ -70,12 +70,12 @@ public abstract class Game {
 	 * @param players  the list of players in turn order. Should never be null.
 	 */
 	public abstract void init(ArrayList<Player> players);
-	
+
 	/**
 	 * Starts play of this game. Game logic belongs in this method.
 	 */
 	public abstract void play();
-	
+
 	protected void advanceToNextPlayer() {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
 	}

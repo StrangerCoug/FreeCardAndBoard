@@ -43,16 +43,16 @@ public class Canasta extends CardGame {
 		minPlayers = 2;
 		maxPlayers = 6;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				&& players.size() != 5
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
-		
+
 		if (players.size() == 6) {
 			deck = new Deck(3, true, true);
 		} else {
@@ -67,5 +67,5 @@ public class Canasta extends CardGame {
 	public void play() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-	
+
 }

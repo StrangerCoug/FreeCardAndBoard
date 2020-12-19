@@ -40,25 +40,25 @@ public enum JanggiPieceType implements PieceType {
 	CHARIOT("chariot", "R", "R"),
 	CANNON("cannon", "C", "pR"),
 	SOLDIER("soldier", "S", "sfW");
-	
+
 	private final String name;
 	private final String abbrev;
 	private final String movement;
-	
+
 	JanggiPieceType(String name, String abbrev, String movement) {
 		this.name = name;
 		this.abbrev = abbrev;
 		this.movement = movement;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getAbbrev() {
 		return abbrev;
 	}
-	
+
 	public String getMovement() {
 		return movement;
 	}

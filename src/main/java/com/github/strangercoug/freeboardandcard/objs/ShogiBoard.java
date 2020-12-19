@@ -40,7 +40,7 @@ public class ShogiBoard extends ChessVarBoard {
 	public ShogiBoard() {
 		board = new ShogiPiece[9][9];
 	}
-	
+
 	@Override
 	public void initBoard() {
 		ShogiPieceType[] backRankPieces = {ShogiPieceType.LANCE,
@@ -51,7 +51,7 @@ public class ShogiBoard extends ChessVarBoard {
 			null, null, null, ShogiPieceType.ROOK, null};
 		ShogiPieceType[] rankHPieces = {null, ShogiPieceType.ROOK, null, null,
 			null, null, null, ShogiPieceType.BISHOP, null};
-		
+
 		for (int i = 0; i < board.length; i++) {
 			board[i][0] = new ShogiPiece(PieceColor.WHITE, backRankPieces[i]);
 			if (rankBPieces[i] == null) board[i][1] = null;
@@ -66,11 +66,11 @@ public class ShogiBoard extends ChessVarBoard {
 			board[i][8] = new ShogiPiece(PieceColor.BLACK, backRankPieces[i]);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		String textBoard = "";
-		
+
 		for (int j = 0; j < board[0].length; j++) {
 			for (int i = board.length-1; i >= 0; i--) {
 				if (board[i][j] == null)
@@ -84,7 +84,7 @@ public class ShogiBoard extends ChessVarBoard {
 			}
 			textBoard += "\n";
 		}
-		
+
 		return textBoard;
 	}
 }

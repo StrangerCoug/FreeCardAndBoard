@@ -37,7 +37,7 @@ import com.github.strangercoug.freeboardandcard.games.board.Mancala;
 public class RandomPlayer extends ComputerPlayer {
 	@Override
 	public String getMove() {
-		
+
 		/* FIXME: If-else statement not currently working right. Since we're
 		 * only testing Mancala, we can just comment out the offending lines for
 		 * now, but later we'll have to tackle this bug--I'm not sure what's

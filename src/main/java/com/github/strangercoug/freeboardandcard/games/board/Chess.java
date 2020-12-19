@@ -39,19 +39,19 @@ import com.github.strangercoug.freeboardandcard.objs.ChessBoard;
  */
 public class Chess extends BoardGame {
 	ChessBoard board;
-	
+
 	public Chess() {
 		minPlayers = maxPlayers = 2;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
-		
+
 		board = new ChessBoard();
 		board.initBoard();
 	}

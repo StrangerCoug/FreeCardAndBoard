@@ -40,19 +40,19 @@ import com.github.strangercoug.freeboardandcard.objs.ReversiBoard;
  */
 public class Reversi extends BoardGame {
 	ReversiBoard board;
-	
+
 	public Reversi() {
 		minPlayers = maxPlayers = 2;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
-		
+
 		board = new ReversiBoard();
 		board.initBoard();
 	}

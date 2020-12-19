@@ -42,13 +42,13 @@ public class Halma extends BoardGame {
 		minPlayers = 2;
 		minPlayers = 4;
 	}
-	
+
 	@Override
 	public void init(ArrayList<Player> players) {
 		assert players.size() >= minPlayers && players.size() <= maxPlayers
 				&& players.size() != 3
 				: "Wrong number of players.";
-		
+
 		this.players = players;
 		this.gameWon = false;
 	}
@@ -57,5 +57,5 @@ public class Halma extends BoardGame {
 	public void play() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-	
+
 }

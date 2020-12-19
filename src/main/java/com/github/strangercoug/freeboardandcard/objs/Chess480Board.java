@@ -55,7 +55,7 @@ public class Chess480Board extends Chess960Board {
 				break;
 			default: throw new NullPointerException();
 		}
-		
+
 		if (kingside) {
 			movePiece(new int[]{kingFile,startRank}, new int[]{kingFile+2,
 				startRank});

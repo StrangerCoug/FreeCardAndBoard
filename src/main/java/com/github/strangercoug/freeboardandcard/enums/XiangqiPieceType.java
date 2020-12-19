@@ -41,25 +41,25 @@ public enum XiangqiPieceType implements PieceType {
 	CANNON("cannon", "C", "mRcpR"),
 	SOLDIER("soldier", "S", "fW"), // soldier before crossing the river 
 	PROMOTED_SOLDIER("soldier", "S", "sfW"); // soldier after crossing the river
-	
+
 	private final String name;
 	private final String abbrev;
 	private final String movement;
-	
+
 	XiangqiPieceType(String name, String abbrev, String movement) {
 		this.name = name;
 		this.abbrev = abbrev;
 		this.movement = movement;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getAbbrev() {
 		return abbrev;
 	}
-	
+
 	public String getMovement() {
 		return movement;
 	}

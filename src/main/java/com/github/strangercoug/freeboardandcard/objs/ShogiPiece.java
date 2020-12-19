@@ -38,20 +38,20 @@ import com.github.strangercoug.freeboardandcard.enums.ShogiPieceType;
 public class ShogiPiece extends ChessVarPiece {
 	private final PieceColor PIECE_COLOR;
 	private final ShogiPieceType PIECE_TYPE;
-	
+
 	public ShogiPiece(PieceColor pieceColor, ShogiPieceType pieceType) {
 		PIECE_COLOR = pieceColor;
 		PIECE_TYPE = pieceType;
 	} 
-	
+
 	public PieceColor getPieceColor() {
 		return PIECE_COLOR;
 	}
-	
+
 	public ShogiPieceType getPieceType() {
 		return PIECE_TYPE;
 	}
-	
+
 	public String getAbbreviation() {
 		switch (PIECE_COLOR) {
 			case BLACK: return PIECE_TYPE.getAbbrev().toUpperCase();

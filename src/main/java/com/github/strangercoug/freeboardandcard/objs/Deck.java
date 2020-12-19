@@ -43,7 +43,7 @@ public class Deck {
 	protected final int NUM_DECKS;
 	private final boolean USES_BLACK_JOKER;
 	private final boolean USES_RED_JOKER;
-	
+
 	public Deck(int numDecks, boolean usesBlackJoker, boolean usesRedJoker) {
 		deck = new LinkedList<>();
 		NUM_DECKS = numDecks;
@@ -54,11 +54,11 @@ public class Deck {
 	public Deck(int numDecks) {
 		this(numDecks, false, false);
 	}
-	
+
 	public Deck() {
 		this(1, false, false);
 	}
-	
+
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
 			CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
@@ -66,19 +66,19 @@ public class Deck {
 			CardRank.KING, CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
 			CardSuit.SPADES};
-		
+
 		for (int i = 0; i < NUM_DECKS; i++) {
 			for (int j = 0; j < 52; i++)
 				deck.add(new Card(ranks[i/4], suits[i%4]));
-			
+
 			if (USES_BLACK_JOKER)
 				deck.add(new Card(CardRank.JOKER, CardSuit.BLACK));
-			
+
 			if (USES_RED_JOKER)
 				deck.add(new Card(CardRank.JOKER, CardSuit.RED));
 		}
 	}
-	
+
 	/* TODO: This is fine for alpha and beta testing, but at a later point I
 	 * would like to be able to detect whether there is an Internet connection
 	 * and use the random.org API to shuffle if possible. If something goes
@@ -87,11 +87,11 @@ public class Deck {
 	public void shuffleDeck() {
 		Collections.shuffle(deck);
 	}
-	
+
 	public Card dealCard() {
 		return deck.pop();
 	}
-	
+
 	public boolean isEmpty() {
 		return deck.size() == 0;
 	}
