@@ -28,7 +28,7 @@
  */
 package com.github.strangercoug.freeboardandcard.objs;
 
-import java.util.Collections;
+import java.security.SecureRandom;
 import java.util.LinkedList;
 
 import com.github.strangercoug.freeboardandcard.enums.CardRank;
@@ -39,13 +39,14 @@ import com.github.strangercoug.freeboardandcard.enums.CardSuit;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected LinkedList<Card> deck;
+	protected LinkedList<Card> cards;
 	protected final int NUM_DECKS;
 	private final boolean USES_BLACK_JOKER;
 	private final boolean USES_RED_JOKER;
+	private final SecureRandom rng = new SecureRandom();
 
 	public Deck(int numDecks, boolean usesBlackJoker, boolean usesRedJoker) {
-		deck = new LinkedList<>();
+		cards = new LinkedList<>();
 		NUM_DECKS = numDecks;
 		USES_BLACK_JOKER = usesBlackJoker;
 		USES_RED_JOKER = usesRedJoker;
@@ -69,13 +70,13 @@ public class Deck {
 
 		for (int i = 0; i < NUM_DECKS; i++) {
 			for (int j = 0; j < 52; i++)
-				deck.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[i/4], suits[i%4]));
 
 			if (USES_BLACK_JOKER)
-				deck.add(new Card(CardRank.JOKER, CardSuit.BLACK));
+				cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
 
 			if (USES_RED_JOKER)
-				deck.add(new Card(CardRank.JOKER, CardSuit.RED));
+				cards.add(new Card(CardRank.JOKER, CardSuit.RED));
 		}
 	}
 
@@ -85,14 +86,20 @@ public class Deck {
 	 * wrong, we fall back to this.
 	 */
 	public void shuffleDeck() {
-		Collections.shuffle(deck);
+		for (int i = cards.size() - 1; i > 0; i--) {
+			Card temp = cards.get(i);
+			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo shuffle,
+			                             * which we don't want */
+			cards.set(i, cards.get(j));
+			cards.set(j, temp);
+		}
 	}
 
 	public Card dealCard() {
-		return deck.pop();
+		return cards.pop();
 	}
 
 	public boolean isEmpty() {
-		return deck.size() == 0;
+		return cards.size() == 0;
 	}
 }
