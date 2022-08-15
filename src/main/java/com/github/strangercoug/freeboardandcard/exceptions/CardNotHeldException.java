@@ -25,11 +25,14 @@
  */
 package com.github.strangercoug.freeboardandcard.exceptions;
 
+import java.io.Serial;
+
 /**
  *
  * @author Jeffrey Hope
  */
 public class CardNotHeldException extends Exception {
+	@Serial
 	private static final long serialVersionUID = 0x7A04_0DFC_856C_A891L;
 
 	public CardNotHeldException() {

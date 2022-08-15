@@ -47,14 +47,10 @@ public class Chess480Board extends Chess960Board {
 	 */
 	@Override
 	public void castle(PieceColor player, boolean kingside) {
-		byte startRank;
-		switch (player) {
-			case WHITE: startRank = 0;
-				break;
-			case BLACK: startRank = 7;
-				break;
-			default: throw new NullPointerException();
-		}
+		byte startRank = switch (player) {
+			case WHITE -> 0;
+			case BLACK -> 7;
+		};
 
 		if (kingside) {
 			movePiece(new int[]{kingFile,startRank}, new int[]{kingFile+2,

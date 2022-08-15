@@ -36,10 +36,10 @@ package com.github.strangercoug.freeboardandcard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public interface PieceType {
-	public String getName();
-	public String getAbbrev();
+	String getName();
+	String getAbbrev();
 	/**
 	 * @return the Betza notation for how the piece can move
 	 */
-	public String getMovement();
+	String getMovement();
 }

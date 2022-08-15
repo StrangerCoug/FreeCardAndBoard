@@ -68,7 +68,7 @@ public class Deck {
 			CardSuit.SPADES};
 
 		for (int i = 0; i < NUM_DECKS; i++) {
-			for (int j = 0; j < 52; i++)
+			for (int j = 0; j < ranks.length * suits.length; j++)
 				deck.add(new Card(ranks[i/4], suits[i%4]));
 
 			if (USES_BLACK_JOKER)

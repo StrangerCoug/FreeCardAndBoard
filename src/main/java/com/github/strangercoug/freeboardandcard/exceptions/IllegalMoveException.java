@@ -25,6 +25,8 @@
  */
 package com.github.strangercoug.freeboardandcard.exceptions;
 
+import java.io.Serial;
+
 /**
  * Thrown when the player attempts to make an illegal move, for example not
  * following suit in a card game that requires it.
@@ -32,6 +34,7 @@ package com.github.strangercoug.freeboardandcard.exceptions;
  * @author Jeffrey Hope
  */
 public class IllegalMoveException extends Exception {
+	@Serial
 	private static final long serialVersionUID = 0xD2C5_C535_8E52_4CC3L;
 
 	public IllegalMoveException() {

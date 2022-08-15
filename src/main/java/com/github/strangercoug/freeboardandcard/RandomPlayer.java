@@ -28,8 +28,6 @@
  */
 package com.github.strangercoug.freeboardandcard;
 
-import com.github.strangercoug.freeboardandcard.games.board.Mancala;
-
 /**
  *
  * @author Jeffrey Hope

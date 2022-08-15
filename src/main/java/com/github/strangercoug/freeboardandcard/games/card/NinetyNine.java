@@ -41,8 +41,9 @@ import com.github.strangercoug.freeboardandcard.objs.Deck;
  */
 public class NinetyNine extends CardGame {
 	int[] scores, tricksBid, tricksWon;
-	private CardSuit currentTrump; // for no-trump, this is null
-	private enum PremiumBid{DECLARE, REVEAL};
+
+	private enum PremiumBid{DECLARE, REVEAL}
+
 	private PremiumBid premiumBid;
 	private Player premiumBidder;
 
@@ -65,9 +66,7 @@ public class NinetyNine extends CardGame {
 		 */
 		deck = new Deck(1, false, false);
 
-		players.forEach((_item) -> {
-			hands.add(new ArrayList<Card>());
-		});
+		players.forEach((_item) -> hands.add(new ArrayList<>()));
 
 		scores = new int[players.size()];
 		tricksBid = new int[players.size()];
@@ -95,13 +94,13 @@ public class NinetyNine extends CardGame {
 	}
 
 	private int getBidValue(CardSuit suit) {
-		switch(suit) {
-			case DIAMONDS: return 0;
-			case SPADES: return 1;
-			case HEARTS: return 2;
-			case CLUBS: return 3;
-			default: throw new IllegalArgumentException("Suit cannot be null.");
-		}
+		return switch (suit) {
+			case DIAMONDS -> 0;
+			case SPADES -> 1;
+			case HEARTS -> 2;
+			case CLUBS -> 3;
+			default -> throw new IllegalArgumentException("Suit cannot be null.");
+		};
 	}
 
 	/**
@@ -154,16 +153,14 @@ public class NinetyNine extends CardGame {
 			}
 		}
 
+		// for no-trump, this is null
+		CardSuit currentTrump;
 		switch (numWinners) {
-			case 0: currentTrump = CardSuit.DIAMONDS;
-				break;
-			case 1: currentTrump = CardSuit.SPADES;
-				break;
-			case 2: currentTrump = CardSuit.HEARTS;
-				break;
-			case 3: currentTrump = CardSuit.CLUBS;
-				break;
-			default: currentTrump = null;
+			case 0 -> currentTrump = CardSuit.DIAMONDS;
+			case 1 -> currentTrump = CardSuit.SPADES;
+			case 2 -> currentTrump = CardSuit.HEARTS;
+			case 3 -> currentTrump = CardSuit.CLUBS;
+			default -> currentTrump = null;
 		}
 
 		if (numWinners == 0) {
@@ -190,8 +187,8 @@ public class NinetyNine extends CardGame {
 	}
 
 	public boolean isThereAWinner() {
-		for (int i = 0; i < scores.length; i++) {
-			if (scores[i] >= 100) {
+		for (int score : scores) {
+			if (score >= 100) {
 				return true;
 			}
 		}
