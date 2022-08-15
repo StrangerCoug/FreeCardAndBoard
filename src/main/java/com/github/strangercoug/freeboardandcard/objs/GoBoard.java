@@ -30,6 +30,8 @@ package com.github.strangercoug.freeboardandcard.objs;
 
 import com.github.strangercoug.freeboardandcard.enums.PieceColor;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
@@ -50,9 +52,7 @@ public class GoBoard {
 	}
 
 	public void clearBoard() {
-		for (int i = 0; i < board.length; i++)
-			for (int j = 0; j < board[i].length; j++)
-				board[i][j] = null;
+		for (PieceColor[] pieceColors : board) Arrays.fill(pieceColors, null);
 	}
 
 	public void placePiece(PieceColor piece, int[] location) {
@@ -73,20 +73,20 @@ public class GoBoard {
 
 	@Override
 	public String toString() {
-		String textBoard = "";
+		StringBuilder textBoard = new StringBuilder();
 
 		for (int j = 0; j < board.length; j++) {
-			for (int i = 0; i < board.length; i++) {
-				if (board[i][j] == null)
-					textBoard += "_";
-				else if (board[i][j] == PieceColor.BLACK)
-					textBoard += "X";
-				else textBoard += "O";
-				textBoard += " ";
+			for (PieceColor[] pieceColors : board) {
+				if (pieceColors[j] == null)
+					textBoard.append("_");
+				else if (pieceColors[j] == PieceColor.BLACK)
+					textBoard.append("X");
+				else textBoard.append("O");
+				textBoard.append(" ");
 			}
-			textBoard += "\n";
+			textBoard.append("\n");
 		}
 
-		return textBoard;
+		return textBoard.toString();
 	}
 }

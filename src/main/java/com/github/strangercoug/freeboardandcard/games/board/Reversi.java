@@ -31,7 +31,6 @@ package com.github.strangercoug.freeboardandcard.games.board;
 import java.util.ArrayList;
 
 import com.github.strangercoug.freeboardandcard.Player;
-import com.github.strangercoug.freeboardandcard.enums.PieceColor;
 import com.github.strangercoug.freeboardandcard.objs.ReversiBoard;
 
 /**

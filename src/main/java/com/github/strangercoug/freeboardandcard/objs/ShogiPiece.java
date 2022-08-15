@@ -53,9 +53,9 @@ public class ShogiPiece extends ChessVarPiece {
 	}
 
 	public String getAbbreviation() {
-		switch (PIECE_COLOR) {
-			case BLACK: return PIECE_TYPE.getAbbrev().toUpperCase();
-			default: return PIECE_TYPE.getAbbrev().toLowerCase();
-		}
+		return switch (PIECE_COLOR) {
+			case BLACK -> PIECE_TYPE.getAbbrev().toUpperCase();
+			default -> PIECE_TYPE.getAbbrev().toLowerCase();
+		};
 	}
 }
