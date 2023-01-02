@@ -76,14 +76,10 @@ public class ChessBoard extends ChessVarBoard {
 	 * @param kingside true for a kingside castle, false for a queenside castle
 	 */
 	public void castle(PieceColor player, boolean kingside) {
-		byte startRank;
-		switch (player) {
-			case WHITE: startRank = 0;
-				break;
-			case BLACK: startRank = 7;
-				break;
-			default: throw new NullPointerException();
-		}
+		byte startRank = switch (player) {
+			case WHITE -> 0;
+			case BLACK -> 7;
+		};
 
 		if (kingside) {
 			movePiece(new int[]{4,startRank}, new int[]{6,startRank});
@@ -97,18 +93,18 @@ public class ChessBoard extends ChessVarBoard {
 
 	@Override
 	public String toString() {
-		String textBoard = "";
+		StringBuilder textBoard = new StringBuilder();
 
 		for (int j = board.length-1; j >= 0; j--) {
-			for (int i = 0; i < board.length; i++) {
-				if (board[i][j] == null)
-					textBoard += "_";
-				else textBoard += board[i][j].getAbbreviation();
-				textBoard += " ";
+			for (ChessVarPiece[] chessVarPieces : board) {
+				if (chessVarPieces[j] == null)
+					textBoard.append("_");
+				else textBoard.append(chessVarPieces[j].getAbbreviation());
+				textBoard.append(" ");
 			}
-			textBoard += "\n";
+			textBoard.append("\n");
 		}
 
-		return textBoard;
+		return textBoard.toString();
 	}
 }

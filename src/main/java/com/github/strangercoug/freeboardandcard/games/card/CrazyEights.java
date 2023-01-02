@@ -31,7 +31,6 @@ package com.github.strangercoug.freeboardandcard.games.card;
 import java.util.ArrayList;
 
 import com.github.strangercoug.freeboardandcard.Player;
-import com.github.strangercoug.freeboardandcard.objs.Card;
 import com.github.strangercoug.freeboardandcard.objs.Deck;
 
 /**
@@ -54,9 +53,7 @@ public class CrazyEights extends CardGame {
 
 		deck = new Deck(1, false, false);
 
-		players.forEach((_item) -> {
-			hands.add(new ArrayList<Card>());
-		});
+		players.forEach((_item) -> hands.add(new ArrayList<>()));
 	}
 
 	@Override

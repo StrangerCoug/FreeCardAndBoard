@@ -53,10 +53,10 @@ public class ChessPiece extends ChessVarPiece {
 	}
 
 	public String getAbbreviation() {
-		switch (PIECE_COLOR) {
-			case WHITE: return PIECE_TYPE.getAbbrev().toUpperCase();
-			default: return PIECE_TYPE.getAbbrev().toLowerCase();
-		}
+		return switch (PIECE_COLOR) {
+			case WHITE -> PIECE_TYPE.getAbbrev().toUpperCase();
+			default -> PIECE_TYPE.getAbbrev().toLowerCase();
+		};
 	}   
 
 	/**

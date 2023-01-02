@@ -70,29 +70,29 @@ public class FreeBoardAndCard {
 		ArrayList<Player> players;
 
 		do {
-			System.out.println("Select game to play or type \"Q\" or \"QUIT\" to "
-					+" quit:\n"
-					+ "1. Backgammon\n"
-					+ "2. Bridge\n"
-					+ "3. Canasta\n"
-					+ "4. Checkers\n"
-					+ "5. Chess\n"
-					+ "6. Chinese Checkers\n"
-					+ "7. Crazy Eights\n"
-					+ "8. Cribbage\n"
-					+ "9. Go\n"
-					+ "10. Halma\n"
-					+ "11. Hearts\n"
-					+ "12. Janggi\n"
-					+ "13. Mancala\n"
-					+ "14. Ninety-nine\n"
-					+ "15. Old Maid\n"
-					+ "16. Reversi\n"
-					+ "17. Rummy\n"
-					+ "18. Shogi\n"
-					+ "19. Spades\n"
-					+ "20. Whist\n"
-					+ "21. Xiangqi");
+			System.out.println("""
+					Select game to play or type "Q" or "QUIT" to  quit:
+					1. Backgammon
+					2. Bridge
+					3. Canasta
+					4. Checkers
+					5. Chess
+					6. Chinese Checkers
+					7. Crazy Eights
+					8. Cribbage
+					9. Go
+					10. Halma
+					11. Hearts
+					12. Janggi
+					13. Mancala
+					14. Ninety-nine
+					15. Old Maid
+					16. Reversi
+					17. Rummy
+					18. Shogi
+					19. Spades
+					20. Whist
+					21. Xiangqi""");
 			entry = input.nextLine();
 			if (entry.equalsIgnoreCase("q") || entry.equalsIgnoreCase("quit")) {
 				input.close();
@@ -139,7 +139,7 @@ public class FreeBoardAndCard {
 			}
 		}
 
-		players = new ArrayList<Player>(numPlayers);
+		players = new ArrayList<>(numPlayers);
 		for (int i = 1; i <= numPlayers; i++) {
 			boolean isHuman = false;
 			Player newPlayer;
@@ -149,17 +149,18 @@ public class FreeBoardAndCard {
 				System.out.print("Is player #" + i + " human? (Y/N): ");
 				char selection = input.nextLine().charAt(0);
 				switch (selection) {
-					case 'Y': case 'y':
+					case 'Y', 'y' -> {
 						validInput = true;
 						isHuman = true;
-						break;
-					case 'N': case 'n':
+					}
+					case 'N', 'n' -> {
 						validInput = true;
 						isHuman = false;
-						break;
-					default:
+					}
+					default -> {
 						validInput = false;
 						System.out.println("Invalid selection.");
+					}
 				}
 			}
 
@@ -184,46 +185,47 @@ public class FreeBoardAndCard {
 				System.out.print("Play again? (Y/N): ");
 				char selection = input.nextLine().charAt(0);
 				switch (selection) {
-					case 'Y': case 'y':
+					case 'Y', 'y' -> {
 						validInput = true;
 						playAgain = true;
-						break;
-					case 'N': case 'n':
+					}
+					case 'N', 'n' -> {
 						validInput = true;
 						playAgain = false;
-						break;
-					default:
+					}
+					default -> {
 						validInput = false;
 						System.out.println("Invalid selection.");
+					}
 				}
 			}
 		} while (playAgain);
 	}
 
 	private static Game returnGame(int i) {
-		switch (i) {
-			case 1: return new Backgammon();
-			case 2: return new Bridge();
-			case 3: return new Canasta();
-			case 4: return new Checkers();
-			case 5: return new Chess();
-			case 6: return new ChineseCheckers();
-			case 7: return new CrazyEights();
-			case 8: return new Cribbage();
-			case 9: return new Go();
-			case 10: return new Halma();
-			case 11: return new Hearts();
-			case 12: return new Janggi();
-			case 13: return new Mancala();
-			case 14: return new NinetyNine();
-			case 15: return new OldMaid();
-			case 16: return new Reversi();
-			case 17: return new Rummy();
-			case 18: return new Shogi();
-			case 19: return new Spades();
-			case 20: return new Whist();
-			case 21: return new Xiangqi();
-			default: throw new IllegalArgumentException();
-		}
+		return switch (i) {
+			case 1 -> new Backgammon();
+			case 2 -> new Bridge();
+			case 3 -> new Canasta();
+			case 4 -> new Checkers();
+			case 5 -> new Chess();
+			case 6 -> new ChineseCheckers();
+			case 7 -> new CrazyEights();
+			case 8 -> new Cribbage();
+			case 9 -> new Go();
+			case 10 -> new Halma();
+			case 11 -> new Hearts();
+			case 12 -> new Janggi();
+			case 13 -> new Mancala();
+			case 14 -> new NinetyNine();
+			case 15 -> new OldMaid();
+			case 16 -> new Reversi();
+			case 17 -> new Rummy();
+			case 18 -> new Shogi();
+			case 19 -> new Spades();
+			case 20 -> new Whist();
+			case 21 -> new Xiangqi();
+			default -> throw new IllegalArgumentException();
+		};
 	}
 }

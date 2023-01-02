@@ -36,12 +36,11 @@ import com.github.strangercoug.freeboardandcard.enums.PieceColor;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Chess960Board extends ChessBoard {
-	private short startingPosition;
 	protected byte queenRookFile, kingFile, kingRookFile;
 
 	@Override
 	public void initBoard() {
-		startingPosition = (short)(Math.random() * 960);
+		short startingPosition = (short) (Math.random() * 960);
 		if (startingPosition == 518) // this corresponds to the standsrd SP, so save some work and memory in this case
 			super.initBoard();
 		else initBoard(startingPosition);
@@ -164,14 +163,10 @@ public class Chess960Board extends ChessBoard {
 	 */
 	@Override
 	public void castle(PieceColor player, boolean kingside) {
-		byte startRank;
-		switch (player) {
-			case WHITE: startRank = 0;
-				break;
-			case BLACK: startRank = 7;
-				break;
-			default: throw new NullPointerException();
-		}
+		byte startRank = switch (player) {
+			case WHITE -> 0;
+			case BLACK -> 7;
+		};
 		board[kingFile][startRank] = null;
 
 		if (kingside) {

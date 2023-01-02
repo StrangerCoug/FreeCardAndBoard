@@ -69,22 +69,22 @@ public class ShogiBoard extends ChessVarBoard {
 
 	@Override
 	public String toString() {
-		String textBoard = "";
+		StringBuilder textBoard = new StringBuilder();
 
 		for (int j = 0; j < board[0].length; j++) {
 			for (int i = board.length-1; i >= 0; i--) {
 				if (board[i][j] == null)
-					textBoard += "__";
+					textBoard.append("__");
 				else {
 					if (board[i][j].getAbbreviation().length() == 1)
-						textBoard += ".";
-					textBoard += board[i][j].getAbbreviation();
+						textBoard.append(".");
+					textBoard.append(board[i][j].getAbbreviation());
 				}
-				textBoard += " ";
+				textBoard.append(" ");
 			}
-			textBoard += "\n";
+			textBoard.append("\n");
 		}
 
-		return textBoard;
+		return textBoard.toString();
 	}
 }

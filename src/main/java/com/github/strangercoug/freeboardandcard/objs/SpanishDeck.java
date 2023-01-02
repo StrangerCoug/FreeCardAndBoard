@@ -54,7 +54,7 @@ public class SpanishDeck extends Deck {
 			CardSuit.SPADES};
 
 		for (int i = 0; i < super.NUM_DECKS; i++)
-			for (int j = 0; j < 48; i++)
+			for (int j = 0; j < ranks.length * suits.length; j++)
 				cards.add(new Card(ranks[i/4], suits[i%4]));
 	}
 }
