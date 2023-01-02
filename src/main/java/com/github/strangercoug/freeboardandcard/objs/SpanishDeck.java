@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,6 +55,6 @@ public class SpanishDeck extends Deck {
 
 		for (int i = 0; i < super.NUM_DECKS; i++)
 			for (int j = 0; j < ranks.length * suits.length; j++)
-				deck.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[i/4], suits[i%4]));
 	}
 }
