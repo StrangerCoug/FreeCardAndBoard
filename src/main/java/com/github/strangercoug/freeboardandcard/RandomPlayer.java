@@ -37,7 +37,7 @@ import java.util.Random;
  * @author Jeffrey Hope
  */
 public class RandomPlayer extends ComputerPlayer {
-	private final Random r = new Random();
+	private final Random rng = new Random();
 
 	@Override
 	public String getMove() {
@@ -47,7 +47,7 @@ public class RandomPlayer extends ComputerPlayer {
 		 * causing it.
 		 */
 //		if (super.gamePlaying instanceof Mancala) {
-			return String.valueOf(r.nextInt(6)+1);
+			return String.valueOf(rng.nextInt(6)+1);
 //		} else {
 //			throw new UnsupportedOperationException("Not supported yet.");
 //		}
