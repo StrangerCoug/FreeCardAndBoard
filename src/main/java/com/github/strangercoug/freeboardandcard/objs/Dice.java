@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freeboardandcard.objs;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  *
@@ -39,7 +39,7 @@ import java.util.Random;
 public class Dice {
 	private final int[] dieFaces;
 	private final int SIDES_PER_DIE;
-	private final Random r;
+	private final SecureRandom rng = new SecureRandom();
 
 	/**
 	 * Creates a number of dice.
@@ -50,7 +50,6 @@ public class Dice {
 	public Dice(int number, int sidesPerDie) {
 		this.dieFaces = new int[number];
 		this.SIDES_PER_DIE = sidesPerDie;
-		r = new Random();
 	}
 
 	/**
@@ -114,6 +113,6 @@ public class Dice {
 	 */
 	public void rollDice() {
 		for (int i = 0; i < dieFaces.length; i++)
-			dieFaces[i] = (r.nextInt(SIDES_PER_DIE) + 1);
+			dieFaces[i] = (rng.nextInt(SIDES_PER_DIE) + 1);
 	}
 }
