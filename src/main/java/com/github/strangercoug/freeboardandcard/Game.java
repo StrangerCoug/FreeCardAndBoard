@@ -30,15 +30,16 @@
  */
 package com.github.strangercoug.freeboardandcard;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
-	protected byte minPlayers, maxPlayers;
-	protected ArrayList<Player> players;
+	protected byte minPlayers;
+	protected byte maxPlayers;
+	protected List<Player> players;
 	protected int currentPlayerIndex;
 	protected boolean gameWon;
 
@@ -50,7 +51,7 @@ public abstract class Game {
 		return maxPlayers;
 	}
 
-	public final ArrayList<Player> getPlayers() {
+	public final List<Player> getPlayers() {
 		return players;
 	}
 
@@ -71,7 +72,7 @@ public abstract class Game {
 	 * 
 	 * @param players  the list of players in turn order. Should never be null.
 	 */
-	public abstract void init(ArrayList<Player> players);
+	public abstract void init(List<Player> players);
 
 	/**
 	 * Starts play of this game. Game logic belongs in this method.

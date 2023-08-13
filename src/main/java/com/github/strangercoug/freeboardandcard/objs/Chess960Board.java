@@ -152,7 +152,7 @@ public class Chess960Board extends ChessBoard {
 	/**
 	 * While this method has a self-explanatory name, it does not check if the
 	 * castle is legal.
-	 * 
+	 * <p>
 	 * The reason this method does not simply move both castling pieces normally
 	 * is because it sometimes overwrites one of them with the other. To work
 	 * around this; the rook move is effectively in the middle of the king move.

@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freeboardandcard.games.board;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.github.strangercoug.freeboardandcard.Player;
 
@@ -45,10 +45,11 @@ public class ChineseCheckers extends BoardGame {
 	}
 
 	@Override
-	public void init(ArrayList<Player> players) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				&& players.size() != 5
-				: "Wrong number of players.";
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers
+				|| players.size() == 5) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
 
 		this.players = players;
 		this.gameWon = false;

@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freeboardandcard.games.board;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.github.strangercoug.freeboardandcard.Player;
 import com.github.strangercoug.freeboardandcard.objs.GoBoard;
@@ -47,13 +47,14 @@ public class Go extends BoardGame {
 	}
 
 	@Override
-	public void init(ArrayList<Player> players) {
+	public void init(List<Player> players) {
 		init(players, 19);
 	}
 
-	public void init(ArrayList<Player> players, int boardSize) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				: "Wrong number of players.";
+	public void init(List<Player> players, int boardSize) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
 
 		this.players = players;
 		this.board = new GoBoard(boardSize);

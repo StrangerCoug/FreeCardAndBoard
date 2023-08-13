@@ -31,6 +31,7 @@
 package com.github.strangercoug.freeboardandcard.games.card;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.github.strangercoug.freeboardandcard.Player;
 import com.github.strangercoug.freeboardandcard.objs.Deck;
@@ -45,9 +46,10 @@ public class Whist extends CardGame {
 	}
 
 	@Override
-	public void init(ArrayList<Player> players) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				: "Wrong number of players.";
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
 
 		this.players = players;
 		this.gameWon = false;
@@ -58,7 +60,7 @@ public class Whist extends CardGame {
 			deck = new Deck(2, true, true);
 		}
 
-		players.forEach((_item) -> hands.add(new ArrayList<>()));
+		players.forEach(_item -> hands.add(new ArrayList<>()));
 	}
 
 	@Override

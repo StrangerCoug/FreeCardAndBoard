@@ -31,6 +31,7 @@
 package com.github.strangercoug.freeboardandcard.games.card;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.github.strangercoug.freeboardandcard.Player;
 import com.github.strangercoug.freeboardandcard.enums.CardSuit;
@@ -42,7 +43,9 @@ import com.github.strangercoug.freeboardandcard.objs.Deck;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class NinetyNine extends CardGame {
-	int[] scores, tricksBid, tricksWon;
+	int[] scores;
+	int[] tricksBid;
+	int[] tricksWon;
 
 	private enum PremiumBid{DECLARE, REVEAL}
 
@@ -55,9 +58,10 @@ public class NinetyNine extends CardGame {
 	}
 
 	@Override
-	public void init(ArrayList<Player> players) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				: "Wrong number of players.";
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
 
 		this.players = players;
 		this.gameWon = false;
@@ -68,7 +72,7 @@ public class NinetyNine extends CardGame {
 		 */
 		deck = new Deck(1, false, false);
 
-		players.forEach((_item) -> hands.add(new ArrayList<>()));
+		players.forEach(_item -> hands.add(new ArrayList<>()));
 
 		scores = new int[players.size()];
 		tricksBid = new int[players.size()];
@@ -119,12 +123,11 @@ public class NinetyNine extends CardGame {
 		int winningCardIndex = 0;
 
 		for (int i = 1; i < cards.length; i++) {
-			if (trump != null) {
-				if (!trumpFound && cards[i].getSuit().equals(trump)) {
+			if (trump != null
+					&& (!trumpFound && cards[i].getSuit().equals(trump))) {
 					trumpFound = true;
 					winningCardIndex = i;
 					continue;
-				}
 			}   
 
 			if (!cards[i].getSuit().equals(cards[winningCardIndex].getSuit()))

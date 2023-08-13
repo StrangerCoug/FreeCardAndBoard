@@ -30,21 +30,24 @@
  */
 package com.github.strangercoug.freeboardandcard;
 
+import java.util.Random;
+
 /**
  *
  * @author Jeffrey Hope
  */
 public class RandomPlayer extends ComputerPlayer {
+	private final Random r = new Random();
+
 	@Override
 	public String getMove() {
-
 		/* FIXME: If-else statement not currently working right. Since we're
 		 * only testing Mancala, we can just comment out the offending lines for
 		 * now, but later we'll have to tackle this bug--I'm not sure what's
 		 * causing it.
 		 */
 //		if (super.gamePlaying instanceof Mancala) {
-			return String.valueOf((int)(Math.random()*6+1));
+			return String.valueOf(r.nextInt(6)+1);
 //		} else {
 //			throw new UnsupportedOperationException("Not supported yet.");
 //		}

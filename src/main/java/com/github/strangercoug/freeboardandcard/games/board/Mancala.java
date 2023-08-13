@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freeboardandcard.games.board;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.github.strangercoug.freeboardandcard.Player;
@@ -50,13 +50,14 @@ public class Mancala extends BoardGame {
 	}
 
 	@Override
-	public void init(ArrayList<Player> players) {
+	public void init(List<Player> players) {
 		init(players, true);
 	}
 
-	public void init(ArrayList<Player> players, boolean allowEmptyCaptures) {
-		assert players.size() >= minPlayers && players.size() <= maxPlayers
-				: "Wrong number of players.";
+	public void init(List<Player> players, boolean allowEmptyCaptures) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
 
 		this.players = players;
 		this.allowEmptyCaptures = allowEmptyCaptures;
@@ -214,7 +215,7 @@ public class Mancala extends BoardGame {
 	/**
 	 * Returns the number of the bin that would be across from the input house.
 	 *  
-	 * @param bin the bin on the player's side
+	 * @param house the bin on the player's side
 	 * @return the adjacent bin on the opponent's side
 	 * @throws AssertionError when assertions are enabled and the input bin is a
 	 *						scoring bin

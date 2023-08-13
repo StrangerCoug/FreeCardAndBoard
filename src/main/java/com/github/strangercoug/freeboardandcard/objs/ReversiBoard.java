@@ -48,8 +48,7 @@ public class ReversiBoard extends GoBoard {
 	public void initBoard() {
 		super.clearBoard();
 
-		//FIXME: This seems to be always 0; it should be half the board length.
-		int half = board.length % 2;
+		int half = board.length / 2;
 
 		super.placePiece(PieceColor.WHITE, new int[]{half, half});
 		super.placePiece(PieceColor.WHITE, new int[]{half-1, half-1});
