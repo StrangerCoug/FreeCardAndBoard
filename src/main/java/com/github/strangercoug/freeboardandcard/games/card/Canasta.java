@@ -94,6 +94,9 @@ public class Canasta extends CardGame {
 			case JOKER -> {
 				return 50;
 			}
+			default -> {
+				throw new IllegalArgumentException("Unsupported card rank");
+			}
 		}
 	}
 }
