@@ -35,5 +35,25 @@ package com.github.strangercoug.freeboardandcard.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum CardSuit {
-	CLUBS, DIAMONDS, HEARTS, SPADES, BLACK, RED
+	CLUBS (false),
+	DIAMONDS (true),
+	HEARTS (true),
+	SPADES (false),
+	BLACK (true),
+	RED (false);
+
+	private final boolean isRed;
+
+	CardSuit(boolean isRed) {
+		this.isRed = isRed;
+	}
+
+	/**
+	 * Checks the color of the card in the games that need them.
+	 *
+	 * @return true if the card is red; false if the card is black
+	 */
+	public boolean isRed() {
+		return isRed;
+	}
 }

@@ -34,6 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.strangercoug.freeboardandcard.Player;
+import com.github.strangercoug.freeboardandcard.enums.CardRank;
+import com.github.strangercoug.freeboardandcard.enums.CardSuit;
+import com.github.strangercoug.freeboardandcard.objs.Card;
 import com.github.strangercoug.freeboardandcard.objs.Deck;
 
 /**
@@ -69,4 +72,28 @@ public class Canasta extends CardGame {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
+	private boolean isWildCard (Card card) {
+		return card.getRank() == CardRank.TWO
+				|| card.getRank() == CardRank.JOKER;
+	}
+
+	private int getPointValue (Card card) {
+		switch (card.getRank()) {
+			case ACE, TWO -> {
+				return 20;
+			}
+			case THREE -> {
+				return card.getSuit().isRed() ? 100 : 5;
+			}
+			case FOUR, FIVE, SIX, SEVEN -> {
+				return 5;
+			}
+			case EIGHT, NINE, TEN, JACK, QUEEN, KING -> {
+				return 10;
+			}
+			case JOKER -> {
+				return 50;
+			}
+		}
+	}
 }
