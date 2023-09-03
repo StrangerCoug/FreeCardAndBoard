@@ -1,4 +1,4 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=StrangerCoug_FreeBoardAndCard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=StrangerCoug_FreeBoardAndCard)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=StrangerCoug_FreeCardAndBoard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=StrangerCoug_FreeCardAndBoard)
 # Welcome to the FreeCardAndBoard project!
 This is planned to be a free and open source cross-platform Java card and board game compendium program. I am still working on the basic structure, but the following games are planned for its initial release:
 1. Backgammon
