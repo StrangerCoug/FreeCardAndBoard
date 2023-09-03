@@ -114,16 +114,15 @@ public class Chess960Board extends ChessBoard {
 		// Place the knights
 		int j = 0;
 		for (int i = 0; i < pieceForFile.length && j < knightTable[q2].length;
-				i++) {
+				i++, j++) {
 			if (pieceForFile[i] != null)
 				continue;
 			pieceForFile[i] = knightTable[q2][j];
-			j++;
 		}
 
 		// Place the rooks and king
 		j = 0;
-		for (int i = 0; i < pieceForFile.length && j < 3; i++) {
+		for (int i = 0; i < pieceForFile.length && j < 3; i++, j++) {
 			if (pieceForFile[i] != null)
 				continue;
 			if (j == 1) {
@@ -136,7 +135,6 @@ public class Chess960Board extends ChessBoard {
 					queenRookFile = (byte) i;
 				else kingRookFile = (byte) i;
 			}
-			j++;
 		}
 
 		// Place the pieces according to our calculations
