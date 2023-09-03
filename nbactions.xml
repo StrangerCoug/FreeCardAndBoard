@@ -10,7 +10,7 @@
 				<goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
 			</goals>
 			<properties>
-				<exec.args>-classpath %classpath com.github.strangercoug.freeboardandcard.FreeBoardAndCard</exec.args>
+				<exec.args>-classpath %classpath com.github.strangercoug.freecardandboard.FreeCardAndBoard</exec.args>
 				<exec.executable>java</exec.executable>
 			</properties>
 		</action>
