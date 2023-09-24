@@ -42,16 +42,16 @@ import com.github.strangercoug.freecardandboard.enums.CardSuit;
  */
 public class Deck {
 	protected LinkedList<Card> cards;
-	protected final int NUM_DECKS;
-	private final boolean USES_BLACK_JOKER;
-	private final boolean USES_RED_JOKER;
+	protected final int numDecks;
+	private final boolean usesBlackJoker;
+	private final boolean usesRedJoker;
 	private final SecureRandom rng = new SecureRandom();
 
 	public Deck(int numDecks, boolean usesBlackJoker, boolean usesRedJoker) {
 		cards = new LinkedList<>();
-		NUM_DECKS = numDecks;
-		USES_BLACK_JOKER = usesBlackJoker;
-		USES_RED_JOKER = usesRedJoker;
+		this.numDecks = numDecks;
+		this.usesBlackJoker = usesBlackJoker;
+		this.usesRedJoker = usesRedJoker;
 	}
 
 	public Deck(int numDecks) {
@@ -64,20 +64,20 @@ public class Deck {
 
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
-			CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
-			CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
-			CardRank.KING, CardRank.ACE};
+				CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
+				CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
+				CardRank.KING, CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
-			CardSuit.SPADES};
+				CardSuit.SPADES};
 
-		for (int i = 0; i < NUM_DECKS; i++) {
+		for (int i = 0; i < numDecks; i++) {
 			for (int j = 0; j < ranks.length * suits.length; j++)
-				cards.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[j%ranks.length], suits[j/ranks.length]));
 
-			if (USES_BLACK_JOKER)
+			if (usesBlackJoker)
 				cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
 
-			if (USES_RED_JOKER)
+			if (usesRedJoker)
 				cards.add(new Card(CardRank.JOKER, CardSuit.RED));
 		}
 	}
@@ -102,6 +102,6 @@ public class Deck {
 	}
 
 	public boolean isEmpty() {
-		return cards.size() == 0;
+		return cards.isEmpty();
 	}
 }

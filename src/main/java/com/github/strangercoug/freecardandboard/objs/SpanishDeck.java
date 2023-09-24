@@ -49,14 +49,14 @@ public class SpanishDeck extends Deck {
 	@Override
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
-			CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
-			CardRank.NINE, CardRank.JACK, CardRank.QUEEN, CardRank.KING,
-			CardRank.ACE};
+				CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
+				CardRank.NINE, CardRank.JACK, CardRank.QUEEN, CardRank.KING,
+				CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
-			CardSuit.SPADES};
+				CardSuit.SPADES};
 
-		for (int i = 0; i < super.NUM_DECKS; i++)
+		for (int i = 0; i < numDecks; i++)
 			for (int j = 0; j < ranks.length * suits.length; j++)
-				cards.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[j % ranks.length], suits[j / ranks.length]));
 	}
 }
