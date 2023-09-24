@@ -1,4 +1,4 @@
-package com.github.strangercoug.freecardandboard.enums;
+package com.github.strangercoug.freecardandboard.objs;
 
 import com.github.strangercoug.freecardandboard.objs.Card;
 import com.github.strangercoug.freecardandboard.objs.Deck;

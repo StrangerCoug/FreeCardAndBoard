@@ -1,5 +1,7 @@
-package com.github.strangercoug.freecardandboard.enums;
+package com.github.strangercoug.freecardandboard.objs;
 
+import com.github.strangercoug.freecardandboard.enums.CardRank;
+import com.github.strangercoug.freecardandboard.enums.CardSuit;
 import com.github.strangercoug.freecardandboard.objs.Card;
 import com.github.strangercoug.freecardandboard.objs.Dice;
 import org.junit.jupiter.api.BeforeAll;
