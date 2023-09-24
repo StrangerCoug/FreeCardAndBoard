@@ -39,8 +39,8 @@ public enum CardSuit {
 	DIAMONDS (true),
 	HEARTS (true),
 	SPADES (false),
-	BLACK (true),
-	RED (false);
+	BLACK (false),
+	RED (true);
 
 	private final boolean isRed;
 
