@@ -40,7 +40,7 @@ public enum ChessPieceType implements PieceType {
 	ROOK("rook", "R", "R"),
 	BISHOP("bishop", "B", "B"),
 	KNIGHT("knight", "N", "N"),
-	PAWN("pawn", "P", "mfWcfFimfW2");
+	PAWN("pawn", "P", "fmWfceFifmnD");
 
 	private final String name;
 	private final String abbrev;
