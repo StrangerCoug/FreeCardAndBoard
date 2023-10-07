@@ -119,18 +119,18 @@ public class NinetyNine extends CardGame {
 	 */
 
 	public Card findWinningCard(Card[] cards, CardSuit trump) {
-		boolean trumpFound = cards[0].getSuit().equals(trump);
+		boolean trumpFound = cards[0].suit().equals(trump);
 		int winningCardIndex = 0;
 
 		for (int i = 1; i < cards.length; i++) {
 			if (trump != null
-					&& (!trumpFound && cards[i].getSuit().equals(trump))) {
+					&& (!trumpFound && cards[i].suit().equals(trump))) {
 					trumpFound = true;
 					winningCardIndex = i;
 					continue;
 			}   
 
-			if (!cards[i].getSuit().equals(cards[winningCardIndex].getSuit()))
+			if (!cards[i].suit().equals(cards[winningCardIndex].suit()))
 				continue;
 
 			if (cards[i].outranks(cards[winningCardIndex]))

@@ -72,17 +72,17 @@ public class Canasta extends CardGame {
 	}
 
 	private boolean isWildCard (Card card) {
-		return card.getRank() == CardRank.TWO
-				|| card.getRank() == CardRank.JOKER;
+		return card.rank() == CardRank.TWO
+				|| card.rank() == CardRank.JOKER;
 	}
 
 	private int getPointValue (Card card) {
-		switch (card.getRank()) {
+		switch (card.rank()) {
 			case ACE, TWO -> {
 				return 20;
 			}
 			case THREE -> {
-				return card.getSuit().isRed() ? 100 : 5;
+				return card.suit().isRed() ? 100 : 5;
 			}
 			case FOUR, FIVE, SIX, SEVEN -> {
 				return 5;
