@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freecardandboard.objs;
 
-import java.security.SecureRandom;
+import static com.github.strangercoug.freecardandboard.FreeCardAndBoard.rng;
 
 /**
  *
@@ -38,8 +38,7 @@ import java.security.SecureRandom;
  */
 public class Dice {
 	private final int[] dieFaces;
-	private final int SIDES_PER_DIE;
-	private final SecureRandom rng = new SecureRandom();
+	private final int sidesPerDie;
 
 	/**
 	 * Creates a number of dice.
@@ -49,7 +48,7 @@ public class Dice {
 	 */
 	public Dice(int number, int sidesPerDie) {
 		this.dieFaces = new int[number];
-		this.SIDES_PER_DIE = sidesPerDie;
+		this.sidesPerDie = sidesPerDie;
 	}
 
 	/**
@@ -83,7 +82,7 @@ public class Dice {
 	 * @return the number of sides per die
 	 */
 	public int getSidesPerDie() {
-		return SIDES_PER_DIE;
+		return sidesPerDie;
 	}
 
 	/**
@@ -112,7 +111,12 @@ public class Dice {
 	 * Rolls the dice.
 	 */
 	public void rollDice() {
+		/* TODO: This is fine for alpha and beta testing, but at a later point I would
+		 * like to be able to detect whether there is an Internet connection and use
+		 * the random.org API to roll if possible. If something goes wrong, we fall
+		 * back to this.
+		 */
 		for (int i = 0; i < dieFaces.length; i++)
-			dieFaces[i] = (rng.nextInt(SIDES_PER_DIE) + 1);
+			dieFaces[i] = rng.nextInt(1, sidesPerDie + 1);
 	}
 }

@@ -30,8 +30,10 @@
  */
 package com.github.strangercoug.freecardandboard;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
 
 import com.github.strangercoug.freecardandboard.games.board.Backgammon;
 import com.github.strangercoug.freecardandboard.games.board.Checkers;
@@ -60,6 +62,12 @@ import com.github.strangercoug.freecardandboard.games.card.Whist;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class FreeCardAndBoard {
+	/**
+	 * Backup RNG for offline use. Using the random.org API should be preferred
+	 * to calling this RNG, especially if it is necessary to shuffle a large
+	 * number of cards.
+	 */
+	public static final RandomGenerator rng = new SecureRandom();
 
 	/**
 	 * @param args the command line arguments
