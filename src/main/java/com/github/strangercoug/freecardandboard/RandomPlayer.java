@@ -30,14 +30,13 @@
  */
 package com.github.strangercoug.freecardandboard;
 
-import java.util.Random;
+import static com.github.strangercoug.freecardandboard.FreeCardAndBoard.rng;
 
 /**
  *
  * @author Jeffrey Hope
  */
 public class RandomPlayer extends ComputerPlayer {
-	private final Random rng = new Random();
 
 	@Override
 	public String getMove() {
@@ -47,7 +46,7 @@ public class RandomPlayer extends ComputerPlayer {
 		 * causing it.
 		 */
 //		if (super.gamePlaying instanceof Mancala) {
-			return String.valueOf(rng.nextInt(6)+1);
+			return String.valueOf(rng.nextInt(1, 7));
 //		} else {
 //			throw new UnsupportedOperationException("Not supported yet.");
 //		}
