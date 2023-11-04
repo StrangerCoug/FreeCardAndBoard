@@ -1,4 +1,5 @@
 module com.github.strangercoug.freecardandboard {
+	requires lombok;
 	exports com.github.strangercoug.freecardandboard.objs;
 	exports com.github.strangercoug.freecardandboard.exceptions;
 	exports com.github.strangercoug.freecardandboard.enums;
