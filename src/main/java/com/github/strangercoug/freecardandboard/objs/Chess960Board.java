@@ -30,6 +30,7 @@
  */
 package com.github.strangercoug.freecardandboard.objs;
 
+import com.github.strangercoug.freecardandboard.FreeCardAndBoard;
 import com.github.strangercoug.freecardandboard.enums.ChessPieceType;
 import com.github.strangercoug.freecardandboard.enums.PieceColor;
 
@@ -42,8 +43,8 @@ public class Chess960Board extends ChessBoard {
 
 	@Override
 	public void initBoard() {
-		short startingPosition = (short) (Math.random() * 960);
-		if (startingPosition == 518) // this corresponds to the standsrd SP, so save some work and memory in this case
+		short startingPosition = (short) (FreeCardAndBoard.rng.nextInt(960));
+		if (startingPosition == 518) // this corresponds to the standard SP, so save some work and memory in this case
 			super.initBoard();
 		else initBoard(startingPosition);
 	}
