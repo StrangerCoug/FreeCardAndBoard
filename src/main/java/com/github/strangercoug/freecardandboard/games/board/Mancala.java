@@ -148,32 +148,34 @@ public class Mancala extends BoardGame {
 		// Pick up the stones to sow them
 		board[startBin] = 0;
 
-		/* The reason for Math.floorMod(i-1, board.length) instead of
-		 * (i-1) % boardLength is that the former has the same sign as the
+		/* The reason for Math.floorMod(binIndex-1, board.length) instead of
+		 * (binIndex-1) % boardLength is that the former has the same sign as the
 		 * divisor while the latter has the same sign as the dividend--the bin
 		 * number must always be non-negative or we'll get an
 		 * IndexOutOfBounds exception.
 		 */
-		for (int i = (startBin-1) % board.length; seedsToSow > 0;
-				i = Math.floorMod(i-1, board.length)) {
+		int binIndex = (startBin-1) % board.length;
+
+		while (seedsToSow > 0) {
 			// Skip opponent's scoring bin
-			if (i == getOpponentStore()) {
+			if (binIndex == getOpponentStore()) {
 				continue;
 			}
 
-			board[i]++;
+			board[binIndex]++;
 			seedsToSow--;
 
-			if (seedsToSow == 0 && i != getOwnStore()) {
+			if (seedsToSow == 0 && binIndex != getOwnStore()) {
 				// Capture if applicable
-				if (i/(board.length/2) == currentPlayerIndex && board[i] == 1
-						&& (allowEmptyCaptures || board[getAdjacentHouse(i)] != 0)) {
-					board[getOwnStore()] += board[i] + board[getAdjacentHouse(i)];
-						board[i] = board[getAdjacentHouse(i)] = 0;
+				if (binIndex/(board.length/2) == currentPlayerIndex && board[binIndex] == 1
+						&& (allowEmptyCaptures || board[getAdjacentHouse(binIndex)] != 0)) {
+					board[getOwnStore()] += board[binIndex] + board[getAdjacentHouse(binIndex)];
+						board[binIndex] = board[getAdjacentHouse(binIndex)] = 0;
 				}
 
 				advanceToNextPlayer();
 			}
+			binIndex = Math.floorMod(binIndex-1, board.length);
 		}
 	}
 
