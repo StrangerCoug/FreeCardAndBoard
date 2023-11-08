@@ -12,6 +12,7 @@
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<junit.jupiter.version>5.10.1</junit.jupiter.version>
 		<sonar.projectKey>StrangerCoug_FreeCardAndBoard</sonar.projectKey>
+		<lombok.version>1.18.30</lombok.version>
 		<jacoco.version>0.8.11</jacoco.version>
 		<sonar.java.coveragePlugin>sonar-jacoco</sonar.java.coveragePlugin>
 		<sonar.java.binaries>target/</sonar.java.binaries>
@@ -58,7 +59,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
+            <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -91,6 +92,13 @@
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 				<version>3.11.0</version>
 			</plugin>
