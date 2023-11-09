@@ -63,7 +63,7 @@ public class Canasta extends CardGame {
 		} else {
 			deck = new Deck(2, true, true);
 		}
-		players.forEach(_item -> hands.add(new ArrayList<>()));
+		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
 
 	@Override
