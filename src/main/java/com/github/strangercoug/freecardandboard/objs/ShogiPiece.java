@@ -32,32 +32,25 @@ package com.github.strangercoug.freecardandboard.objs;
 
 import com.github.strangercoug.freecardandboard.enums.PieceColor;
 import com.github.strangercoug.freecardandboard.enums.ShogiPieceType;
+import lombok.Getter;
+
+import static com.github.strangercoug.freecardandboard.enums.PieceColor.BLACK;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public class ShogiPiece extends ChessVarPiece {
-	private final PieceColor PIECE_COLOR;
-	private final ShogiPieceType PIECE_TYPE;
+	private final PieceColor pieceColor;
+	private final ShogiPieceType pieceType;
 
 	public ShogiPiece(PieceColor pieceColor, ShogiPieceType pieceType) {
-		PIECE_COLOR = pieceColor;
-		PIECE_TYPE = pieceType;
-	} 
-
-	public PieceColor getPieceColor() {
-		return PIECE_COLOR;
-	}
-
-	public ShogiPieceType getPieceType() {
-		return PIECE_TYPE;
+		this.pieceColor = pieceColor;
+		this.pieceType = pieceType;
 	}
 
 	public String getAbbreviation() {
-		return switch (PIECE_COLOR) {
-			case BLACK -> PIECE_TYPE.getAbbrev().toUpperCase();
-			default -> PIECE_TYPE.getAbbrev().toLowerCase();
-		};
+		return pieceColor == BLACK ? pieceType.getAbbrev().toUpperCase() : pieceType.getAbbrev().toLowerCase();
 	}
 }
