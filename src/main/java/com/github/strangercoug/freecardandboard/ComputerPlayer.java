@@ -37,6 +37,7 @@ package com.github.strangercoug.freecardandboard;
 public abstract class ComputerPlayer extends Player {
 	protected Game gamePlaying;
 
+	@Override
 	public final Game getGamePlaying() {
 		return gamePlaying;
 	}
