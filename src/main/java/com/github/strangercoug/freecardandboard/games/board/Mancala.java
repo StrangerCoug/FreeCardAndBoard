@@ -112,9 +112,8 @@ public class Mancala extends BoardGame {
 		}
 
 		while (!isValid) {
-			if (players.get(currentPlayerIndex) instanceof RandomPlayer) {
-				return Integer.parseInt
-						(((RandomPlayer)players.get(currentPlayerIndex)).getMove());
+			if (players.get(currentPlayerIndex) instanceof RandomPlayer randomPlayer) {
+				return Integer.parseInt(randomPlayer.getMove());
 			} else {
 				System.out.print("\n" + players.get(currentPlayerIndex).getName()
 						+ ", select a house to sow stones from: ");
