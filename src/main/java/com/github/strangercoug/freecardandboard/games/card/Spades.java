@@ -56,7 +56,7 @@ public class Spades extends CardGame {
 
 		deck = new Deck(1, false, false);
 
-		players.forEach((player) -> hands.add(new ArrayList<>()));
+		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
 
 	@Override
