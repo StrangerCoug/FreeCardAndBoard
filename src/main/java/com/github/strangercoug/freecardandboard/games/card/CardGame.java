@@ -31,6 +31,7 @@
 package com.github.strangercoug.freecardandboard.games.card;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.github.strangercoug.freecardandboard.Game;
 import com.github.strangercoug.freecardandboard.objs.Card;
@@ -48,7 +49,7 @@ public abstract class CardGame extends Game {
 		return deck;
 	}
 
-	public ArrayList<ArrayList<Card>> getHands() {
+	public List<ArrayList<Card>> getHands() {
 		return hands;
 	}
 }

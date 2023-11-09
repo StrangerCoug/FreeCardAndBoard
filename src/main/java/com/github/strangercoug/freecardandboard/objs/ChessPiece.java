@@ -32,33 +32,26 @@ package com.github.strangercoug.freecardandboard.objs;
 
 import com.github.strangercoug.freecardandboard.enums.ChessPieceType;
 import com.github.strangercoug.freecardandboard.enums.PieceColor;
+import lombok.Getter;
+
+import static com.github.strangercoug.freecardandboard.enums.PieceColor.WHITE;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public class ChessPiece extends ChessVarPiece {
-	private final PieceColor PIECE_COLOR;
-	private final ChessPieceType PIECE_TYPE;
+	private final PieceColor pieceColor;
+	private final ChessPieceType pieceType;
 
 	public ChessPiece(PieceColor pieceColor, ChessPieceType pieceType) {
-		PIECE_COLOR = pieceColor;
-		PIECE_TYPE = pieceType;
-	}
-
-	public PieceColor getPieceColor() {
-		return PIECE_COLOR;
-	}
-
-	public ChessPieceType getPieceType() {
-		return PIECE_TYPE;
+		this.pieceColor = pieceColor;
+		this.pieceType = pieceType;
 	}
 
 	public String getAbbreviation() {
-		return switch (PIECE_COLOR) {
-			case WHITE -> PIECE_TYPE.getAbbrev().toUpperCase();
-			default -> PIECE_TYPE.getAbbrev().toLowerCase();
-		};
+		return pieceColor == WHITE ? pieceType.getAbbrev().toUpperCase() : pieceType.getAbbrev().toLowerCase();
 	}   
 
 	/**
@@ -66,7 +59,7 @@ public class ChessPiece extends ChessVarPiece {
 	 * @return the Unicode character that encodes this piece.
 	 */
 	public char getUnicodeChar() {
-		return (char) (0x2654 + (6 * PIECE_COLOR.ordinal()) +
-				PIECE_TYPE.ordinal());
+		return (char) (0x2654 + (6 * pieceColor.ordinal()) +
+				pieceType.ordinal());
 	}
 }

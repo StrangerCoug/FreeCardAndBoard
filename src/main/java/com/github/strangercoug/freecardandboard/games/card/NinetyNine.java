@@ -72,7 +72,7 @@ public class NinetyNine extends CardGame {
 		 */
 		deck = new Deck(1, false, false);
 
-		players.forEach(_item -> hands.add(new ArrayList<>()));
+		players.forEach(player -> hands.add(new ArrayList<>()));
 
 		scores = new int[players.size()];
 		tricksBid = new int[players.size()];

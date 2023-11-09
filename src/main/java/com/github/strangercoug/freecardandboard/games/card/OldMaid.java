@@ -60,7 +60,7 @@ public class OldMaid extends CardGame {
 		 */
 		deck = new Deck(1, true, false);
 
-		players.forEach(_item -> hands.add(new ArrayList<>()));
+		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
 
 	@Override
