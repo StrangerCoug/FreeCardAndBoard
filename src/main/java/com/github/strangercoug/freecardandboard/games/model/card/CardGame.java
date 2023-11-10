@@ -28,26 +28,19 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.model.card;
+
+import java.util.ArrayList;
 
 import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.strangercoug.freecardandboard.objs.Card;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
-	}
-
-	public Player() {
-		this("Anonymous");
-	}
+public abstract class CardGame extends Game {
+	protected Deck deck;
+	protected ArrayList<ArrayList<Card>> hands;
 }

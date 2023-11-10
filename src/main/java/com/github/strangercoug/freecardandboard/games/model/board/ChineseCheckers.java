@@ -28,26 +28,36 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.model.board;
 
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.List;
+
+import com.github.strangercoug.freecardandboard.Player;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
+public class ChineseCheckers extends BoardGame {
+	public ChineseCheckers() {
+		minPlayers = 2;
+		maxPlayers = 6;
 	}
 
-	public Player() {
-		this("Anonymous");
+	@Override
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers
+				|| players.size() == 5) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
+
+		this.players = players;
+		this.gameWon = false;
 	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
 }
