@@ -41,8 +41,8 @@ import java.util.List;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
-	protected byte minPlayers;
-	protected byte maxPlayers;
+	@Getter	protected byte minPlayers;
+	@Getter	protected byte maxPlayers;
 	@Getter	@Setter	protected List<Player> players;
 	protected int currentPlayerIndex;
 	protected boolean gameWon;
