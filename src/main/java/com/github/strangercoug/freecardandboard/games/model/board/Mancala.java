@@ -31,10 +31,8 @@
 package com.github.strangercoug.freecardandboard.games.model.board;
 
 import java.util.List;
-import java.util.Scanner;
 
 import com.github.strangercoug.freecardandboard.Player;
-import com.github.strangercoug.freecardandboard.RandomPlayer;
 
 /**
  *
