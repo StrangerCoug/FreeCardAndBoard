@@ -66,11 +66,6 @@ public class Canasta extends CardGame {
 		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
 
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 	private boolean isWildCard (Card card) {
 		return card.rank() == CardRank.TWO
 				|| card.rank() == CardRank.JOKER;

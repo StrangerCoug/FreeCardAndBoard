@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.board.Reversi;
 import com.github.strangercoug.freecardandboard.games.view.board.ReversiView;
 
 public class ReversiController extends BoardGameController {
-	protected ReversiController(Reversi model, ReversiView view) {
+	public ReversiController(Reversi model, ReversiView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

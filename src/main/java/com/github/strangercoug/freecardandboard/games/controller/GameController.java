@@ -33,12 +33,14 @@ package com.github.strangercoug.freecardandboard.games.controller;
 import com.github.strangercoug.freecardandboard.games.model.Game;
 import com.github.strangercoug.freecardandboard.Player;
 import com.github.strangercoug.freecardandboard.games.view.GameView;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public abstract class GameController {
-	private final Game model;
-	private final GameView view;
+	protected final Game model;
+	protected final GameView view;
 
 	protected GameController (Game model, GameView view) {
 		this.model = model;
@@ -52,6 +54,11 @@ public abstract class GameController {
 	public List<Player> getPlayers() {
 		return model.getPlayers();
 	}
+
+	/**
+	 * Starts play of this game.
+	 */
+	public abstract void play();
 
 	public abstract void updateView();
 }

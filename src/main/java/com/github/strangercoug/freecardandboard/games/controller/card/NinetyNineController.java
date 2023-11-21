@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.NinetyNine;
 import com.github.strangercoug.freecardandboard.games.view.card.NinetyNineView;
 
 public class NinetyNineController extends CardGameController {
-	protected NinetyNineController(NinetyNine model, NinetyNineView view) {
+	public NinetyNineController(NinetyNine model, NinetyNineView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

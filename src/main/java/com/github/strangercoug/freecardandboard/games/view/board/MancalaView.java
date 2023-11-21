@@ -38,7 +38,7 @@ import java.util.Scanner;
 
 public class MancalaView extends BoardGameView {
 
-	private int promptMove(List<Player> players, int[] board, int currentPlayerIndex) {
+	public int promptMove(List<Player> players, int[] board, int currentPlayerIndex) {
 		boolean isValid = false;
 		int selection = 0;
 		Scanner keyboard = new Scanner(System.in);
@@ -92,28 +92,28 @@ public class MancalaView extends BoardGameView {
 	private void displayBoard(List<Player> players, int[] board) {
 
 		System.out.print(players.get(1).getName());
-		System.out.print(String.format("%3d",(board[7])) + " ");
-		System.out.println(String.format("%2d",(board[8])) + " "
-				+ String.format("%2d",(board[9])) + " "
-				+ String.format("%2d",(board[10])) + " "
-				+ String.format("%2d",(board[11])) + " "
-				+ String.format("%2d",(board[12])) + " "
-				+ String.format("%2d",(board[13])));
+		System.out.print(String.format("%3d", board[7]) + " ");
+		System.out.println(String.format("%2d", board[8]) + " "
+				+ String.format("%2d", board[9]) + " "
+				+ String.format("%2d", board[10]) + " "
+				+ String.format("%2d", board[11]) + " "
+				+ String.format("%2d", board[12]) + " "
+				+ String.format("%2d", board[13]));
 
 		for (int i = 0; i < players.get(1).getName().length() + 1; i++) System.out.print(" ");
 		System.out.println(
 				"  "
-						+ String.format("%3d",(board[6])) + " "
-						+ String.format("%2d",(board[5])) + " "
-						+ String.format("%2d",(board[4])) + " "
-						+ String.format("%2d",(board[3])) + " "
-						+ String.format("%2d",(board[2])) + " "
-						+ String.format("%2d",(board[1])) + " "
+						+ String.format("%3d", board[6]) + " "
+						+ String.format("%2d", board[5]) + " "
+						+ String.format("%2d", board[4]) + " "
+						+ String.format("%2d", board[3]) + " "
+						+ String.format("%2d", board[2]) + " "
+						+ String.format("%2d", board[1]) + " "
 						+ String.format("%2d", board[0]) + "  "
 						+ players.get(0).getName());
 	}
 
-	private void declareGameOver(List<Player> players, int[] board) {
+	public void declareGameOver(List<Player> players, int[] board) {
 		displayBoard(players, board);
 		System.out.println("Game over!");
 	}

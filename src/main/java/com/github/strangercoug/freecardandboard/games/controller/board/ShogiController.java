@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.board.Shogi;
 import com.github.strangercoug.freecardandboard.games.view.board.ShogiView;
 
 public class ShogiController extends BoardGameController {
-	protected ShogiController(Shogi model, ShogiView view) {
+	public ShogiController(Shogi model, ShogiView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

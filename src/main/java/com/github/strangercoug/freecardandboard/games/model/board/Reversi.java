@@ -58,9 +58,4 @@ public class Reversi extends BoardGame {
 		board = new ReversiBoard();
 		board.initBoard();
 	}
-
-	@Override
-	public void play() {
-		System.out.println(board.toString());
-	}
 }

@@ -37,5 +37,4 @@ import com.github.strangercoug.freecardandboard.games.model.Game;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class BoardGame extends Game {
-
 }

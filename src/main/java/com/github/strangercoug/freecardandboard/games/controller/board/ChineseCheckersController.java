@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.board.ChineseChecker
 import com.github.strangercoug.freecardandboard.games.view.board.ChineseCheckersView;
 
 public class ChineseCheckersController extends BoardGameController {
-	protected ChineseCheckersController(ChineseCheckers model, ChineseCheckersView view) {
+	public ChineseCheckersController(ChineseCheckers model, ChineseCheckersView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

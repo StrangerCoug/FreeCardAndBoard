@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.board.Janggi;
 import com.github.strangercoug.freecardandboard.games.view.board.JanggiView;
 
 public class JanggiController extends BoardGameController {
-	protected JanggiController(Janggi model, JanggiView view) {
+	public JanggiController(Janggi model, JanggiView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

@@ -44,8 +44,8 @@ public abstract class Game {
 	@Getter	protected byte minPlayers;
 	@Getter	protected byte maxPlayers;
 	@Getter	@Setter	protected List<Player> players;
-	protected int currentPlayerIndex;
-	protected boolean gameWon;
+	@Getter	@Setter	protected int currentPlayerIndex;
+	@Getter	@Setter	protected boolean gameWon;
 
 	/** 
 	 * Initializes the variables that this game needs before it starts. If a
@@ -57,11 +57,6 @@ public abstract class Game {
 	 * @param players  the list of players in turn order. Should never be null.
 	 */
 	public abstract void init(List<Player> players);
-
-	/**
-	 * Starts play of this game. Game logic belongs in this method.
-	 */
-	public abstract void play();
 
 	protected void advanceToNextPlayer() {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.size();

@@ -60,10 +60,4 @@ public class Go extends BoardGame {
 		this.board = new GoBoard(boardSize);
 		this.gameWon = false;
 	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 }

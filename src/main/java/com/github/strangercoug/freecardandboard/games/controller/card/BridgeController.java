@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.Bridge;
 import com.github.strangercoug.freecardandboard.games.view.card.BridgeView;
 
 public class BridgeController extends CardGameController {
-	protected BridgeController(Bridge model, BridgeView view) {
+	public BridgeController(Bridge model, BridgeView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

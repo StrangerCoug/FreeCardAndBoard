@@ -32,5 +32,5 @@ package com.github.strangercoug.freecardandboard.games.view.card;
 
 import com.github.strangercoug.freecardandboard.games.view.GameView;
 
-public class CardGameView extends GameView {
+public abstract class CardGameView extends GameView {
 }

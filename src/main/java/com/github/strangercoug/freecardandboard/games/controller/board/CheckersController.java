@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.board.Checkers;
 import com.github.strangercoug.freecardandboard.games.view.board.CheckersView;
 
 public class CheckersController extends BoardGameController {
-	protected CheckersController(Checkers model, CheckersView view) {
+	public CheckersController(Checkers model, CheckersView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

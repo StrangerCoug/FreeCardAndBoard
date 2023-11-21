@@ -35,8 +35,13 @@ import com.github.strangercoug.freecardandboard.games.view.board.GoView;
 
 public class GoController extends BoardGameController {
 
-	protected GoController(Go model, GoView view) {
+	public GoController(Go model, GoView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.Cribbage;
 import com.github.strangercoug.freecardandboard.games.view.card.CribbageView;
 
 public class CribbageController extends CardGameController {
-	protected CribbageController(Cribbage model, CribbageView view) {
+	public CribbageController(Cribbage model, CribbageView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

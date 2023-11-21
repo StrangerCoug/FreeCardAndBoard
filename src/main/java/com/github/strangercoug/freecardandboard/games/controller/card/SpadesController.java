@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.Spades;
 import com.github.strangercoug.freecardandboard.games.view.card.SpadesView;
 
 public class SpadesController extends CardGameController {
-	protected SpadesController(Spades model, SpadesView view) {
+	public SpadesController(Spades model, SpadesView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.Hearts;
 import com.github.strangercoug.freecardandboard.games.view.card.HeartsView;
 
 public class HeartsController extends CardGameController {
-	protected HeartsController(Hearts model, HeartsView view) {
+	public HeartsController(Hearts model, HeartsView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

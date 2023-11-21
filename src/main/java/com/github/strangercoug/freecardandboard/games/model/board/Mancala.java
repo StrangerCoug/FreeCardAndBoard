@@ -33,13 +33,14 @@ package com.github.strangercoug.freecardandboard.games.model.board;
 import java.util.List;
 
 import com.github.strangercoug.freecardandboard.Player;
+import lombok.Getter;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Mancala extends BoardGame {
-	int[] board;
+	@Getter int[] board;
 	boolean allowEmptyCaptures;
 
 	public Mancala() {
@@ -64,17 +65,7 @@ public class Mancala extends BoardGame {
 		board = new int[] {0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4};
 	}
 
-	@Override
-	public void play() {
-		while (!gameWon) {
-			playMove(promptMove());
-			if (isGameOver()) {
-				gameWon = true;
-			}
-		}
-	}
-
-	private boolean isGameOver() {
+	public boolean isGameOver() {
 		if (isPlayersSideEmpty(0)) {
 			emptySideIntoStore(1);
 			return true;
@@ -86,7 +77,7 @@ public class Mancala extends BoardGame {
 		return false;
 	}
 
-	private void playMove(int move) {
+	public void playMove(int move) {
 		int startBin = getOwnStore() + move;
 		int seedsToSow = board[startBin];
 

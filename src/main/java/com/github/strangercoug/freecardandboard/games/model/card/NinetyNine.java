@@ -79,12 +79,6 @@ public class NinetyNine extends CardGame {
 		tricksWon = new int[players.size()];
 	}
 
-	@Override
-	public void play() {
-		deck.populateDeck();
-		deck.shuffleDeck();
-	}
-
 	/**
 	 * Deals out the entire deck of cards to each player.
 	 * 

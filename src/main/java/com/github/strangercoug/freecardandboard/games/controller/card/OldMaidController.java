@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.OldMaid;
 import com.github.strangercoug.freecardandboard.games.view.card.OldMaidView;
 
 public class OldMaidController extends CardGameController {
-	protected OldMaidController(OldMaid model, OldMaidView view) {
+	public OldMaidController(OldMaid model, OldMaidView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

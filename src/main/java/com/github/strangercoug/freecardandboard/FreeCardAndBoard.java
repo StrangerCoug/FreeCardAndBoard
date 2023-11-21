@@ -38,6 +38,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.random.RandomGenerator;
 
+import com.github.strangercoug.freecardandboard.games.controller.GameController;
+import com.github.strangercoug.freecardandboard.games.controller.board.*;
+import com.github.strangercoug.freecardandboard.games.controller.card.*;
 import com.github.strangercoug.freecardandboard.games.model.Game;
 import com.github.strangercoug.freecardandboard.games.model.board.Backgammon;
 import com.github.strangercoug.freecardandboard.games.model.board.Checkers;
@@ -60,6 +63,9 @@ import com.github.strangercoug.freecardandboard.games.model.card.OldMaid;
 import com.github.strangercoug.freecardandboard.games.model.card.Rummy;
 import com.github.strangercoug.freecardandboard.games.model.card.Spades;
 import com.github.strangercoug.freecardandboard.games.model.card.Whist;
+import com.github.strangercoug.freecardandboard.games.view.GameView;
+import com.github.strangercoug.freecardandboard.games.view.board.*;
+import com.github.strangercoug.freecardandboard.games.view.card.*;
 import lombok.extern.java.Log;
 
 import static java.security.DrbgParameters.Capability.PR_AND_RESEED;
@@ -104,6 +110,7 @@ public class FreeCardAndBoard {
 		boolean playAgain = false;
 		String entry;
 		Game game = null;
+		GameController controller = null;
 		ArrayList<Player> players;
 
 		do {
@@ -139,7 +146,8 @@ public class FreeCardAndBoard {
 				int gameSelected = Integer.parseInt(entry);
 				if (gameSelected >= 1 && gameSelected <= 21)
 					validInput = true;
-				game = returnGame(gameSelected);
+				controller = returnController(gameSelected);
+				game = controller.getModel();
 			}
 			catch (NumberFormatException e) {
 				System.out.println("Invalid input.");
@@ -216,7 +224,7 @@ public class FreeCardAndBoard {
 
 		do {
 			game.init(players);
-			game.play();
+			controller.play();
 			validInput = false;
 			while (!validInput) {
 				System.out.print("Play again? (Y/N): ");
@@ -239,29 +247,29 @@ public class FreeCardAndBoard {
 		} while (playAgain);
 	}
 
-	private static Game returnGame(int i) {
+	private static GameController returnController(int i) {
 		return switch (i) {
-			case 1 -> new Backgammon();
-			case 2 -> new Bridge();
-			case 3 -> new Canasta();
-			case 4 -> new Checkers();
-			case 5 -> new Chess();
-			case 6 -> new ChineseCheckers();
-			case 7 -> new CrazyEights();
-			case 8 -> new Cribbage();
-			case 9 -> new Go();
-			case 10 -> new Halma();
-			case 11 -> new Hearts();
-			case 12 -> new Janggi();
-			case 13 -> new Mancala();
-			case 14 -> new NinetyNine();
-			case 15 -> new OldMaid();
-			case 16 -> new Reversi();
-			case 17 -> new Rummy();
-			case 18 -> new Shogi();
-			case 19 -> new Spades();
-			case 20 -> new Whist();
-			case 21 -> new Xiangqi();
+			case 1 -> new BackgammonController(new Backgammon(), new BackgammonView());
+			case 2 -> new BridgeController(new Bridge(), new BridgeView());
+			case 3 -> new CanastaController(new Canasta(), new CanastaView());
+			case 4 -> new CheckersController(new Checkers(), new CheckersView());
+			case 5 -> new ChessController(new Chess(), new ChessView());
+			case 6 -> new ChineseCheckersController(new ChineseCheckers(), new ChineseCheckersView());
+			case 7 -> new CrazyEightsController(new CrazyEights(), new CrazyEightsView());
+			case 8 -> new CribbageController(new Cribbage(), new CribbageView());
+			case 9 -> new GoController(new Go(), new GoView());
+			case 10 -> new HalmaController(new Halma(), new HalmaView());
+			case 11 -> new HeartsController(new Hearts(), new HeartsView());
+			case 12 -> new JanggiController(new Janggi(), new JanggiView());
+			case 13 -> new MancalaController(new Mancala(), new MancalaView());
+			case 14 -> new NinetyNineController(new NinetyNine(), new NinetyNineView());
+			case 15 -> new OldMaidController(new OldMaid(), new OldMaidView());
+			case 16 -> new ReversiController(new Reversi(), new ReversiView());
+			case 17 -> new RummyController(new Rummy(), new RummyView());
+			case 18 -> new ShogiController(new Shogi(), new ShogiView());
+			case 19 -> new SpadesController(new Spades(), new SpadesView());
+			case 20 -> new WhistController(new Whist(), new WhistView());
+			case 21 -> new XiangqiController(new Xiangqi(), new XiangqiView());
 			default -> throw new IllegalArgumentException();
 		};
 	}

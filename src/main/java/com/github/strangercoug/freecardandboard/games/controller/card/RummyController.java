@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.Rummy;
 import com.github.strangercoug.freecardandboard.games.view.card.RummyView;
 
 public class RummyController extends CardGameController {
-	protected RummyController(Rummy model, RummyView view) {
+	public RummyController(Rummy model, RummyView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

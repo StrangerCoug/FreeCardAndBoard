@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.CrazyEights;
 import com.github.strangercoug.freecardandboard.games.view.card.CrazyEightsView;
 
 public class CrazyEightsController extends CardGameController {
-	protected CrazyEightsController(CrazyEights model, CrazyEightsView view) {
+	public CrazyEightsController(CrazyEights model, CrazyEightsView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

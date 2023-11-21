@@ -61,10 +61,4 @@ public class Shogi extends BoardGame {
 		board = new ShogiBoard();
 		board.initBoard();
 	}
-
-	@Override
-	public void play() {
-		System.out.println(board.toString());
-	}
-
 }

@@ -34,8 +34,18 @@ import com.github.strangercoug.freecardandboard.games.model.board.Backgammon;
 import com.github.strangercoug.freecardandboard.games.view.board.BackgammonView;
 
 public class BackgammonController extends BoardGameController {
-	protected BackgammonController(Backgammon model, BackgammonView view) {
+	Backgammon model;
+	BackgammonView view;
+
+	public BackgammonController(Backgammon model, BackgammonView view) {
 		super(model, view);
+		this.model = model;
+		this.view = view;
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

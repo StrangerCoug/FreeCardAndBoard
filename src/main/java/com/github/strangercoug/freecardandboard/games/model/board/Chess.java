@@ -58,9 +58,4 @@ public class Chess extends BoardGame {
 		board = new ChessBoard();
 		board.initBoard();
 	}
-
-	@Override
-	public void play() {
-		System.out.println(board.toString());
-	}
 }

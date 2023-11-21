@@ -60,10 +60,4 @@ public class Rummy extends CardGame {
 
 		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 }

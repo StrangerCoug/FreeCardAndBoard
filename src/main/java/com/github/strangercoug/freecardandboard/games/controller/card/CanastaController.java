@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.card.Canasta;
 import com.github.strangercoug.freecardandboard.games.view.card.CanastaView;
 
 public class CanastaController extends CardGameController {
-	protected CanastaController(Canasta model, CanastaView view) {
+	public CanastaController(Canasta model, CanastaView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

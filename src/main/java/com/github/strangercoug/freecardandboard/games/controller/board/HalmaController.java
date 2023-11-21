@@ -34,8 +34,13 @@ import com.github.strangercoug.freecardandboard.games.model.board.Halma;
 import com.github.strangercoug.freecardandboard.games.view.board.HalmaView;
 
 public class HalmaController extends BoardGameController {
-	protected HalmaController(Halma model, HalmaView view) {
+	public HalmaController(Halma model, HalmaView view) {
 		super(model, view);
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

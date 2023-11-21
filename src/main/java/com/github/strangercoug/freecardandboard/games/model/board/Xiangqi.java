@@ -53,10 +53,4 @@ public class Xiangqi extends BoardGame {
 		this.players = players;
 		this.gameWon = false;
 	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 }

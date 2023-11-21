@@ -34,8 +34,23 @@ import com.github.strangercoug.freecardandboard.games.model.board.Mancala;
 import com.github.strangercoug.freecardandboard.games.view.board.MancalaView;
 
 public class MancalaController extends BoardGameController {
-	protected MancalaController(Mancala model, MancalaView view) {
+	Mancala model;
+	MancalaView view;
+	public MancalaController(Mancala model, MancalaView view) {
 		super(model, view);
+		this.model = model;
+		this.view = view;
+	}
+
+	@Override
+	public void play() {
+		while (!model.isGameWon()) {
+			model.playMove(view.promptMove(model.getPlayers(), model.getBoard(), model.getCurrentPlayerIndex()));
+			if (model.isGameOver()) {
+				view.declareGameOver(model.getPlayers(), model.getBoard());
+				model.setGameWon(true);
+			}
+		}
 	}
 
 	@Override
