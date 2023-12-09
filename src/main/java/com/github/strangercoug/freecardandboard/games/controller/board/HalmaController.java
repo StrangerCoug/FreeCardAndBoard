@@ -28,26 +28,18 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.controller.board;
 
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.strangercoug.freecardandboard.games.model.board.Halma;
+import com.github.strangercoug.freecardandboard.games.view.board.HalmaView;
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
+public class HalmaController extends BoardGameController {
+	protected HalmaController(Halma model, HalmaView view) {
+		super(model, view);
 	}
 
-	public Player() {
-		this("Anonymous");
+	@Override
+	public void updateView() {
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 }

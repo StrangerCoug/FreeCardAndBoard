@@ -28,26 +28,74 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.model.card;
 
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.enums.CardRank;
+import com.github.strangercoug.freecardandboard.objs.Card;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
+public class Canasta extends CardGame {
+	public Canasta() {
+		minPlayers = 2;
+		maxPlayers = 6;
 	}
 
-	public Player() {
-		this("Anonymous");
+	@Override
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers
+				|| players.size() == 5) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
+
+		this.players = players;
+		this.gameWon = false;
+
+		if (players.size() == 6) {
+			deck = new Deck(3, true, true);
+		} else {
+			deck = new Deck(2, true, true);
+		}
+		players.forEach(player -> hands.add(new ArrayList<>()));
+	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	private boolean isWildCard (Card card) {
+		return card.rank() == CardRank.TWO
+				|| card.rank() == CardRank.JOKER;
+	}
+
+	private int getPointValue (Card card) {
+		switch (card.rank()) {
+			case ACE, TWO -> {
+				return 20;
+			}
+			case THREE -> {
+				return card.suit().isRed() ? 100 : 5;
+			}
+			case FOUR, FIVE, SIX, SEVEN -> {
+				return 5;
+			}
+			case EIGHT, NINE, TEN, JACK, QUEEN, KING -> {
+				return 10;
+			}
+			case JOKER -> {
+				return 50;
+			}
+			default -> {
+				throw new IllegalArgumentException("Unsupported card rank");
+			}
+		}
 	}
 }

@@ -28,26 +28,30 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.controller;
 
 import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.games.view.GameView;
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
+import java.util.List;
 
-	public Player(String name) {
-		this.name = name;
+public abstract class GameController {
+	private final Game model;
+	private final GameView view;
+
+	protected GameController (Game model, GameView view) {
+		this.model = model;
+		this.view = view;
 	}
 
-	public Player() {
-		this("Anonymous");
+	public void setPlayers(List<Player> players) {
+		model.setPlayers(players);
 	}
+
+	public List<Player> getPlayers() {
+		return model.getPlayers();
+	}
+
+	public abstract void updateView();
 }

@@ -28,26 +28,11 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
-
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+package com.github.strangercoug.freecardandboard.games.view;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
-	}
-
-	public Player() {
-		this("Anonymous");
-	}
+public abstract class GameView {
 }

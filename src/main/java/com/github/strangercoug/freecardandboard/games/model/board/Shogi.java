@@ -28,26 +28,43 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.model.board;
 
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.ShogiBoard;
+import com.github.strangercoug.freecardandboard.objs.ShogiPiece;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
+public class Shogi extends BoardGame {
+	ShogiBoard board;
+	ArrayList<ShogiPiece> sentePiecesInHand, gotePiecesInHand;
 
-	public Player(String name) {
-		this.name = name;
+	public Shogi() {
+		minPlayers = maxPlayers = 2;
 	}
 
-	public Player() {
-		this("Anonymous");
+	@Override
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
+
+		this.players = players;
+		this.gameWon = false;
+
+		board = new ShogiBoard();
+		board.initBoard();
 	}
+
+	@Override
+	public void play() {
+		System.out.println(board.toString());
+	}
+
 }

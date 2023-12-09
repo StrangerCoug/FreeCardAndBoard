@@ -28,26 +28,44 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.model.card;
 
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
+public class Whist extends CardGame {
+	public Whist() {
+		minPlayers = maxPlayers = 4;
 	}
 
-	public Player() {
-		this("Anonymous");
+	@Override
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
+
+		this.players = players;
+		this.gameWon = false;
+
+		if (players.size() < 5) {
+			deck = new Deck(1, true, true);
+		} else {
+			deck = new Deck(2, true, true);
+		}
+
+		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
 }

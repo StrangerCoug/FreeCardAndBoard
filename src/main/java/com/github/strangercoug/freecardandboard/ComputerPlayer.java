@@ -30,6 +30,8 @@
  */
 package com.github.strangercoug.freecardandboard;
 
+import com.github.strangercoug.freecardandboard.games.model.Game;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>

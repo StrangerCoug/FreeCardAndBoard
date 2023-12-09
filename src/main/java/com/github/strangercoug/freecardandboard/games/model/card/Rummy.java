@@ -28,26 +28,42 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecardandboard;
+package com.github.strangercoug.freecardandboard.games.model.card;
 
-import com.github.strangercoug.freecardandboard.games.model.Game;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.strangercoug.freecardandboard.Player;
+import com.github.strangercoug.freecardandboard.objs.Deck;
 
 /**
- *
+ * Programmed here is technically 500 Rummy, not straight rummy.
+ * 
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-@Getter
-public class Player {
-	protected final String name;
-	@Setter private Game gamePlaying;
-
-	public Player(String name) {
-		this.name = name;
+public class Rummy extends CardGame {
+	public Rummy() {
+		minPlayers = 2;
+		maxPlayers = 8;
 	}
 
-	public Player() {
-		this("Anonymous");
+	@Override
+	public void init(List<Player> players) {
+		if (players.size() < minPlayers || players.size() > maxPlayers) {
+			throw new IllegalArgumentException("Wrong number of players.");
+		}
+
+		this.players = players;
+		this.gameWon = false;
+
+		deck = new Deck(1, true, true);
+
+		players.forEach(player -> hands.add(new ArrayList<>()));
 	}
+
+	@Override
+	public void play() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
 }
